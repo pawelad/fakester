@@ -11,11 +11,11 @@ urlpatterns = [
             template_name='robots.txt', content_type='text/plain')
         ),
 
-    # Redirects
-    url(r'', include('redirects.urls', namespace='redirects')),
-
     # Django Admin
     url(r'^django_admin/', admin.site.urls),
+
+    # Redirects
+    url(r'', include('redirects.urls', namespace='redirects')),
 ]
 
 # Serve static files on runserver
