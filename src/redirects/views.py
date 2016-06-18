@@ -25,7 +25,10 @@ class RedirectFormView(RatelimitMixin, TemplateView):
         if form.is_valid():
             # Add sender IP address
             obj = form.save(commit=False)
-            obj.sender_ip = self.request.META['REMOTE_ADDR']
+            obj.sender_ip = (
+                self.request.META['REMOTE_ADDR'] or
+                self.request.META['HTTP_X_REAL_IP']
+            )
             obj.save()
 
             # Add saved object to access it in the template
