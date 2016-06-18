@@ -34,6 +34,7 @@ class Redirect(TimeStampedModel, models.Model):
 
     sender_ip = models.GenericIPAddressField(
         verbose_name=_("sender IP"),
+        null=True,
         editable=False,
     )
 

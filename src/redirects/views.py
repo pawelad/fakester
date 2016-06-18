@@ -2,6 +2,7 @@ from django.views.generic import TemplateView, View
 from django.shortcuts import get_object_or_404, redirect
 
 from ratelimit.mixins import RatelimitMixin
+from ipware.ip import get_real_ip
 
 from redirects.models import Redirect
 from redirects.forms import RedirectModelForm
@@ -25,10 +26,7 @@ class RedirectFormView(RatelimitMixin, TemplateView):
         if form.is_valid():
             # Add sender IP address
             obj = form.save(commit=False)
-            obj.sender_ip = (
-                self.request.META['REMOTE_ADDR'] or
-                self.request.META['HTTP_X_REAL_IP']
-            )
+            obj.sender_ip = get_real_ip(self.request)
             obj.save()
 
             # Add saved object to access it in the template
