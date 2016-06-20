@@ -8,14 +8,15 @@ when he saw those coming from me.
 
 So I made this. And now you can trick your boss too. Your welcome.
 
+Last seen at http://mortifex.xyz
+
+(and 18 other domains, which will remain unmentioned for now - I got to
+maintain the element of surprise with my boss : -)
+
 Please contact me if you found a redirect that was malicious. I realize
 that this can possibly be used in such way - it's the opposite of my 
 intentions, and I try to prevent that in a couple of ways but
 (unfortunately) nothing is perfect.
-
-Last seen at [mortifex.xyz][mortifex] (and 18 other domains, which
-will remain unmentioned for now - I got to maintain the element of
-surprise with my boss).
 
 Feel free to use, ask, fork, star, report bugs, fix them,
 suggest enhancements and point out any mistakes.
@@ -28,6 +29,5 @@ Released under [MIT License][license].
 [rickyroll goo.gl]: https://goo.gl/ejKmN3
 [rickyroll bit.ly]: https://bit.ly/LEcVV7
 [rickyroll youtu.be]: https://youtu.be/I6OXjnBIW-4
-[mortifex]: http://mortifex.xyz/
 [github]: https://github.com/pawelad
 [license]: https://github.com/pawelad/fakester/blob/master/LICENSE
