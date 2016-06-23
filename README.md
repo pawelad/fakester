@@ -8,18 +8,37 @@ when he saw those coming from me.
 
 So I made this. And now you can trick your boss too. Your welcome.
 
-Last seen at http://mortifex.xyz
+Feel free to use, ask, fork, star, report bugs, fix them,
+suggest enhancements and point out any mistakes.
 
-(and 18 other domains, which will remain unmentioned for now - I got to
-maintain the element of surprise with my boss : -)
+## Linked domains
+Domains are meant to be interchangeable - I bought current ones for 2 cents each (while drunk), and will probably change them when they expire.
+One redirect works on all domains.
 
+Currently linked domains:
+- http://amishweekly.xyz
+- http://deepersteeper.xyz
+- http://estrogenesis.xyz
+- http://funkinthetrunk.xyz
+- http://fuzzfeet.xyz
+- http://isitstd.xyz
+- http://masterexploder.xyz
+- http://momcorp.xyz
+- http://mortifex.xyz
+- http://mrmeeseeks.xyz
+- http://notporn.xyz
+- http://spottieottiedopaliscious.xyz
+- http://thedeuce.xyz
+- http://thefiggisagency.xyz
+- http://theflabbergaster.xyz
+- http://thekrappinger.xyz
+- http://uphole.xyz
+
+## Malicious redirects
 Please contact me if you found a redirect that was malicious. I realize
 that this can possibly be used in such way - it's the opposite of my 
 intentions, and I try to prevent that in a couple of ways but
 (unfortunately) nothing is perfect.
-
-Feel free to use, ask, fork, star, report bugs, fix them,
-suggest enhancements and point out any mistakes.
 
 ## Author
 Developed and maintained by [Paweł Adamczak][github].
