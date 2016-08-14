@@ -6,14 +6,15 @@ like [goo.gl/ejKmN3][rickyroll goo.gl],
 I did. A couple of times actually, but he obviously knew what was coming
 when he saw those coming from me.
 
-So I made this. And now you can trick your boss too. Your welcome.
+So I made this. And now you can trick your boss too. You're welcome.
 
-Feel free to use, ask, fork, star, report bugs, fix them,
-suggest enhancements and point out any mistakes.
+Feel free to use, ask, fork, star, report bugs, fix them, suggest enhancements
+and point out any mistakes.
 
 ## Linked domains
-Domains are meant to be interchangeable - I bought current ones for 2 cents each (while drunk), and will probably change them when they expire.
-One redirect works on all domains.
+Domains are meant to be interchangeable - I bought current ones for 2 cents
+each (while drunk), and will probably change them when they expire. Each
+redirect works on all domains.
 
 Currently linked domains:
 - http://amishweekly.xyz
@@ -40,13 +41,13 @@ that this can possibly be used in such way - it's the opposite of my
 intentions, and I try to prevent that in a couple of ways but
 (unfortunately) nothing is perfect.
 
-## Author
-Developed and maintained by [Paweł Adamczak][github].
+## Authors
+Developed and maintained by [Paweł Adamczak][github pawelad].
 
 Released under [MIT License][license].
 
 [rickyroll goo.gl]: https://goo.gl/ejKmN3
 [rickyroll bit.ly]: https://bit.ly/LEcVV7
 [rickyroll youtu.be]: https://youtu.be/I6OXjnBIW-4
-[github]: https://github.com/pawelad
+[github pawelad]: https://github.com/pawelad
 [license]: https://github.com/pawelad/fakester/blob/master/LICENSE
