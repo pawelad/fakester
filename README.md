@@ -1,10 +1,8 @@
 # fakester
 Have you ever wanted to rickyroll your boss but found out that links
-like [goo.gl/ejKmN3][rickyroll goo.gl],
-[bit.ly/LEcVV7][rickyroll bit.ly] and (*ekhm*)
-[youtu.be/I6OXjnBIW-4][rickyroll youtu.be] were way too obvious? Well,
-I did. A couple of times actually, but he obviously knew what was coming
-when he saw those coming from me.
+like [goo.gl/ejKmN3][rickyroll 1], [bit.ly/LEcVV7][rickyroll 2] and (*ekhm*)
+[youtu.be/I6OXjnBIW-4][rickyroll 3] were way too obvious? Well, I did. A couple
+of times actually.
 
 So I made this. And now you can trick your boss too. You're welcome.
 
@@ -46,8 +44,8 @@ Developed and maintained by [Paweł Adamczak][github pawelad].
 
 Released under [MIT License][license].
 
-[rickyroll goo.gl]: https://goo.gl/ejKmN3
-[rickyroll bit.ly]: https://bit.ly/LEcVV7
-[rickyroll youtu.be]: https://youtu.be/I6OXjnBIW-4
+[rickyroll 1]: https://goo.gl/ejKmN3
+[rickyroll 2]: https://bit.ly/LEcVV7
+[rickyroll 3]: https://youtu.be/I6OXjnBIW-4
 [github pawelad]: https://github.com/pawelad
 [license]: https://github.com/pawelad/fakester/blob/master/LICENSE

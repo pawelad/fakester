@@ -2,6 +2,7 @@
 html {
     position: relative;
     min-height: 100%;
+    text-align: justify;
 }
 body {
   /* Margin bottom by footer height */

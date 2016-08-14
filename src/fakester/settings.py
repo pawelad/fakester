@@ -94,13 +94,6 @@ LOGIN_REDIRECT_URL = 'index'
 # Third-party apps settings #
 #############################
 
-# django-bootstrap3
-BOOTSTRAP3 = {
-    'theme_url': 'https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/'
-                 'paper/bootstrap.min.css',
-    'include_jquery': True,
-}
-
 # django-recaptcha
 NOCAPTCHA = True
 RECAPTCHA_USE_SSL = True
