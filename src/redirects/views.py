@@ -1,5 +1,5 @@
-from django.views.generic import TemplateView, View
-from django.shortcuts import get_object_or_404, redirect
+from django.views.generic import TemplateView
+from django.shortcuts import get_object_or_404
 
 from ratelimit.mixins import RatelimitMixin
 from ipware.ip import get_real_ip
@@ -35,10 +35,14 @@ class RedirectFormView(RatelimitMixin, TemplateView):
         return super().get(request, *args, **kwargs)
 
 
-class ActualRedirectView(View):
-    def get(self, request, *args, **kwargs):
+class ActualRedirectView(TemplateView):
+    template_name = 'redirects/redirect.html'
+
+    def get_context_data(self, **kwargs):
         obj = get_object_or_404(Redirect, local_path=self.kwargs['local_path'])
         obj.clicks += 1
         obj.save()
 
-        return redirect(obj.destination_url)
+        kwargs['object'] = obj
+
+        return super().get_context_data(**kwargs)
