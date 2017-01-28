@@ -1,0 +1,17 @@
+language: python
+
+python:
+  - "3.5"
+  - "3.6"
+
+install:
+  - pip install -r requirements/dev.txt
+  - pip install tox-travis
+
+script:
+  - tox
+  - coverage run --source src -m py.test src
+  - coverage report -m
+
+after_success:
+  - coveralls
