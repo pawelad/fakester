@@ -10,7 +10,7 @@ install:
 
 script:
   - tox
-  - coverage run --source src -m py.test src
+  - coverage run --source fakester -m py.test
   - coverage report -m
 
 after_success:

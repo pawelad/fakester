@@ -1,6 +1,6 @@
 from pytest_factoryboy import register
 
-from redirects.test.factories import RedirectFactory
+from tests.redirects.factories import RedirectFactory
 
 
 register(RedirectFactory)
