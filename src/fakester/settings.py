@@ -102,9 +102,7 @@ RECAPTCHA_USE_SSL = True
 ################
 # Own settings #
 ################
-
-# Local settings
 try:
-    from .local_settings import *
+    from .local_settings import *  # noqa
 except ImportError:
     pass

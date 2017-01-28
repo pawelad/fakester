@@ -43,7 +43,9 @@ class Redirect(TimeStampedModel, models.Model):
         verbose_name_plural = _("redirects")
 
     def __str__(self):
-        return "Redirect from '{0.local_path}' to {0.destination_url}".format(self)
+        return (
+            "Redirect from {0.local_path} to {0.destination_url}".format(self)
+        )
 
     def clean(self):
         # Remove leading slashes in local path

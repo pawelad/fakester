@@ -19,7 +19,8 @@ class RedirectModelForm(forms.ModelForm):
         widgets = {
             'local_path': forms.TextInput(
                 attrs={
-                    'placeholder': '/2016/06/23/fakester-is-the-new-cool-thing.html'
+                    'placeholder': '/2016/06/23/'
+                                   'fakester-is-the-new-cool-thing.html'
                 }
             ),
             'destination_url': forms.TextInput(
