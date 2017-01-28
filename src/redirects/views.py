@@ -10,6 +10,7 @@ from redirects.forms import RedirectModelForm
 
 class RedirectFormView(RatelimitMixin, TemplateView):
     template_name = 'redirects/form.html'
+    http_method_names = ['get', 'post']
 
     ratelimit_key = 'ip'
     ratelimit_rate = '5/m'
@@ -25,12 +26,12 @@ class RedirectFormView(RatelimitMixin, TemplateView):
         form = ctx['form']
         if form.is_valid():
             # Add sender IP address
-            obj = form.save(commit=False)
-            obj.sender_ip = get_real_ip(self.request)
-            obj.save()
+            redirect = form.save(commit=False)
+            redirect.sender_ip = get_real_ip(self.request)
+            redirect.save()
 
             # Add saved object to access it in the template
-            self.object = obj
+            self.redirect = redirect
 
         return super().get(request, *args, **kwargs)
 

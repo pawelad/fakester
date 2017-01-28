@@ -17,8 +17,8 @@ class TestRedirectModel:
 
     def test_model_inheritance(self):
         """Test model inheritance"""
-        assert isinstance(self.model(), TimeStampedModel)
         assert isinstance(self.model(), models.Model)
+        assert isinstance(self.model(), TimeStampedModel)
 
     def test_model_local_path_field(self):
         """Test model 'local_path' field"""

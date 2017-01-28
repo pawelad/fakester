@@ -27,7 +27,7 @@
     </div>
 
     <div class="col-md-8 col-md-offset-2">
-        {% if not view.object %}
+        {% if not view.redirect %}
             <p class="lead">
                 {% blocktrans %}
                     All you need to do is provide (fake) local path (that thingy
@@ -47,7 +47,7 @@
             <h4>{{ _("Wubalubadubdub!") }}</h4>
 
             <p class="lead">
-                {% blocktrans with host=request.build_absolute_uri local_path=view.object.local_path destination_url=view.object.destination_url %}
+                {% blocktrans with host=request.build_absolute_uri local_path=view.redirect.local_path destination_url=view.redirect.destination_url %}
                     You can now send <strong><a href="{{ host }}{{ local_path }}" target="_blank">{{ host }}{{ local_path }}</a></strong>
                     to someone, which actually leads to <strong><a href="{{ destination_url }}">{{ destination_url }}</a></strong> (don't tell them that though).
                 {% endblocktrans %}
