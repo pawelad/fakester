@@ -38,12 +38,15 @@ class RedirectFormView(RatelimitMixin, TemplateView):
 
 class ActualRedirectView(TemplateView):
     template_name = 'redirects/redirect.html'
+    http_method_names = ['get']
 
     def get_context_data(self, **kwargs):
-        obj = get_object_or_404(Redirect, local_path=self.kwargs['local_path'])
-        obj.clicks += 1
-        obj.save()
+        redirect = get_object_or_404(
+            Redirect, local_path=self.kwargs['local_path'],
+        )
+        redirect.clicks += 1
+        redirect.save()
 
-        kwargs['object'] = obj
+        kwargs['redirect'] = redirect
 
         return super().get_context_data(**kwargs)
