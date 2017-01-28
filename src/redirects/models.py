@@ -38,7 +38,7 @@ class Redirect(TimeStampedModel, models.Model):
         editable=False,
     )
 
-    class Meta:
+    class Meta(TimeStampedModel.Meta):
         verbose_name = _("redirect")
         verbose_name_plural = _("redirects")
 

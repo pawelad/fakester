@@ -28,8 +28,6 @@ class TestRedirectModelForm:
 
     def test_form_local_path_field(self, redirect_form):
         """Form should have a 'local_path' field"""
-        assert 'local_path' in redirect_form.fields
-
         field = redirect_form.fields['local_path']
 
         assert isinstance(field, forms.CharField)
@@ -42,8 +40,6 @@ class TestRedirectModelForm:
 
     def test_form_destination_url_field(self, redirect_form):
         """Form should have a 'destination_url' field"""
-        assert 'destination_url' in redirect_form.fields
-
         field = redirect_form.fields['destination_url']
 
         assert isinstance(field, forms.CharField)
