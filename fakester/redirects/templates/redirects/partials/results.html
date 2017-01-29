@@ -1,0 +1,31 @@
+{% load i18n %}
+
+<div class="col-md-8 col-md-offset-2">
+    <h3>{{ _("Wubalubadubdub!") }}</h3>
+
+    <p class="lead">
+        {% blocktrans with host=request.build_absolute_uri local_path=view.redirect.local_path destination_url=view.redirect.destination_url %}
+            Yay! You can now send <strong><a href="{{ host }}{{ local_path }}" target="_blank">{{ host }}{{ local_path }}</a></strong>
+            to someone, and it will redirect them to <strong><a href="{{ destination_url }}">{{ destination_url }}</a></strong>
+            (don't tell them that though). How cool is that?
+        {% endblocktrans %}
+    </p>
+
+    <p class="lead">
+        {{ _("Just don't do it too often, alright? Don't be that guy.") }}
+    </p>
+
+    <hr>
+
+    <h5> {{ _("List of all avalible URLs:") }}</h5>
+
+    <ul>
+        {% for domain in available_domains %}
+            <li>
+                <a href="http://{{ domain }}/{{ view.redirect.local_path }}" target="_blank">
+                    http://{{ domain }}/{{ view.redirect.local_path }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>

@@ -1,63 +1,12 @@
 {% extends 'base.html' %}
-{% load i18n %}
-{% load bootstrap3 %}
 
 
 {% block content %}
-    <div class="col-md-8 col-md-offset-2">
-        <p class="lead">
-            {% blocktrans %}
-                Have you ever wanted to rickyroll your boss but found out that links like
-                <strong><a href="https://goo.gl/ejKmN3">goo.gl/ejKmN3</a></strong>,
-                <strong><a href="https://bit.ly/LEcVV7">bit.ly/LEcVV7</a></strong> and (<i>ekhm</i>)
-                <strong><a href="https://youtu.be/I6OXjnBIW-4">youtu.be/I6OXjnBIW-4</a></strong>
-                were way too obvious? Well, I did. A couple of times actually.
-            {% endblocktrans %}
-        </p>
-
-        <p class="lead">
-            {% blocktrans %}
-                So I made this. And now you can trick your boss too. You're welcome.
-            {% endblocktrans %}
-        </p>
-    </div>
-
-    <div class="col-md-10 col-md-offset-1">
-        <hr>
-    </div>
-
-    <div class="col-md-8 col-md-offset-2">
-        {% if not view.redirect %}
-            <p class="lead">
-                {% blocktrans %}
-                    All you need to do is provide (fake) local path (that thingy
-                    that comes after the domain) and the destination URL:
-                {% endblocktrans %}
-            </p>
-
-            <form method="post" action="" class="form-horizontal">
-                {% csrf_token %}
-                {% bootstrap_form form layout="horizontal" form_group_class='form-group form-group-lg' %}
-
-                <div class="form-group text-center">
-                    <button type="submit" class="btn btn-xlg btn-primary">{{ _("Fake It!") }}</button>
-                </div>
-            </form>
-        {% else %}
-            <h4>{{ _("Wubalubadubdub!") }}</h4>
-
-            <p class="lead">
-                {% blocktrans with host=request.build_absolute_uri local_path=view.redirect.local_path destination_url=view.redirect.destination_url %}
-                    You can now send <strong><a href="{{ host }}{{ local_path }}" target="_blank">{{ host }}{{ local_path }}</a></strong>
-                    to someone, which actually leads to <strong><a href="{{ destination_url }}">{{ destination_url }}</a></strong> (don't tell them that though).
-                {% endblocktrans %}
-            </p>
-
-            <p class="lead">
-                {% blocktrans %}
-                    Just don't do it too often, alright? Don't be that guy.
-                 {% endblocktrans %}
-            </p>
-        {% endif %}
-    </div>
+    {% if not view.redirect %}
+        {# Redirect wasn't saved, show the form #}
+        {% include 'redirects/partials/form.html' %}
+    {% else %}
+        {# Redirect was saved #}
+        {% include 'redirects/partials/results.html' %}
+    {% endif %}
 {% endblock content %}

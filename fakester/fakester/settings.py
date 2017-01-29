@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # fakester
+    'fakester',
     'redirects',
 
     # third party
@@ -103,6 +104,26 @@ RECAPTCHA_USE_SSL = True
 ################
 # Own settings #
 ################
+AVAILABLE_DOMAINS = (
+    'amishweekly.xyz',
+    'deepersteeper.xyz',
+    'estrogenesis.xyz',
+    'funkinthetrunk.xyz',
+    'fuzzfeet.xyz',
+    'isitstd.xyz',
+    'masterexploder.xyz',
+    'momcorp.xyz',
+    'mortifex.xyz',
+    'mrmeeseeks.xyz',
+    'notporn.xyz',
+    'spottieottiedopaliscious.xyz',
+    'thedeuce.xyz',
+    'thefiggisagency.xyz',
+    'theflabbergaster.xyz',
+    'thekrappinger.xyz',
+    'uphole.xyz',
+)
+
 try:
     from .local_settings import *  # noqa
 except ImportError:
