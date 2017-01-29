@@ -33,7 +33,6 @@ INSTALLED_APPS = [
 
     # fakester
     'redirects',
-    'misc',
 
     # third party
     'bootstrap3',

@@ -1,13 +1,20 @@
+"""
+Redirects module models
+"""
+
 import re
 
-from django.db import models
 from django.core.validators import RegexValidator
+from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
 from django_extensions.db.models import TimeStampedModel
 
 
 class Redirect(TimeStampedModel, models.Model):
+    """
+    Model that represents a single redirect
+    """
     local_path = models.CharField(
         verbose_name=_("local path"),
         max_length=256,
@@ -48,6 +55,10 @@ class Redirect(TimeStampedModel, models.Model):
         )
 
     def clean(self):
+        """
+        Extends Django's default `clean()` method and add simple local path
+        cleaning
+        """
         # Remove leading slashes in local path
         self.local_path = self.local_path.lstrip('/')
 
