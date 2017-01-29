@@ -35,7 +35,7 @@ class TestRedirectModelForm:
         assert field.label == 'Fake local path'
         assert (
             field.widget.attrs['placeholder'] ==
-            '/2016/06/23/fakester-is-the-new-cool-thing.html'
+            '/2017/01/29/what-the-fuck-is-happening.html'
         )
 
     def test_form_destination_url_field(self, redirect_form):
