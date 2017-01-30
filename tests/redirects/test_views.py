@@ -1,3 +1,6 @@
+"""
+Test `redirects.views` file
+"""
 from django.urls import resolve, reverse_lazy
 from django.views.generic import TemplateView
 

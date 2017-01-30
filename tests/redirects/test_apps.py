@@ -1,3 +1,6 @@
+"""
+Test `redirects.apps` file
+"""
 from django.apps import AppConfig
 from django.apps import apps as fakester_apps
 

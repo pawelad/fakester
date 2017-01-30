@@ -1,3 +1,6 @@
+"""
+Test `redirects.forms` file
+"""
 from django import forms
 
 import pytest

@@ -1,3 +1,6 @@
+"""
+Redirects module related factories
+"""
 import factory
 from faker import Factory as FakerFactory
 
