@@ -1,5 +1,3 @@
-import re
-
 from django.core.validators import RegexValidator
 from django.db import models
 
@@ -40,7 +38,7 @@ class TestRedirectModel:
         validator = field.validators[0]
 
         assert isinstance(validator, RegexValidator)
-        assert validator.regex == re.compile('[a-zA-Z0-9/._-]+')
+        assert validator.regex.pattern == '[a-zA-Z0-9/._-]+'
         assert (
             validator.message ==
             "Allowed characters: a-z, A-Z, 0-9, slash (/), dot (.), "
