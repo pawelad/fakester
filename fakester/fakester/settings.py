@@ -11,7 +11,6 @@ from dj_database_url import parse as db_url
 
 
 BASE_DIR = Path(__file__).parent.parent.parent
-PROJECT_ROOT = Path(__file__).parent.parent
 
 
 SECRET_KEY = config('SECRET_KEY')
@@ -51,9 +50,7 @@ INSTALLED_APPS = [
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-             str(BASE_DIR.joinpath('fakester', 'templates')),
-        ],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -90,14 +87,10 @@ DATABASES = {
 
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = str(PROJECT_ROOT.joinpath('media'))
+MEDIA_ROOT = str(BASE_DIR.joinpath('media'))
 
 STATIC_URL = '/static/'
-STATIC_ROOT = str(PROJECT_ROOT.joinpath('staticfiles'))
-
-STATICFILES_DIRS = [
-    str(BASE_DIR.joinpath('fakester', 'static')),
-]
+STATIC_ROOT = str(BASE_DIR.joinpath('staticfiles'))
 
 
 LANGUAGE_CODE = 'en'
