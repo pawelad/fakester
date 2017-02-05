@@ -1,4 +1,4 @@
--r common.txt
+-r prod.txt
 
 coverage>=4.3.4
 coveralls>=1.1

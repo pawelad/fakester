@@ -1,25 +1,32 @@
-import os
+"""
+Fakester application Django settings file
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATA_DIR = os.path.dirname(BASE_DIR)
+It uses `python-decouple` and `dj-database-url` libraries to get instance
+specific config from '.env' file and environment variables
+"""
+from pathlib import Path
 
-DEBUG = False
+from decouple import config
+from dj_database_url import parse as db_url
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
-SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
+BASE_DIR = Path(__file__).parent.parent.parent
+PROJECT_ROOT = Path(__file__).parent.parent
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(DATA_DIR, 'media')
 
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(DATA_DIR, 'static')
+SECRET_KEY = config('SECRET_KEY')
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'fakester', 'static'),
-]
+DEBUG = config('DEBUG', default=False, cast=bool)
+
+ALLOWED_HOSTS = config(
+    'ALLOWED_HOSTS',
+    default='localhost, 127.0.0.1',
+    cast=lambda l: [s.strip() for s in l.split(',')],
+)
+
 
 ROOT_URLCONF = 'fakester.urls'
+
 WSGI_APPLICATION = 'fakester.wsgi.application'
 
 
@@ -29,16 +36,15 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
 
-    # fakester
     'fakester',
     'redirects',
 
-    # third party
     'bootstrap3',
-    'ratelimit',
     'captcha',
+    'ratelimit',
 ]
 
 
@@ -46,7 +52,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-             os.path.join(BASE_DIR, 'fakester', 'templates'),
+             str(BASE_DIR.joinpath('fakester', 'templates')),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -61,8 +67,9 @@ TEMPLATES = [
 ]
 
 
-MIDDLEWARE_CLASSES = [
+MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -74,11 +81,23 @@ MIDDLEWARE_CLASSES = [
 
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME':  os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    'default': config(
+        'DATABASE_URL',
+        default='sqlite:///' + str(BASE_DIR.joinpath('db.sqlite3')),
+        cast=db_url,
+    )
 }
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = str(PROJECT_ROOT.joinpath('media'))
+
+STATIC_URL = '/static/'
+STATIC_ROOT = str(PROJECT_ROOT.joinpath('staticfiles'))
+
+STATICFILES_DIRS = [
+    str(BASE_DIR.joinpath('fakester', 'static')),
+]
 
 
 LANGUAGE_CODE = 'en'
@@ -88,8 +107,11 @@ USE_L10N = True
 USE_TZ = True
 
 
+# Misc
 LOGIN_URL = 'admin:login'
 LOGIN_REDIRECT_URL = 'index'
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 
 #############################
@@ -99,6 +121,9 @@ LOGIN_REDIRECT_URL = 'index'
 # django-recaptcha
 NOCAPTCHA = True
 RECAPTCHA_USE_SSL = True
+
+RECAPTCHA_PUBLIC_KEY = config('RECAPTCHA_PUBLIC_KEY')
+RECAPTCHA_PRIVATE_KEY = config('RECAPTCHA_PRIVATE_KEY')
 
 
 ################
@@ -123,8 +148,3 @@ AVAILABLE_DOMAINS = (
     'thekrappinger.xyz',
     'uphole.xyz',
 )
-
-try:
-    from .local_settings import *  # noqa
-except ImportError:
-    pass
