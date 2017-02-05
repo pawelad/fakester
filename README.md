@@ -10,7 +10,7 @@ obvious? Well, I did. A couple of times actually.
 
 So I made this. And now you can trick your boss too. You're welcome.
 
-Last seen at [fakester.pawelad.xyz](http://fakester.pawelad.xyz)
+Last seen at [mortifex.xyz](http://mortifex.xyz)
 
 ## Domains
 Domains are meant to be interchangeable - I bought current ones for 2 cents
