@@ -1,9 +1,16 @@
+dist: trusty
 language: python
 
 python:
   - "3.4"
   - "3.5"
   - "3.6"
+
+addons:
+  postgresql: "9.5"
+
+before_script:
+  - psql -c 'create database fakester;' -U postgres
 
 install:
   - pip install -r requirements/dev.txt
