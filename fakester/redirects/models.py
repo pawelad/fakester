@@ -1,7 +1,6 @@
 """
 Redirects module models
 """
-
 import re
 
 from django.core.validators import RegexValidator

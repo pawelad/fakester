@@ -1,7 +1,6 @@
 """
 Redirects module related forms
 """
-
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 
@@ -27,7 +26,7 @@ class RedirectModelForm(forms.ModelForm):
         widgets = {
             'local_path': forms.TextInput(
                 attrs={
-                    'placeholder': '/2017/01/29/'
+                    'placeholder': '/2017/02/06/'
                                    'what-the-fuck-is-happening.html'
                 }
             ),

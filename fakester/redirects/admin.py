@@ -1,7 +1,6 @@
 """
 Redirects module Django Admin integration
 """
-
 from django.contrib import admin
 
 from redirects.models import Redirect
