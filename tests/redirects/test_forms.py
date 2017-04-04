@@ -9,18 +9,15 @@ from redirects.forms import RedirectModelForm
 from redirects.models import Redirect
 
 
-# Fixtures
-@pytest.fixture(scope='module')
-def redirect_form():
-    """Helper fixture for initializing `RedirectModelForm`"""
-    return RedirectModelForm()
-
-
-# Tests
 class TestRedirectModelForm:
     """
     Tests for 'redirects.forms.RedirectModelForm'
     """
+    @pytest.fixture
+    def redirect_form(self):
+        """Helper fixture for initializing `RedirectModelForm`"""
+        return RedirectModelForm()
+
     def test_from_inheritance(self, redirect_form):
         """Form should inherit from `django.forms.ModelForm`"""
         assert isinstance(redirect_form, forms.ModelForm)
@@ -38,7 +35,7 @@ class TestRedirectModelForm:
         assert field.label == 'Fake local path'
         assert (
             field.widget.attrs['placeholder'] ==
-            '/2017/02/06/what-the-fuck-is-happening.html'
+            '/2017/04/04/we-are-all-doomed'
         )
 
     def test_form_destination_url_field(self, redirect_form):

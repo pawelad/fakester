@@ -26,8 +26,7 @@ class RedirectModelForm(forms.ModelForm):
         widgets = {
             'local_path': forms.TextInput(
                 attrs={
-                    'placeholder': '/2017/02/06/'
-                                   'what-the-fuck-is-happening.html'
+                    'placeholder': '/2017/04/04/we-are-all-doomed'
                 }
             ),
             'destination_url': forms.TextInput(
