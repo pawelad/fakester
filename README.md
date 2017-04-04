@@ -58,7 +58,7 @@ and can be run with one simple command of your choice:
 ```shell
 $ export SECRET_KEY='...'
 $ pip3 install -r requirements.txt
-$ python verse/manage.py migrate
+$ python fakester/manage.py migrate
 $ heroku local web
 $ ...
 $ foreman start
@@ -72,8 +72,8 @@ You can also run it as a regular Django project, via `manage.py runserver`:
 ```shell
 $ export SECRET_KEY='...'
 $ pip3 install -r requirements.txt
-$ python verse/manage.py migrate
-$ python verse/manage.py runserver
+$ python fakester/manage.py migrate
+$ python fakester/manage.py runserver
 ```
 
 ## Configuration
