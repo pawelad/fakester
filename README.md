@@ -47,26 +47,33 @@ and I try to prevent that in a couple of ways but (unfortunately) nothing is
 perfect.
 
 ## Running locally
-Fakester is run in production with the help of `dokku`, `gunicorn` and
-`whitenoise`.
+Fakester uses environment variables to manage configuration variables and you need
+at least `SECRET_KEY` set (either explicitly or in `.env` file) to run it
+locally.
 
-It uses environment variables to manage configuration variables and you need
-at least `SECRET_KEY` set to run it locally:
+It's run in production with the help of `dokku`, `gunicorn` and `whitenoise`,
+which means it's Heroku/Foreman/Honcho (and Procfile in general) compatible
+and can be run with one simple command of your choice:
 
 ```shell
 $ export SECRET_KEY='...'
-$ python fakester/manage.py migrate
-$ python fakester/manage.py runserver
+$ pip3 install -r requirements.txt
+$ python verse/manage.py migrate
+$ heroku local web
+$ ...
+$ foreman start
+$ ...
+$ honcho start
+$ ...
 ```
 
-Dokku uses Heroku buildpacks in the background, so you can also run it via 
-Heroku CLI, or anything that understand `Procfile` for that matter:
+You can also run it as a regular Django project, via `manage.py runserver`:
 
 ```shell
 $ export SECRET_KEY='...'
-$ heroku local web
-$ foreman start
-$ honcho start
+$ pip3 install -r requirements.txt
+$ python verse/manage.py migrate
+$ python verse/manage.py runserver
 ```
 
 ## Configuration
@@ -83,6 +90,12 @@ RECAPTCHA_PUBLIC_KEY='...'
 RECAPTCHA_PRIVATE_KEY='...'
 ```
 
+## Contributions
+Package source code is available at [GitHub][github].
+
+Feel free to use, ask, fork, star, report bugs, fix them, suggest enhancements,
+add functionality and point out any mistakes. Thanks!
+
 ## Tests
 Package was tested with the help of `py.test` and `tox` on Python 3.4, 3.5
 and 3.6 with Django 1.10 (see `tox.ini`).
@@ -97,12 +110,6 @@ $ pip install -r requirements/dev.txt
 $ export SECRET_KEY='...'
 $ tox
 ```
-
-## Contributions
-Package source code is available at [GitHub][github].
-
-Feel free to use, ask, fork, star, report bugs, fix them, suggest enhancements,
-add functionality and point out any mistakes. Thanks!
 
 ## Authors
 Developed and maintained by [Paweł Adamczak][pawelad].
