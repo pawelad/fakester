@@ -14,7 +14,7 @@ obvious? Well, I did. A couple of times actually.
 
 So I made this. And now you can trick your boss too. You're welcome.
 
-Last seen at [fakester.pawelad.xyz](https://fakester.pawelad.xyz) (and all 
+Last seen at [fakester.pawelad.xyz][fakester] (and all 
 domains listed below).
 
 ## Domains
@@ -49,55 +49,14 @@ this can possibly be used in such way. It's the opposite of my intentions
 and I try to prevent that in a couple of ways but (unfortunately) nothing is 
 perfect.
 
-## Running locally
-Fakester uses environment variables to manage configuration variables and you need
-at least `SECRET_KEY` set (either explicitly or in `.env` file) to run it
-locally.
-
-It's run in production with the help of `dokku`, `gunicorn` and `whitenoise`,
-which means it's Heroku/Foreman/Honcho (and Procfile in general) compatible
-and can be run with one simple command of your choice:
-
-```shell
-$ export SECRET_KEY='...'
-$ pip3 install -r requirements.txt
-$ python fakester/manage.py migrate
-$ heroku local web
-$ ...
-$ foreman start
-$ ...
-$ honcho start
-$ ...
-```
-
-You can also run it as a regular Django project, via `manage.py runserver`:
-
-```shell
-$ export SECRET_KEY='...'
-$ pip3 install -r requirements.txt
-$ python fakester/manage.py migrate
-$ python fakester/manage.py runserver
-```
-
-## Configuration
-Fakester uses `python-decouple` and `dj-database-url` to manage configuration
-variables. You can have a look at the settings file to see what values are
-configurable, but for reference here are the ones that I use locally:
-
-```shell
-$ cat .env
-SECRET_KEY='...'
-DEBUG=True
-DATABASE_URL='postgres://localhost/fakester'
-RECAPTCHA_PUBLIC_KEY='...'
-RECAPTCHA_PRIVATE_KEY='...'
-```
-
 ## Contributions
 Package source code is available at [GitHub][github].
 
 Feel free to use, ask, fork, star, report bugs, fix them, suggest enhancements,
 add functionality and point out any mistakes. Thanks!
+
+Also, take a look [here][fakester running locally] if you want to run Fakester
+locally.
 
 ## Tests
 Package was tested with the help of `py.test` and `tox` on Python 3.4, 3.5
@@ -121,6 +80,8 @@ Released under [MIT License][license].
 
 
 [coveralls]: https://coveralls.io/github/pawelad/fakester
+[fakester]: https://fakester.pawelad.xyz
+[fakester running locally]: https://github.com/pawelad/fakester/wiki/Running-Fakester-locally
 [github]: https://github.com/pawelad/fakester
 [license]: https://github.com/pawelad/fakester/blob/master/LICENSE
 [pawelad]: https://github.com/pawelad
