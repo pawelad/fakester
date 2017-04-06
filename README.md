@@ -1,4 +1,7 @@
-# fakester
+<p align="center">
+    <img src="https://cdn.rawgit.com/pawelad/fakester/d542da1e/fakester/fakester/static/img/logo.png" alt="Fakester logo">
+</p>
+
 [![Build status](https://img.shields.io/travis/pawelad/fakester.svg)][travis]
 [![GitHub release](https://img.shields.io/github/release/pawelad/fakester.svg)][github]
 [![Test coverage](https://img.shields.io/coveralls/pawelad/fakester.svg)][coveralls]
