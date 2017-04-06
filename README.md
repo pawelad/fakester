@@ -60,7 +60,7 @@ locally.
 
 ## Tests
 Package was tested with the help of `py.test` and `tox` on Python 3.4, 3.5
-and 3.6 with Django 1.10 (see `tox.ini`).
+and 3.6 with Django 1.11 (see `tox.ini`).
 
 Code coverage is available at [Coveralls][coveralls].
 
@@ -68,8 +68,8 @@ To run tests yourself you need to set environment variable with Django secret
 key before running `tox` inside the repository:
 
 ```shell
-$ pip install -r requirements/dev.txt
 $ export SECRET_KEY='...'
+$ pip install tox
 $ tox
 ```
 
