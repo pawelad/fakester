@@ -23,16 +23,27 @@ footer p {
     margin: 0;
 }
 
-
-/* Title */
-#fakester-title {
-    font-family: 'Poiret One', cursive;
+a {
+    font-weight: bold;
 }
 
-#fakester-title a:hover,
-#fakester-title a:active {
+a:hover,
+a:active {
     text-decoration: none;
 }
+
+
+/* Title */
+#fakester-title h1 {
+    font-family: 'Poiret One', cursive;
+    font-size: 75px;
+    text-align: center;
+}
+
+#fakester-title h1 a {
+    font-weight: normal;
+}
+
 
 /* Misc */
 .btn-xlg {
