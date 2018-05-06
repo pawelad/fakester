@@ -23,23 +23,18 @@ each and will probably change them when they expire. Each redirect works on
 all domains.
 
 Currently linked domains:
-- http://amishweekly.xyz
-- http://deepersteeper.xyz
-- http://estrogenesis.xyz
-- http://funkinthetrunk.xyz
-- http://fuzzfeet.xyz
-- http://isitstd.xyz
-- http://masterexploder.xyz
-- http://momcorp.xyz
-- http://mortifex.xyz
-- http://mrmeeseeks.xyz
-- http://notporn.xyz
-- http://spottieottiedopaliscious.xyz
-- http://thedeuce.xyz
-- http://thefiggisagency.xyz
-- http://theflabbergaster.xyz
-- http://thekrappinger.xyz
-- http://uphole.xyz
+- https://badsoftware.review/
+- https://doubledouce.club/
+- https://farnsworth.science/
+- https://forgettable.men/
+- https://momcorp.science/
+- https://mortifex.tech/
+- https://notarickyroll.website/
+- https://notarobot.date/
+- https://notbigon.faith/
+- https://realshark.loan/
+- https://sugarlumps.trade/
+- https://totallyreal.accountant/
 
 Feel free to contact me and 'donate' new ones : -)
 
