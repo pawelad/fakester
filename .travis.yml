@@ -7,19 +7,17 @@ python:
   - '3.6'
 
 addons:
-  postgresql: "9.5"
+  postgresql: '9.5'
 
-before_script:
+before_install:
   - psql -c 'create database fakester;' -U postgres
 
 install:
-  - pip install -r requirements/dev.txt
-  - pip install tox-travis
+  - pip install tox tox-travis coveralls
 
 script:
   - tox
-  - coverage run --source fakester -m py.test
-  - coverage report -m
 
 after_success:
+  - tox -e coverage-report
   - coveralls
