@@ -14,12 +14,12 @@ obvious? Well, I did. A couple of times actually.
 
 So I made this. And now you can trick your boss too. You're welcome.
 
-Last seen at [fakester.pawelad.xyz][fakester] (and all 
+Last seen at [fakester.pawelad.xyz][fakester] (and all
 domains listed below).
 
 ## Domains
 Domains are meant to be interchangeable - I bought current ones for 2 cents
-each and will probably change them when they expire. Each redirect works on 
+each and will probably change them when they expire. Each redirect works on
 all domains.
 
 Currently linked domains:
@@ -39,9 +39,9 @@ Currently linked domains:
 Feel free to contact me and 'donate' new ones : -)
 
 ## Malicious redirects
-Please contact me if you found a redirect that was malicious, as I realize that 
+Please contact me if you found a redirect that was malicious, as I realize that
 this can possibly be used in such way. It's the opposite of my intentions
-and I try to prevent that in a couple of ways but (unfortunately) nothing is 
+and I try to prevent that in a couple of ways but (unfortunately) nothing is
 perfect.
 
 ## Contributions
@@ -71,13 +71,13 @@ $ tox
 ## Authors
 Developed and maintained by [Paweł Adamczak][pawelad].
 
-Released under [MIT License][license].
+Released under [Mozilla Public License 2.0][license].
 
 
 [coveralls]: https://coveralls.io/github/pawelad/fakester
 [fakester]: https://fakester.pawelad.xyz
 [fakester running locally]: https://github.com/pawelad/fakester/wiki/Running-Fakester-locally
 [github]: https://github.com/pawelad/fakester
-[license]: https://github.com/pawelad/fakester/blob/master/LICENSE
+[license]: ./LICENSE
 [pawelad]: https://github.com/pawelad
 [travis]: https://travis-ci.org/pawelad/fakester
