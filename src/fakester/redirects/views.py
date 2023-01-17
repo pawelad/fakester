@@ -5,24 +5,20 @@ from django.conf import settings
 from django.shortcuts import get_object_or_404
 from django.views.generic import TemplateView
 
-from ipware.ip import get_real_ip
-from ratelimit.mixins import RatelimitMixin
+from django_ratelimit.decorators import ratelimit
+from ipware import get_client_ip
 
 from redirects.forms import RedirectModelForm
 from redirects.models import Redirect
 
 
-class RedirectFormView(RatelimitMixin, TemplateView):
+class RedirectFormView(TemplateView):
     """
     View for creating redirects.
     """
 
     template_name = "redirects/form.html"
     http_method_names = ["get", "post"]
-
-    ratelimit_key = "ip"
-    ratelimit_rate = "5/m"
-    ratelimit_block = True
 
     def get_context_data(self, **kwargs):
         """
@@ -34,6 +30,7 @@ class RedirectFormView(RatelimitMixin, TemplateView):
 
         return super().get_context_data(**kwargs)
 
+    @method_decorator(ratelimit(key="ip", rate="1/s"))
     def post(self, request, *args, **kwargs):
         """
         Handles redirect form saving and then defaults to `get()` response.
@@ -44,7 +41,7 @@ class RedirectFormView(RatelimitMixin, TemplateView):
         if form.is_valid():
             # Add sender IP address
             redirect = form.save(commit=False)
-            redirect.sender_ip = get_real_ip(self.request)
+            redirect.sender_ip, _ = get_client_ip(self.request)
             redirect.save()
 
             # Add saved object to view in order to access it in the template

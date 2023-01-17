@@ -24,8 +24,9 @@ django-bootstrap3==22.2 \
     --hash=sha256:537b08748ab40a9f214968c188ae26cfeadb7987b784f2857396a33b477fa10a \
     --hash=sha256:c128452497500188052c0e0a24fe5639ee1a26170985b8da636d8fea9114430a
     # via -r requirements/main.in
-django-ipware==1.1.6 \
-    --hash=sha256:93a90f9dd8caf2c633172aa8c8ba4e76e2b44f92a6942fa35e7624281e81ea03
+django-ipware==4.0.2 \
+    --hash=sha256:602a58325a4808bd19197fef2676a0b2da2df40d0ecf21be414b2ff48c72ad05 \
+    --hash=sha256:878dbb06a87e25550798e9ef3204ed70a200dd8b15e47dcef848cf08244f04c9
     # via -r requirements/main.in
 django-ratelimit==1.0.1 \
     --hash=sha256:a74f23069291441792f960b6ac662579560a7c959e2e8444ecf140bf1a9041c4 \
