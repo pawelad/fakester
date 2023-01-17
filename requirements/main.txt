@@ -21,10 +21,6 @@ django==4.1.5 \
 django-bootstrap3==8.2.3 \
     --hash=sha256:6f7946d513d6340bb70f25d8ec047bf3bf37bab9e499d3baca99b1aa0ec92a52
     # via -r requirements/main.in
-django-extensions==1.7.9 \
-    --hash=sha256:3d028994db76b78bbc5adef7e48102d44fb70a33b34adaddcf8d4f85620453c1 \
-    --hash=sha256:a6b97ec77657e4fd43d508d6a134c799f188e868717f7499d05213b4669b44b6
-    # via -r requirements/main.in
 django-ipware==1.1.6 \
     --hash=sha256:93a90f9dd8caf2c633172aa8c8ba4e76e2b44f92a6942fa35e7624281e81ea03
     # via -r requirements/main.in
@@ -116,10 +112,6 @@ psycopg2-binary==2.9.5 \
 python-decouple==3.0 \
     --hash=sha256:99834c9ff7ce5c5b2f4a18bc0880753e54ea3aaabc3cfb16961a92d5046665df
     # via -r requirements/main.in
-six==1.16.0 \
-    --hash=sha256:1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926 \
-    --hash=sha256:8abb2f1d86890a2dfb989f9a77cfcfd3e47c2a354b01111771326f8aa26e0254
-    # via django-extensions
 sqlparse==0.4.3 \
     --hash=sha256:0323c0ec29cd52bceabc1b4d9d579e311f3e4961b98d174201d5622a23b85e34 \
     --hash=sha256:69ca804846bb114d2ec380e4360a8a340db83f0ccf3afceeb1404df028f57268

@@ -2,7 +2,6 @@
 Django
 dj-database-url
 django-bootstrap3
-django-extensions
 django-ipware
 django-ratelimit
 django-recaptcha

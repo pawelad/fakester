@@ -13,6 +13,6 @@ class RedirectAdmin(admin.ModelAdmin):
     """
     list_display = (
         'local_path', 'destination_url', 'clicks',
-        'sender_ip', 'created', 'modified',
+        'sender_ip', 'created_at', 'modified_at',
     )
     list_filter = ('sender_ip', 'destination_url')

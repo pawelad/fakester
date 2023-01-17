@@ -5,9 +5,9 @@ from django.core.validators import RegexValidator
 from django.db import models
 
 import pytest
-from django_extensions.db.models import TimeStampedModel
-
 from redirects.models import Redirect
+
+from fakester.utils.models import BaseModel
 
 
 class TestRedirectModel:
@@ -18,8 +18,8 @@ class TestRedirectModel:
 
     def test_model_inheritance(self):
         """Test model inheritance"""
+        assert isinstance(self.model(), BaseModel)
         assert isinstance(self.model(), models.Model)
-        assert isinstance(self.model(), TimeStampedModel)
 
     def test_model_local_path_field(self):
         """Test model 'local_path' field"""

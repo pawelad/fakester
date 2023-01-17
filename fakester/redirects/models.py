@@ -7,10 +7,10 @@ from django.core.validators import RegexValidator
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from django_extensions.db.models import TimeStampedModel
+from utils.models import BaseModel
 
 
-class Redirect(TimeStampedModel, models.Model):
+class Redirect(BaseModel):
     """
     Model that represents a single redirect
     """
@@ -44,7 +44,7 @@ class Redirect(TimeStampedModel, models.Model):
         editable=False,
     )
 
-    class Meta(TimeStampedModel.Meta):
+    class Meta:
         verbose_name = _("redirect")
         verbose_name_plural = _("redirects")
 
