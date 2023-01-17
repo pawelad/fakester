@@ -1,7 +1,5 @@
 -r prod.txt
 
-coverage
-coveralls
 flake8
 pytest
 pytest-django

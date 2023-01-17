@@ -4,7 +4,6 @@
 
 [![Build status](https://img.shields.io/travis/pawelad/fakester.svg)][travis]
 [![GitHub release](https://img.shields.io/github/release/pawelad/fakester.svg)][github]
-[![Test coverage](https://img.shields.io/coveralls/pawelad/fakester.svg)][coveralls]
 [![License](https://img.shields.io/github/license/pawelad/fakester.svg)][license]
 
 Have you ever wanted to rickyroll your boss but found that links like
@@ -57,8 +56,6 @@ locally.
 Package was tested with the help of `py.test` and `tox` on Python 3.4, 3.5
 and 3.6 with Django 1.11 (see `tox.ini`).
 
-Code coverage is available at [Coveralls][coveralls].
-
 To run tests yourself you need to set environment variable with Django secret
 key before running `tox` inside the repository:
 
@@ -74,7 +71,6 @@ Developed and maintained by [Paweł Adamczak][pawelad].
 Released under [Mozilla Public License 2.0][license].
 
 
-[coveralls]: https://coveralls.io/github/pawelad/fakester
 [fakester]: https://fakester.pawelad.xyz
 [fakester running locally]: https://github.com/pawelad/fakester/wiki/Running-Fakester-locally
 [github]: https://github.com/pawelad/fakester
