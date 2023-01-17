@@ -4,11 +4,18 @@ MAKEFLAGS += --warn-undefined-variables
 
 .PHONY: install
 install: ## Install app dependencies
-	python -m pip install -r requirements/prod.txt
+	python -m pip install --upgrade pip setuptools wheel
+	python -m pip install pip-tools
+	python -m piptools sync requirements/main.txt
 
 .PHONY: install-dev
-install-dev: ## Install app dev dependencies
-	python -m pip install -r requirements/dev.txt
+install-dev: install ## Install app dev dependencies
+	python -m piptools sync requirements/main.txt requirements/dev.txt
+
+.PHONY: pip-compile
+pip-compile: ## Compile requirements files
+	python -m piptools compile --generate-hashes --resolver=backtracking requirements/main.in
+	python -m piptools compile --generate-hashes --resolver=backtracking requirements/dev.in
 
 .PHONY: format
 format: ## Format code
