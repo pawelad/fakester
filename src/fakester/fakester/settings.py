@@ -19,7 +19,7 @@ DEBUG = config("DEBUG", default=False, cast=bool)
 ALLOWED_HOSTS = config(
     "ALLOWED_HOSTS",
     default="localhost, 127.0.0.1, 0.0.0.0",
-    cast=lambda l: [s.strip() for s in l.split(",")],
+    cast=lambda hosts: [s.strip() for s in hosts.split(",")],
 )
 
 INSTALLED_APPS = [
@@ -82,7 +82,9 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
+        "NAME": (
+            "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"
+        ),
     },
     {
         "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",

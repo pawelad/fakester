@@ -1,5 +1,5 @@
 """
-Redirects module related forms
+Redirects module related forms.
 """
 from django import forms
 from django.utils.translation import gettext_lazy as _
@@ -12,7 +12,7 @@ from redirects.models import Redirect
 class RedirectModelForm(forms.ModelForm):
     """
     Form for creating `redirect.Redirect` instances, with added 'security'
-    of ReCaptcha field
+    of ReCaptcha field.
     """
 
     captcha = ReCaptchaField()

@@ -1,5 +1,5 @@
 """
-Redirects module Django Admin integration
+Redirects module Django Admin integration.
 """
 from django.contrib import admin
 
@@ -9,7 +9,7 @@ from redirects.models import Redirect
 @admin.register(Redirect)
 class RedirectAdmin(admin.ModelAdmin):
     """
-    Django Admin integration for `redirects.Redirect` model
+    Django Admin integration for `redirects.Redirect` model.
     """
 
     list_display = (

@@ -1,9 +1,8 @@
 """
-Redirects module models
+Redirects module models.
 """
 import re
 
-from django.core.validators import RegexValidator
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
@@ -12,22 +11,13 @@ from utils.models import BaseModel
 
 class Redirect(BaseModel):
     """
-    Model that represents a single redirect
+    Model that represents a single redirect.
     """
 
-    local_path = models.CharField(
+    local_path = models.SlugField(
         verbose_name=_("local path"),
-        max_length=256,
+        max_length=255,
         unique=True,
-        validators=[
-            RegexValidator(
-                regex="[a-zA-Z0-9/._-]+",
-                message=_(
-                    "Allowed characters: a-z, A-Z, 0-9, slash (/), "
-                    "dot (.), underscore (_) and hyphen (-)."
-                ),
-            )
-        ],
         error_messages={"unique": _("Sorry, but this path is already taken.")},
     )
 
@@ -57,7 +47,7 @@ class Redirect(BaseModel):
     def clean(self):
         """
         Extends Django's default `clean()` method and add simple local path
-        cleaning
+        cleaning.
         """
         # Remove leading slashes in local path
         self.local_path = self.local_path.lstrip("/")

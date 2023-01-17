@@ -1,5 +1,5 @@
 """
-fakester - Rickyroll your boss while preserving the element of surprise
+fakester - Rickyroll your boss while preserving the element of surprise.
 """
 
 __title__ = "fakester"

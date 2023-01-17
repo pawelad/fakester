@@ -1,5 +1,5 @@
 """
-Redirects module views
+Redirects module views.
 """
 from django.conf import settings
 from django.shortcuts import get_object_or_404
@@ -14,7 +14,7 @@ from redirects.models import Redirect
 
 class RedirectFormView(RatelimitMixin, TemplateView):
     """
-    View for creating redirects
+    View for creating redirects.
     """
 
     template_name = "redirects/form.html"
@@ -27,7 +27,7 @@ class RedirectFormView(RatelimitMixin, TemplateView):
     def get_context_data(self, **kwargs):
         """
         Extends Django's default `get_context_data()` method and adds
-        available domains and `RedirectModelForm` instance to the context
+        available domains and `RedirectModelForm` instance to the context.
         """
         kwargs["available_domains"] = settings.AVAILABLE_DOMAINS
         kwargs["form"] = RedirectModelForm(data=self.request.POST or None)
@@ -36,7 +36,7 @@ class RedirectFormView(RatelimitMixin, TemplateView):
 
     def post(self, request, *args, **kwargs):
         """
-        Handles redirect form saving and then defaults to `get()` response
+        Handles redirect form saving and then defaults to `get()` response.
         """
         ctx = self.get_context_data(**kwargs)
 
@@ -55,7 +55,7 @@ class RedirectFormView(RatelimitMixin, TemplateView):
 
 class ActualRedirectView(TemplateView):
     """
-    Simple view that redirects user to redirect destination URL
+    Simple view that redirects user to redirect destination URL.
     """
 
     template_name = "redirects/redirect.html"
@@ -64,7 +64,7 @@ class ActualRedirectView(TemplateView):
     def get_context_data(self, **kwargs):
         """
         Extends Django's default `get_context_data()` method and adds the
-        `Redirect` instance to the context
+        `Redirect` instance to the context.
         """
         redirect = get_object_or_404(
             Redirect,
