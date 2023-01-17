@@ -3,7 +3,7 @@ fakester Django settings.
 """
 from pathlib import Path
 
-from decouple import config
+from decouple import Csv, config
 from dj_database_url import parse as db_url
 
 SRC_DIR = Path(__file__).resolve().parent.parent
@@ -19,7 +19,7 @@ DEBUG = config("DEBUG", default=False, cast=bool)
 ALLOWED_HOSTS = config(
     "ALLOWED_HOSTS",
     default="localhost, 127.0.0.1, 0.0.0.0",
-    cast=lambda hosts: [s.strip() for s in hosts.split(",")],
+    cast=Csv(),
 )
 
 INSTALLED_APPS = [
