@@ -9,5 +9,6 @@ class RedirectsAppConfig(AppConfig):
     """
     Django AppConfig integration for `redirects` module
     """
-    name = 'redirects'
+
+    name = "redirects"
     verbose_name = _("redirects")

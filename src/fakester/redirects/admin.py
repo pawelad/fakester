@@ -11,8 +11,13 @@ class RedirectAdmin(admin.ModelAdmin):
     """
     Django Admin integration for `redirects.Redirect` model
     """
+
     list_display = (
-        'local_path', 'destination_url', 'clicks',
-        'sender_ip', 'created_at', 'modified_at',
+        "local_path",
+        "destination_url",
+        "clicks",
+        "sender_ip",
+        "created_at",
+        "modified_at",
     )
-    list_filter = ('sender_ip', 'destination_url')
+    list_filter = ("sender_ip", "destination_url")

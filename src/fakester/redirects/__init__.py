@@ -1,1 +1,1 @@
-default_app_config = 'redirects.apps.RedirectsAppConfig'
+default_app_config = "redirects.apps.RedirectsAppConfig"

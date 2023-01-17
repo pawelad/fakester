@@ -4,7 +4,6 @@ Redirects module related factories
 import factory
 from faker import Factory as FakerFactory
 
-
 faker = FakerFactory.create()
 
 
@@ -14,4 +13,4 @@ class RedirectFactory(factory.DjangoModelFactory):
     sender_ip = factory.LazyAttribute(lambda n: faker.ipv4())
 
     class Meta:
-        model = 'redirects.Redirect'
+        model = "redirects.Redirect"

@@ -5,15 +5,16 @@ from django.core.validators import RegexValidator
 from django.db import models
 
 import pytest
-from redirects.models import Redirect
 
-from fakester.utils.models import BaseModel
+from redirects.models import Redirect
+from utils.models import BaseModel
 
 
 class TestRedirectModel:
     """
     Tests for 'redirects.models.Redirect'
     """
+
     model = Redirect
 
     def test_model_inheritance(self):
@@ -23,53 +24,52 @@ class TestRedirectModel:
 
     def test_model_local_path_field(self):
         """Test model 'local_path' field"""
-        field = self.model._meta.get_field('local_path')
+        field = self.model._meta.get_field("local_path")
 
         assert isinstance(field, models.CharField)
-        assert field.verbose_name == 'local path'
+        assert field.verbose_name == "local path"
         assert field.max_length == 256
         assert field.unique
         assert (
-            field.error_messages['unique'] ==
-            "Sorry, but this path is already taken."
+            field.error_messages["unique"] == "Sorry, but this path is already taken."
         )
 
     def test_model_local_path_field_validator(self):
         """Test model 'local_path' field `RegexValidator`"""
         instance = self.model()
-        field = instance._meta.get_field('local_path')
+        field = instance._meta.get_field("local_path")
         validator = field.validators[0]
 
         assert isinstance(validator, RegexValidator)
-        assert validator.regex.pattern == '[a-zA-Z0-9/._-]+'
+        assert validator.regex.pattern == "[a-zA-Z0-9/._-]+"
         assert (
-            validator.message ==
-            "Allowed characters: a-z, A-Z, 0-9, slash (/), dot (.), "
+            validator.message
+            == "Allowed characters: a-z, A-Z, 0-9, slash (/), dot (.), "
             "underscore (_) and hyphen (-)."
         )
 
     def test_model_destination_url_field(self):
         """Test model 'destination_url' field"""
-        field = self.model._meta.get_field('destination_url')
+        field = self.model._meta.get_field("destination_url")
 
         assert isinstance(field, models.URLField)
-        assert field.verbose_name == 'destination url'
+        assert field.verbose_name == "destination url"
 
     def test_model_clicks_field(self):
         """Test model 'clicks' field"""
-        field = self.model._meta.get_field('clicks')
+        field = self.model._meta.get_field("clicks")
 
         assert isinstance(field, models.PositiveIntegerField)
-        assert field.verbose_name == 'clicks'
+        assert field.verbose_name == "clicks"
         assert field.default == 0
         assert not field.editable
 
     def test_model_sender_ip_field(self):
         """Test model 'sender_ip' field"""
-        field = self.model._meta.get_field('sender_ip')
+        field = self.model._meta.get_field("sender_ip")
 
         assert isinstance(field, models.GenericIPAddressField)
-        assert field.verbose_name == 'sender IP'
+        assert field.verbose_name == "sender IP"
         assert field.null
         assert not field.editable
 
@@ -78,20 +78,20 @@ class TestRedirectModel:
         meta = self.model._meta
 
         assert self.model.Meta is TimeStampedModel.Meta
-        assert meta.verbose_name == 'redirect'
-        assert meta.verbose_name_plural == 'redirects'
+        assert meta.verbose_name == "redirect"
+        assert meta.verbose_name_plural == "redirects"
 
     @pytest.mark.django_db
     def test_model_clean_method(self):
         """Test model `clean()` method"""
         redirect = Redirect(
-            local_path='//this_is/////a//local_path',
-            destination_url='http://example.com',
+            local_path="//this_is/////a//local_path",
+            destination_url="http://example.com",
         )
 
         redirect.full_clean()
 
-        assert redirect.local_path == 'this_is/a/local_path'
+        assert redirect.local_path == "this_is/a/local_path"
 
     @pytest.mark.django_db
     def test_model_str_method(self, redirect):

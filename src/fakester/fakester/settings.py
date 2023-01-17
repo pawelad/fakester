@@ -6,7 +6,6 @@ from pathlib import Path
 from decouple import config
 from dj_database_url import parse as db_url
 
-
 SRC_DIR = Path(__file__).resolve().parent.parent
 BASE_DIR = SRC_DIR.parent
 
@@ -51,7 +50,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = 'fakester.urls'
+ROOT_URLCONF = "fakester.urls"
 
 TEMPLATES = [
     {
@@ -69,7 +68,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'fakester.wsgi.application'
+WSGI_APPLICATION = "fakester.wsgi.application"
 
 DATABASES = {
     "default": config(
@@ -116,18 +115,18 @@ LOGIN_REDIRECT_URL = "index"
 # Custom #
 ##########
 AVAILABLE_DOMAINS = (
-    'badsoftware.review',
-    'doubledouce.club',
-    'farnsworth.science',
-    'forgettable.men',
-    'momcorp.science',
-    'mortifex.tech',
-    'notarickyroll.website',
-    'notarobot.date',
-    'notbigon.faith',
-    'realshark.loan',
-    'sugarlumps.trade',
-    'totallyreal.accountant',
+    "badsoftware.review",
+    "doubledouce.club",
+    "farnsworth.science",
+    "forgettable.men",
+    "momcorp.science",
+    "mortifex.tech",
+    "notarickyroll.website",
+    "notarobot.date",
+    "notbigon.faith",
+    "realshark.loan",
+    "sugarlumps.trade",
+    "totallyreal.accountant",
 )
 
 
@@ -136,5 +135,5 @@ AVAILABLE_DOMAINS = (
 ###############
 
 # django-recaptcha
-RECAPTCHA_PUBLIC_KEY = config('RECAPTCHA_PUBLIC_KEY', default='')
-RECAPTCHA_PRIVATE_KEY = config('RECAPTCHA_PRIVATE_KEY', default='')
+RECAPTCHA_PUBLIC_KEY = config("RECAPTCHA_PUBLIC_KEY", default="")
+RECAPTCHA_PRIVATE_KEY = config("RECAPTCHA_PRIVATE_KEY", default="")

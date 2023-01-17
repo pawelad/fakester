@@ -10,5 +10,6 @@ DJANGO_SETTINGS_MODULE = "fakester.settings"
 
 [tool.isort]
 profile = "black"
+src_paths = ["src/fakester"]
 known_django = "django"
 sections = "FUTURE,STDLIB,DJANGO,THIRDPARTY,FIRSTPARTY,LOCALFOLDER"
