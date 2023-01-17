@@ -1,12 +1,12 @@
 Django>=1.11,<2.0
 
-dj-database-url>=0.4.2
-django-bootstrap3>=8.2.2
-django-extensions>=1.7.8
-django-ipware>=1.1.6
-django-ratelimit>=1.0.1
-django-recaptcha>=1.2.1
-gunicorn>=19.7.1
-psycopg2>=2.7.1
-python-decouple>=3.0.0
-whitenoise>=3.3.0
+dj-database-url~=0.4.2
+django-bootstrap3~=8.2.2
+django-extensions~=1.7.8
+django-ipware~=1.1.6
+django-ratelimit~=1.0.1
+django-recaptcha~=1.2.1
+gunicorn~=19.7.1
+psycopg2~=2.7.1
+python-decouple~=3.0.0
+whitenoise~=3.3.0
