@@ -1,10 +1,25 @@
 -r prod.txt
 
+# Code style
+black
+isort
+
+# Linting
+bandit
 flake8
+flake8-bugbear
+flake8-docstrings
+flake8-print
+pep8-naming
+
+# Tests
 pytest
 pytest-django
 pytest-factoryboy
 pytest-faker
 pytest-mock
 pytest-pythonpath
+
+# Other
+ipython
 tox
