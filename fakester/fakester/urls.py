@@ -15,5 +15,5 @@ urlpatterns = [
     # Django Admin
     path("admin/", admin.site.urls),
     # Apps
-    path("", include("redirects.urls")),
+    path("", include("redirects.urls", namespace="redirects")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
