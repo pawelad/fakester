@@ -17,6 +17,11 @@ pip-compile: ## Compile requirements files
 	python -m piptools compile --generate-hashes --resolver=backtracking requirements/main.in
 	python -m piptools compile --generate-hashes --resolver=backtracking requirements/dev.in
 
+.PHONY: upgrade-package
+upgrade-package: ## Upgrade Python package version (pass "package=<PACKAGE_NAME>")
+	python -m piptools compile --generate-hashes --resolver=backtracking --upgrade-package $(package) requirements/main.in
+	python -m piptools compile --generate-hashes --resolver=backtracking --upgrade-package $(package) requirements/dev.in
+
 .PHONY: run
 run: ## Run the app
 	python fakester/manage.py runserver
