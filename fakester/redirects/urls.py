@@ -1,17 +1,12 @@
 """
-Redirects module urls config
+Redirects app urls config.
 """
-from django.conf.urls import url
+from django.urls import path
 
 from redirects import views
 
 
 urlpatterns = [
-    url(r'^$', views.RedirectFormView.as_view(), name='form'),
-
-    url(
-        r'^(?P<local_path>[a-zA-Z0-9/._-]+)$',
-        views.ActualRedirectView.as_view(),
-        name='redirect'
-    ),
+    path("", views.RedirectFormView.as_view(), name='form'),
+    path("<slug:local_path>", views.ActualRedirectView.as_view(), name='redirect'),
 ]
