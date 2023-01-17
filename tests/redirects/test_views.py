@@ -5,7 +5,6 @@ from django.urls import resolve, reverse_lazy
 from django.views.generic import TemplateView
 
 import pytest
-from ratelimit.mixins import RatelimitMixin
 
 from redirects.forms import RedirectModelForm
 from redirects.models import Redirect
@@ -23,7 +22,6 @@ class TestRedirectFormView:
     def test_view_inheritance(self):
         """Test view inheritance name."""
         assert isinstance(self.view(), TemplateView)
-        assert isinstance(self.view(), RatelimitMixin)
 
     def test_view_url_reversing(self):
         """Test view URL reversing."""

@@ -28,9 +28,9 @@ django-ipware==4.0.2 \
     --hash=sha256:602a58325a4808bd19197fef2676a0b2da2df40d0ecf21be414b2ff48c72ad05 \
     --hash=sha256:878dbb06a87e25550798e9ef3204ed70a200dd8b15e47dcef848cf08244f04c9
     # via -r requirements/main.in
-django-ratelimit==1.0.1 \
-    --hash=sha256:a74f23069291441792f960b6ac662579560a7c959e2e8444ecf140bf1a9041c4 \
-    --hash=sha256:cd3fdaadd335147df20bd00a226190ea21cea52f56b867b0f7ede7beaa3bd1e1
+django-ratelimit==4.0.0 \
+    --hash=sha256:19cba9e8101277f28c7a974c54c997067341ab30175431d3739e8ffb63cdd2b2 \
+    --hash=sha256:a610b5fd052c843a589084f6934bc6d827ec6242d5965110ebd436ca5a59ef39
     # via -r requirements/main.in
 django-recaptcha==3.0.0 \
     --hash=sha256:1aed69fd6ac8fd9e99e52665392ae6748f8b6339ace656fad779fe0c6c915a52 \

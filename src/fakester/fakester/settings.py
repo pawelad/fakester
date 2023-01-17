@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     # Third party
     "bootstrap3",
     "captcha",
-    "ratelimit",
+    "django_ratelimit",
 ]
 
 MIDDLEWARE = [
