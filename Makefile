@@ -38,7 +38,7 @@ apply-migrations: ## Apply Django migrations
 
 .PHONY: format
 format: ## Format code
-	black src tests && isort src tests
+	black src tests && isort src tests && ruff --fix src tests
 
 .PHONY: test
 test: ## Run tests
@@ -46,7 +46,7 @@ test: ## Run tests
 
 .PHONY: clean
 clean: ## Clean dev artifacts
-	rm -rf .mypy_cache/ .pytest_cache/ .tox/
+	rm -rf .mypy_cache/ .pytest_cache/ .ruff_cache/ .tox/
 
 # Source: https://www.client9.com/self-documenting-makefiles/
 .PHONY: help
