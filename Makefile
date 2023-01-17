@@ -28,6 +28,14 @@ upgrade-package: ## Upgrade Python package version (pass "package=<PACKAGE_NAME>
 run: ## Run the app
 	python fakester/manage.py runserver
 
+.PHONY: create-migration
+create-migration: ## Create Django migration (pass "name=<MIGRATION_NAME>")
+	python fakester/manage.py makemigrations -n $(name)
+
+.PHONY: apply-migrations
+apply-migrations: ## Apply Django migrations
+	python fakester/manage.py migrate
+
 .PHONY: format
 format: ## Format code
 	black src tests && isort src tests
