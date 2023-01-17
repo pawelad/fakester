@@ -17,9 +17,11 @@ django==4.1.5 \
     --hash=sha256:ff56ebd7ead0fd5dbe06fe157b0024a7aaea2e0593bb3785fb594cf94dad58ef
     # via
     #   -r requirements/main.in
+    #   django-bootstrap3
     #   django-recaptcha
-django-bootstrap3==8.2.3 \
-    --hash=sha256:6f7946d513d6340bb70f25d8ec047bf3bf37bab9e499d3baca99b1aa0ec92a52
+django-bootstrap3==22.2 \
+    --hash=sha256:537b08748ab40a9f214968c188ae26cfeadb7987b784f2857396a33b477fa10a \
+    --hash=sha256:c128452497500188052c0e0a24fe5639ee1a26170985b8da636d8fea9114430a
     # via -r requirements/main.in
 django-ipware==1.1.6 \
     --hash=sha256:93a90f9dd8caf2c633172aa8c8ba4e76e2b44f92a6942fa35e7624281e81ea03
