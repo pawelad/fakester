@@ -17,6 +17,10 @@ pip-compile: ## Compile requirements files
 	python -m piptools compile --generate-hashes --resolver=backtracking requirements/main.in
 	python -m piptools compile --generate-hashes --resolver=backtracking requirements/dev.in
 
+.PHONY: run
+run: ## Run the app
+	python fakester/manage.py runserver
+
 .PHONY: format
 format: ## Format code
 	black src tests && isort src tests
