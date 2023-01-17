@@ -1,2 +1,10 @@
 [tool.black]
 target-version = ["py310"]
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra --verbose"
+testpaths = "tests"
+pythonpath = "src"
+DJANGO_SETTINGS_MODULE = "fakester.settings"
+
