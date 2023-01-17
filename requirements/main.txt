@@ -30,9 +30,9 @@ django-ratelimit==1.0.1 \
     --hash=sha256:a74f23069291441792f960b6ac662579560a7c959e2e8444ecf140bf1a9041c4 \
     --hash=sha256:cd3fdaadd335147df20bd00a226190ea21cea52f56b867b0f7ede7beaa3bd1e1
     # via -r requirements/main.in
-django-recaptcha==1.2.1 \
-    --hash=sha256:a69497849934f768966e74b1c87a14363983eb19b890dfb426de04b0d2a19b55 \
-    --hash=sha256:b9f689da603965fe42e38fb30b6889db0c512f504c535136ca8532b5db12e171
+django-recaptcha==3.0.0 \
+    --hash=sha256:1aed69fd6ac8fd9e99e52665392ae6748f8b6339ace656fad779fe0c6c915a52 \
+    --hash=sha256:253197051288923cae675d7eff91b619e3775311292a5dbaf27a8a55ffebc670
     # via -r requirements/main.in
 gunicorn==19.7.1 \
     --hash=sha256:75af03c99389535f218cc596c7de74df4763803f7b63eb09d77e92b3956b36c6 \

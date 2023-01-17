@@ -112,12 +112,8 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 #############################
 
 # django-recaptcha
-NOCAPTCHA = True
-RECAPTCHA_USE_SSL = True
-
 RECAPTCHA_PUBLIC_KEY = config('RECAPTCHA_PUBLIC_KEY', default='')
 RECAPTCHA_PRIVATE_KEY = config('RECAPTCHA_PRIVATE_KEY', default='')
-
 
 ################
 # Own settings #
