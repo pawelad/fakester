@@ -2,6 +2,8 @@
 MAKEFLAGS += --warn-undefined-variables
 .DEFAULT_GOAL := help
 
+NAME = fakester
+
 .PHONY: install
 install: ## Install app dependencies
 	python -m pip install pip-tools
@@ -59,6 +61,14 @@ format: ## Format code
 .PHONY: test
 test: ## Run tests
 	tox --parallel
+
+.PHONY: docker-build
+docker-build: ## Build Docker image
+	docker build --target app --tag $(NAME):latest .
+
+.PHONY: docker-run
+docker-run: ## Run Docker image
+	docker run --rm --env-file .env -p 8000:8000 $(NAME):latest
 
 .PHONY: clean
 clean: ## Clean dev artifacts
