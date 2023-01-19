@@ -63,12 +63,20 @@ test: ## Run tests
 	tox --parallel
 
 .PHONY: docker-build
-docker-build: ## Build Docker image
-	docker build --target app --tag $(NAME):latest .
+docker-build: ## Build Docker compose stack
+	docker compose build
 
 .PHONY: docker-run
-docker-run: ## Run Docker image
-	docker run --rm --env-file .env -p 8000:8000 $(NAME):latest
+docker-run: ## Run Docker compose stack
+	docker compose up app
+
+.PHONY: docker-stop
+docker-stop: ## Stop Docker compose stack
+	docker compose down
+
+.PHONY: docker-shell
+docker-shell: ## Run bash inside dev Docker image
+	docker compose run --rm dev /bin/bash
 
 .PHONY: clean
 clean: ## Clean dev artifacts

@@ -32,9 +32,7 @@ FROM base as app
 
 # Run the app with `gunicorn`
 EXPOSE 8000
-ENV GUNICORN_CMD_ARGS="--bind=0.0.0.0:8000 --pythonpath=src --worker-tmp-dir=/dev/shm"
-
-CMD ["gunicorn", "fakester.wsgi"]
+ENTRYPOINT ["gunicorn", "--pythonpath=src", "--bind=0.0.0.0:8000", "--worker-tmp-dir=/dev/shm", "fakester.wsgi"]
 
 #######
 # Dev #
