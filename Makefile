@@ -4,13 +4,11 @@ MAKEFLAGS += --warn-undefined-variables
 
 .PHONY: install
 install: ## Install app dependencies
-	python -m pip install --upgrade pip setuptools wheel
 	python -m pip install pip-tools
 	python -m piptools sync requirements/main.txt
 
 .PHONY: install-dev
 install-dev: ## Install app dev dependencies
-	python -m pip install --upgrade pip setuptools wheel
 	python -m pip install pip-tools
 	python -m piptools sync requirements/main.txt requirements/dev.txt
 
