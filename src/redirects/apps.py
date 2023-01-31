@@ -1,13 +1,11 @@
 """
-Redirects module AppConfig integration.
+Redirects application `AppConfig` integration.
 """
 from django.apps import AppConfig
 
 
-class RedirectsAppConfig(AppConfig):
-    """
-    Django AppConfig integration for `redirects` module.
-    """
+class RedirectsConfig(AppConfig):
+    """Django `AppConfig` integration for `redirects` application."""
 
     name = "redirects"
-    verbose_name = "redirects"
+    verbose_name = "Redirects"
