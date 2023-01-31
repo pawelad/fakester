@@ -33,7 +33,7 @@ class Migration(migrations.Migration):
                         verbose_name="local path",
                     ),
                 ),
-                ("destination_url", models.URLField(verbose_name="destination url")),
+                ("destination_url", models.URLField(verbose_name="destination URL")),
                 (
                     "clicks",
                     models.PositiveIntegerField(

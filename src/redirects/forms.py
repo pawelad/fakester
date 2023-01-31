@@ -13,18 +13,23 @@ class RedirectModelForm(forms.ModelForm):
 
     captcha = ReCaptchaField()
 
+    field_order = (
+        "local_path",
+        "destination_url",
+        "captcha",
+    )
+
     class Meta:
         model = Redirect
-        fields = ("local_path", "destination_url")
-        labels = {
-            "local_path": "Fake local path",
-            "destination_url": "Destination URL",
-        }
+        fields = (
+            "local_path",
+            "destination_url",
+        )
         widgets = {
             "local_path": forms.TextInput(
-                attrs={"placeholder": "/2017/04/04/we-are-all-doomed"}
+                attrs={"placeholder": "/2023/01/31/how-is-it-2023-already"}
             ),
             "destination_url": forms.TextInput(
-                attrs={"placeholder": "https://github.com/pawelad/fakester"}
+                attrs={"placeholder": "https://youtu.be/I6OXjnBIW-4"}
             ),
         }

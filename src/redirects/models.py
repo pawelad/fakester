@@ -19,7 +19,7 @@ class Redirect(BaseModel):
     )
 
     destination_url = models.URLField(
-        verbose_name="destination url",
+        verbose_name="destination URL",
     )
 
     clicks = models.PositiveIntegerField(
