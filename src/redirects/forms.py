@@ -1,5 +1,5 @@
 """
-Redirects module related forms.
+Redirects application related forms.
 """
 from django import forms
 
@@ -9,10 +9,7 @@ from redirects.models import Redirect
 
 
 class RedirectModelForm(forms.ModelForm):
-    """
-    Form for creating `redirect.Redirect` instances, with added 'security'
-    of ReCaptcha field.
-    """
+    """Redirect creation form with added 'security' of a ReCaptcha field."""
 
     captcha = ReCaptchaField()
 

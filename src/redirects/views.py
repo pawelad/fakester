@@ -1,5 +1,5 @@
 """
-Redirects module views.
+Redirects application related views.
 """
 from django.conf import settings
 from django.shortcuts import get_object_or_404
@@ -14,18 +14,13 @@ from redirects.models import Redirect
 
 
 class RedirectFormView(TemplateView):
-    """
-    View for creating redirects.
-    """
+    """Redirect creation form view."""
 
     template_name = "redirects/form.html"
     http_method_names = ["get", "post"]
 
     def get_context_data(self, **kwargs):
-        """
-        Extends Django's default `get_context_data()` method and adds
-        available domains and `RedirectModelForm` instance to the context.
-        """
+        """Add available domains and initialised form to the template."""
         kwargs["available_domains"] = settings.AVAILABLE_DOMAINS
         kwargs["form"] = RedirectModelForm(data=self.request.POST or None)
 
@@ -33,9 +28,7 @@ class RedirectFormView(TemplateView):
 
     @method_decorator(ratelimit(key="ip", rate="1/s"))
     def post(self, request, *args, **kwargs):
-        """
-        Handles redirect form saving and then defaults to `get()` response.
-        """
+        """Handle redirect form saving and default to GET response."""
         ctx = self.get_context_data(**kwargs)
 
         form = ctx["form"]
@@ -52,18 +45,13 @@ class RedirectFormView(TemplateView):
 
 
 class ActualRedirectView(TemplateView):
-    """
-    Simple view that redirects user to redirect destination URL.
-    """
+    """Redirect user to destination URL view."""
 
     template_name = "redirects/redirect.html"
     http_method_names = ["get"]
 
     def get_context_data(self, **kwargs):
-        """
-        Extends Django's default `get_context_data()` method and adds the
-        `Redirect` instance to the context.
-        """
+        """Increase redirect click count and redirect user to destination URL."""
         redirect = get_object_or_404(
             Redirect,
             local_path=self.kwargs["local_path"],

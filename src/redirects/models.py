@@ -1,5 +1,5 @@
 """
-Redirects module models.
+Redirects application related models.
 """
 import re
 
@@ -9,9 +9,7 @@ from utils.models import BaseModel
 
 
 class Redirect(BaseModel):
-    """
-    Model that represents a single redirect.
-    """
+    """Single redirect model representation."""
 
     local_path = models.SlugField(
         verbose_name="local path",
@@ -44,10 +42,7 @@ class Redirect(BaseModel):
         return "Redirect from {0.local_path} to {0.destination_url}".format(self)
 
     def clean(self):
-        """
-        Extends Django's default `clean()` method and add simple local path
-        cleaning.
-        """
+        """Sanitize `local_path` value"""
         # Remove leading slashes in local path
         self.local_path = self.local_path.lstrip("/")
 

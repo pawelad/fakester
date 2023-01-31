@@ -1,5 +1,5 @@
 """
-Redirects app urls config.
+Redirects application URLs config.
 """
 from django.urls import path
 
