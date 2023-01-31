@@ -56,7 +56,9 @@ apply-migrations: ## Apply Django migrations
 
 .PHONY: format
 format: ## Format code
-	black src tests && isort src tests && ruff --fix src tests
+	black src tests
+	isort src tests
+	ruff --fix src tests
 
 .PHONY: test
 test: ## Run tests
