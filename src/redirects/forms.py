@@ -2,7 +2,6 @@
 Redirects module related forms.
 """
 from django import forms
-from django.utils.translation import gettext_lazy as _
 
 from captcha.fields import ReCaptchaField
 
@@ -21,8 +20,8 @@ class RedirectModelForm(forms.ModelForm):
         model = Redirect
         fields = ("local_path", "destination_url")
         labels = {
-            "local_path": _("Fake local path"),
-            "destination_url": _("Destination URL"),
+            "local_path": "Fake local path",
+            "destination_url": "Destination URL",
         }
         widgets = {
             "local_path": forms.TextInput(

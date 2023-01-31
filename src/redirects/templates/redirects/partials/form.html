@@ -1,22 +1,17 @@
-{% load i18n %}
 {% load bootstrap3 %}
 
 
 <div class="col-md-8 col-md-offset-2">
     <p class="lead">
-        {% blocktrans %}
-            Have you ever wanted to rickyroll your boss but found that links like
-            <strong><a href="https://goo.gl/ejKmN3">goo.gl/ejKmN3</a></strong>,
-            <strong><a href="https://bit.ly/LEcVV7">bit.ly/LEcVV7</a></strong> and (<i>ekhm</i>)
-            <strong><a href="https://youtu.be/I6OXjnBIW-4">youtu.be/I6OXjnBIW-4</a></strong>
-            were way too obvious? Well, I did. A couple of times actually.
-        {% endblocktrans %}
+        Have you ever wanted to rickyroll your boss but found that links like
+        <strong><a href="https://goo.gl/ejKmN3">goo.gl/ejKmN3</a></strong>,
+        <strong><a href="https://bit.ly/LEcVV7">bit.ly/LEcVV7</a></strong> and (<i>ekhm</i>)
+        <strong><a href="https://youtu.be/I6OXjnBIW-4">youtu.be/I6OXjnBIW-4</a></strong>
+        were way too obvious? Well, I did. A couple of times actually.
     </p>
 
     <p class="lead">
-        {% blocktrans %}
-            So I made this. And now you can trick your boss too. You're welcome.
-        {% endblocktrans %}
+        So I made this. And now you can trick your boss too. You're welcome.
     </p>
 </div>
 
@@ -26,10 +21,8 @@
 
 <div class="col-md-8 col-md-offset-2">
     <p class="lead">
-        {% blocktrans %}
-            All you need to do is provide (fake) local path (that thingy
-            that comes after the domain) and the destination URL:
-        {% endblocktrans %}
+        All you need to do is provide (fake) local path (that thingy
+        that comes after the domain) and the destination URL:
     </p>
 
     <form method="post" action="" class="form-horizontal">
@@ -37,7 +30,7 @@
         {% bootstrap_form form layout="horizontal" form_group_class='form-group form-group-lg' %}
 
         <div class="form-group text-center">
-            <button type="submit" class="btn btn-xlg btn-primary">{{ _("Fake It!") }}</button>
+            <button type="submit" class="btn btn-xlg btn-primary">Fake It!</button>
         </div>
     </form>
 </div>
