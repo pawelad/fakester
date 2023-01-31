@@ -39,7 +39,10 @@ class Redirect(BaseModel):
         verbose_name_plural = "redirects"
 
     def __str__(self):
-        return "Redirect from {0.local_path} to {0.destination_url}".format(self)
+        return (
+            f"Redirect from '{self.local_path}' to '{self.destination_url}' "
+            f"(ID: {self.pk})"
+        )
 
     def clean(self):
         """Sanitize `local_path` value"""
