@@ -2,6 +2,7 @@ version: "3.4"
 
 x-common-variables: &common-variables
   DATABASE_URL: "postgres://fakester:fakester@db/fakester"
+  REDIS_URL: "redis://redis:6379"
 
 services:
   db:
@@ -14,6 +15,11 @@ services:
       - "postgres_data:/var/lib/postgresql/data/"
     ports:
       - "54320:5432"
+
+  redis:
+    image: "redis:7.0"
+    ports:
+      - "6379:6379"
 
   app:
     build:
@@ -29,6 +35,7 @@ services:
       - "8000:8000"
     depends_on:
       - "db"
+      - "redis"
 
   dev:
     build:
