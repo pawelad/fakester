@@ -16,13 +16,13 @@ install-dev: ## Install app dev dependencies
 
 .PHONY: pip-compile
 pip-compile: ## Compile requirements files
-	CUSTOM_COMPILE_COMMAND="make pip-compile" python -m piptools compile \
+	@CUSTOM_COMPILE_COMMAND="make pip-compile" python -m piptools compile \
 		--resolver=backtracking `# This will be the default option in future release` \
 		--allow-unsafe `# This will be the default option in future release` \
 		--strip-extras \
 		--generate-hashes \
 		requirements/main.in
-	CUSTOM_COMPILE_COMMAND="make pip-compile" python -m piptools compile \
+	@CUSTOM_COMPILE_COMMAND="make pip-compile" python -m piptools compile \
 		--resolver=backtracking `# This will be the default option in future release` \
 		--allow-unsafe `# This will be the default option in future release` \
 		--strip-extras \
@@ -31,14 +31,14 @@ pip-compile: ## Compile requirements files
 
 .PHONY: upgrade-package
 upgrade-package: ## Upgrade Python package version (pass "package=<PACKAGE_NAME>")
-	python -m piptools compile \
+	@CUSTOM_COMPILE_COMMAND="make pip-compile" python -m piptools compile \
 		--resolver=backtracking `# This will be the default option in future release` \
 		--allow-unsafe `# This will be the default option in future release` \
 		--generate-hashes \
 		--strip-extras \
 		--upgrade-package $(package) \
 		requirements/main.in
-	python -m piptools compile \
+	@CUSTOM_COMPILE_COMMAND="make pip-compile" python -m piptools compile \
 		--resolver=backtracking `# This will be the default option in future release` \
 		--allow-unsafe `# This will be the default option in future release` \
 		--generate-hashes \
