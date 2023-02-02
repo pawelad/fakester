@@ -8,7 +8,7 @@ django-recaptcha
 whitenoise
 
 # PostgreSQL
-psycopg2-binary
+psycopg2
 
 # Redis
 redis[hiredis]

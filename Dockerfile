@@ -12,6 +12,15 @@ ENV HOME="/home/$USER"
 ENV APP_DIR="$HOME/app"
 ENV VIRTUAL_ENV="$HOME/venv"
 
+# Install system dependencies
+RUN rm -f /etc/apt/apt.conf.d/docker-clean; echo 'Binary::apt::APT::Keep-Downloaded-Packages "true";' > /etc/apt/apt.conf.d/keep-cache
+RUN --mount=target=/var/lib/apt/lists,type=cache,sharing=locked \
+    --mount=target=/var/cache/apt,type=cache,sharing=locked \
+    apt update \
+    && apt-get --no-install-recommends install -y \
+      # psycopg2
+      python-dev libpq-dev gcc
+
 # Create a non root user
 RUN groupadd --gid ${GID} $USER
 RUN useradd --system --create-home --no-log-init \
