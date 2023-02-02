@@ -5,8 +5,13 @@ django-bootstrap3
 django-ipware
 django-ratelimit
 django-recaptcha
-psycopg2-binary
 whitenoise
+
+# PostgreSQL
+psycopg2-binary
+
+# Redis
+redis[hiredis]
 
 # Other
 gunicorn

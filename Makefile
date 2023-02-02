@@ -19,11 +19,13 @@ pip-compile: ## Compile requirements files
 	CUSTOM_COMPILE_COMMAND="make pip-compile" python -m piptools compile \
 		--resolver=backtracking `# This will be the default option in future release` \
 		--allow-unsafe `# This will be the default option in future release` \
+		--strip-extras \
 		--generate-hashes \
 		requirements/main.in
 	CUSTOM_COMPILE_COMMAND="make pip-compile" python -m piptools compile \
 		--resolver=backtracking `# This will be the default option in future release` \
 		--allow-unsafe `# This will be the default option in future release` \
+		--strip-extras \
 		--generate-hashes \
 		requirements/dev.in
 
@@ -33,12 +35,14 @@ upgrade-package: ## Upgrade Python package version (pass "package=<PACKAGE_NAME>
 		--resolver=backtracking `# This will be the default option in future release` \
 		--allow-unsafe `# This will be the default option in future release` \
 		--generate-hashes \
+		--strip-extras \
 		--upgrade-package $(package) \
 		requirements/main.in
 	python -m piptools compile \
 		--resolver=backtracking `# This will be the default option in future release` \
 		--allow-unsafe `# This will be the default option in future release` \
 		--generate-hashes \
+		--strip-extras \
 		--upgrade-package $(package) \
 		requirements/dev.in
 
