@@ -1,7 +1,8 @@
 # Django
 Django
+crispy-bootstrap5
 dj-database-url
-django-bootstrap3
+django-crispy-forms
 django-ipware
 django-ratelimit
 django-recaptcha

@@ -12,6 +12,10 @@ async-timeout==4.0.2 \
     --hash=sha256:2163e1640ddb52b7a8c80d0a67a08587e5d245cc9c553a74a847056bc2976b15 \
     --hash=sha256:8ca1e4fcf50d07413d66d1a5e416e42cfdf5851c981d679a09851a6853383b3c
     # via redis
+crispy-bootstrap5==0.7 \
+    --hash=sha256:0745a67199619149b7feca87dab7a45664876ed50fb582b38fd2aeb3f8a8d869 \
+    --hash=sha256:f3ff1ef5cb379fe80b1b02e245008f276444098a4bdb8d855bed84c623798a85
+    # via -r requirements/main.in
 dj-database-url==1.2.0 \
     --hash=sha256:5c2993b91801c0f78a8b19e642b497b90831124cbade0c265900d4c1037b4730 \
     --hash=sha256:b23b15046cb38180e0c95207bcc90fe5e9dbde8eef16065907dd85cf4ca7036c
@@ -21,13 +25,15 @@ django==4.1.6 \
     --hash=sha256:c6fe7ebe7c017fe59f1029821dae0acb5a2ddcd6c9a0138fd20a8bfefac914bc
     # via
     #   -r requirements/main.in
+    #   crispy-bootstrap5
     #   dj-database-url
-    #   django-bootstrap3
     #   django-recaptcha
-django-bootstrap3==22.2 \
-    --hash=sha256:537b08748ab40a9f214968c188ae26cfeadb7987b784f2857396a33b477fa10a \
-    --hash=sha256:c128452497500188052c0e0a24fe5639ee1a26170985b8da636d8fea9114430a
-    # via -r requirements/main.in
+django-crispy-forms==1.14.0 \
+    --hash=sha256:35887b8851a931374dd697207a8f56c57a9c5cb9dbf0b9fa54314da5666cea5b \
+    --hash=sha256:bc4d2037f6de602d39c0bc452ac3029d1f5d65e88458872cc4dbc01c3a400604
+    # via
+    #   -r requirements/main.in
+    #   crispy-bootstrap5
 django-ipware==4.0.2 \
     --hash=sha256:602a58325a4808bd19197fef2676a0b2da2df40d0ecf21be414b2ff48c72ad05 \
     --hash=sha256:878dbb06a87e25550798e9ef3204ed70a200dd8b15e47dcef848cf08244f04c9

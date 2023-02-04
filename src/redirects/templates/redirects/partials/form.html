@@ -1,4 +1,4 @@
-{% load bootstrap3 %}
+{% load crispy_forms_tags %}
 
 
 <div class="col-md-8 col-md-offset-2">
@@ -25,12 +25,6 @@
         that comes after the domain) and the destination URL:
     </p>
 
-    <form method="post" action="" class="form-horizontal">
-        {% csrf_token %}
-        {% bootstrap_form form layout="horizontal" form_group_class='form-group form-group-lg' %}
-
-        <div class="form-group text-center">
-            <button type="submit" class="btn btn-xlg btn-primary">Fake It!</button>
-        </div>
-    </form>
+    {% crispy form %}
+  </div>
 </div>

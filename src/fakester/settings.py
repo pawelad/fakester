@@ -34,8 +34,9 @@ INSTALLED_APPS = [
     "fakester",
     "redirects",
     # Third party
-    "bootstrap3",
     "captcha",
+    "crispy_bootstrap5",
+    "crispy_forms",
     "django_ratelimit",
 ]
 
@@ -140,6 +141,10 @@ AVAILABLE_DOMAINS = (
 ###############
 # Third-party #
 ###############
+
+# django-crispy-forms
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 # django-recaptcha
 RECAPTCHA_PUBLIC_KEY = config("RECAPTCHA_PUBLIC_KEY", default="")
