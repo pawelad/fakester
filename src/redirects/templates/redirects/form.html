@@ -1,12 +1,11 @@
 {% extends 'base.html' %}
 
-
 {% block content %}
-    {% if not view.redirect %}
-        {# Redirect wasn't saved, show the form #}
-        {% include 'redirects/partials/form.html' %}
-    {% else %}
-        {# Redirect was saved #}
-        {% include 'redirects/partials/results.html' %}
-    {% endif %}
+  {% if not view.redirect %}
+    {# Redirect wasn't saved, show the form #}
+    {% include 'redirects/partials/form.html' %}
+  {% else %}
+    {# Redirect was saved #}
+    {% include 'redirects/partials/results.html' %}
+  {% endif %}
 {% endblock content %}

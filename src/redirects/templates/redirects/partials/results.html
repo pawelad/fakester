@@ -1,29 +1,33 @@
-<div class="col-md-8 col-md-offset-2">
-    <h3>Good news everyone!</h3>
+<div class="row my-3">
+  <div class="col-lg-8 mx-auto border-bottom">
+    <h3 class="fw-light">Good news everyone!</h3>
 
-    <p class="lead">
-        {% with host=request.build_absolute_uri local_path=view.redirect.local_path destination_url=view.redirect.destination_url %}
-            Yay! You can now send <strong><a href="{{ host }}{{ local_path }}" target="_blank">{{ host }}{{ local_path }}</a></strong>
-            to someone, and it will redirect them to <strong><a href="{{ destination_url }}">{{ destination_url }}</a></strong>
-            (don't tell them that though). How cool is that?
-        {% endwith %}
+    <p class="lead fw-light text-justify">
+      {% with host=request.build_absolute_uri local_path=view.redirect.local_path destination_url=view.redirect.destination_url %}
+        You can now send <strong><a href="{{ host }}{{ local_path }}" target="_blank">{{ host }}{{ local_path }}</a></strong>
+        to someone, and it will redirect them to <strong><a href="{{ destination_url }}">{{ destination_url }}</a></strong>
+        (don't tell them that though). How cool is that?
+      {% endwith %}
     </p>
 
-    <p class="lead">
-        Just don't do it too often, alright? Don't be that guy.
+    <p class="lead fw-light">
+      Just don't do it too often, alright? Don't be that guy.
     </p>
+  </div>
+</div>
 
-    <hr>
-
-    <h5>List of all available URLs</h5>
+<div class="row my-3">
+  <div class="col-lg-8 mx-auto">
+    <h5 class="fw-light">List of all available URLs:</h5>
 
     <ul>
-        {% for domain in available_domains %}
-            <li>
-                <a href="http://{{ domain }}/{{ view.redirect.local_path }}" target="_blank">
-                    http://{{ domain }}/{{ view.redirect.local_path }}
-                </a>
-            </li>
-        {% endfor %}
+      {% for domain in available_domains %}
+        <li>
+          <a href="https://{{ domain }}/{{ view.redirect.local_path }}" target="_blank">
+              https://{{ domain }}/{{ view.redirect.local_path }}
+          </a>
+        </li>
+      {% endfor %}
     </ul>
+  </div>
 </div>

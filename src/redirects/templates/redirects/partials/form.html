@@ -1,28 +1,26 @@
 {% load crispy_forms_tags %}
 
-
-<div class="col-md-8 col-md-offset-2">
-    <p class="lead">
-        Have you ever wanted to rickyroll your boss but found that links like
-        <strong><a href="https://goo.gl/ejKmN3">goo.gl/ejKmN3</a></strong>,
-        <strong><a href="https://bit.ly/LEcVV7">bit.ly/LEcVV7</a></strong> and (<i>ekhm</i>)
-        <strong><a href="https://youtu.be/I6OXjnBIW-4">youtu.be/I6OXjnBIW-4</a></strong>
-        were way too obvious? Well, I did. A couple of times actually.
+<div class="row my-3">
+  <div class="col-lg-8 mx-auto border-bottom">
+    <p class="lead fw-light text-justify">
+      Have you ever wanted to rickroll your boss but found that links like
+      <strong><a href="https://goo.gl/ejKmN3">goo.gl/ejKmN3</a></strong>,
+      <strong><a href="https://bit.ly/LEcVV7">bit.ly/LEcVV7</a></strong> and (<i>ekhm</i>)
+      <strong><a href="https://youtu.be/I6OXjnBIW-4">youtu.be/I6OXjnBIW-4</a></strong>
+      were way too obvious? Well, I did. A couple of times actually.
     </p>
 
-    <p class="lead">
-        So I made this. And now you can trick your boss too. You're welcome.
+    <p class="lead fw-light">
+      So I made this. And now you can trick your boss too. You're welcome.
     </p>
+  </div>
 </div>
 
-<div class="col-md-10 col-md-offset-1">
-    <hr>
-</div>
-
-<div class="col-md-8 col-md-offset-2">
-    <p class="lead">
-        All you need to do is provide (fake) local path (that thingy
-        that comes after the domain) and the destination URL:
+<div class="row my-3">
+  <div class="col-lg-8 mx-auto">
+    <p class="lead fw-light">
+      All you need to do is provide (fake) local path (that thingy
+      that comes after the domain) and the destination URL:
     </p>
 
     {% crispy form %}
