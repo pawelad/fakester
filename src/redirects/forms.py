@@ -3,7 +3,6 @@ Redirects application related forms.
 """
 from django import forms
 
-from captcha.fields import ReCaptchaField
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
 
@@ -11,15 +10,7 @@ from redirects.models import Redirect
 
 
 class RedirectModelForm(forms.ModelForm):
-    """Redirect creation form with added 'security' of a ReCaptcha field."""
-
-    captcha = ReCaptchaField()
-
-    field_order = (
-        "local_path",
-        "destination_url",
-        "captcha",
-    )
+    """New redirect creation form."""
 
     @property
     def helper(self):

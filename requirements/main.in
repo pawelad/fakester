@@ -5,7 +5,6 @@ dj-database-url
 django-crispy-forms
 django-ipware
 django-ratelimit
-django-recaptcha
 whitenoise
 
 # PostgreSQL

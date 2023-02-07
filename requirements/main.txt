@@ -27,7 +27,6 @@ django==4.1.6 \
     #   -r requirements/main.in
     #   crispy-bootstrap5
     #   dj-database-url
-    #   django-recaptcha
 django-crispy-forms==1.14.0 \
     --hash=sha256:35887b8851a931374dd697207a8f56c57a9c5cb9dbf0b9fa54314da5666cea5b \
     --hash=sha256:bc4d2037f6de602d39c0bc452ac3029d1f5d65e88458872cc4dbc01c3a400604
@@ -41,10 +40,6 @@ django-ipware==4.0.2 \
 django-ratelimit==4.0.0 \
     --hash=sha256:19cba9e8101277f28c7a974c54c997067341ab30175431d3739e8ffb63cdd2b2 \
     --hash=sha256:a610b5fd052c843a589084f6934bc6d827ec6242d5965110ebd436ca5a59ef39
-    # via -r requirements/main.in
-django-recaptcha==3.0.0 \
-    --hash=sha256:1aed69fd6ac8fd9e99e52665392ae6748f8b6339ace656fad779fe0c6c915a52 \
-    --hash=sha256:253197051288923cae675d7eff91b619e3775311292a5dbaf27a8a55ffebc670
     # via -r requirements/main.in
 gunicorn==20.1.0 \
     --hash=sha256:9dcc4547dbb1cb284accfb15ab5667a0e5d1881cc443e0677b4882a4067a807e \
