@@ -53,3 +53,8 @@ class Redirect(BaseModel):
         self.local_path = re.sub("/+", "/", self.local_path)
 
         return super().clean()
+
+    def increase_view_count(self):
+        """Increase redirect view count by 1."""
+        self.views += 1
+        self.save()

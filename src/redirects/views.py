@@ -56,8 +56,7 @@ class ActualRedirectView(TemplateView):
             Redirect,
             local_path=self.kwargs["local_path"],
         )
-        redirect.clicks += 1
-        redirect.save()
+        redirect.increase_view_count()
 
         kwargs["redirect"] = redirect
 
