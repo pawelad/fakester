@@ -14,7 +14,7 @@ class RedirectAdmin(admin.ModelAdmin):
         "pk",
         "local_path",
         "destination_url",
-        "clicks",
+        "views",
         "sender_ip",
         "created_at",
         "modified_at",

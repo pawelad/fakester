@@ -22,8 +22,8 @@ class Redirect(BaseModel):
         verbose_name="destination URL",
     )
 
-    clicks = models.PositiveIntegerField(
-        verbose_name="clicks",
+    views = models.PositiveIntegerField(
+        verbose_name="views",
         default=0,
         editable=False,
     )
