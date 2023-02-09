@@ -15,7 +15,7 @@ urlpatterns = [
         TemplateView.as_view(template_name="robots.txt", content_type="text/plain"),
     ),
     # Django Admin
-    path("admin/", admin.site.urls),
-    # Apps
+    path("_/admin/", admin.site.urls),
+    # Redirect app needs to be last because it matches all requests
     path("", include("redirects.urls", namespace="redirects")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

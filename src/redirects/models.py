@@ -1,21 +1,40 @@
 """
 Redirects application related models.
 """
-import re
-
+from django.core.exceptions import ValidationError
+from django.core.validators import RegexValidator
 from django.db import models
 
 from utils.models import BaseModel
 
 
+def validate_forbidden_paths(value: str) -> None:
+    if value in {"favicon.ico", "robots.txt", "humans.txt", "ads.txt", "sellers.json"}:
+        raise ValidationError("Path is not allowed.")
+
+    for path_prefix in ("_/", ".well-known/"):
+        if value.startswith(path_prefix):
+            raise ValidationError(f"Path cannot start with '{path_prefix}'.")
+
+
 class Redirect(BaseModel):
     """Single redirect model representation."""
 
-    local_path = models.SlugField(
+    local_path = models.CharField(
         verbose_name="local path",
         max_length=255,
         unique=True,
-        error_messages={"unique": "Sorry, but this path is already taken."},
+        validators=[
+            validate_forbidden_paths,
+            RegexValidator(
+                regex="[a-zA-Z0-9/._-]+",
+                message=(
+                    "Allowed characters: a-z, A-Z, 0-9, slash (/), dot (.), "
+                    "underscore (_) and hyphen (-)."
+                ),
+            ),
+        ],
+        error_messages={"unique": "This path is already taken."},
     )
 
     destination_url = models.URLField(
@@ -46,11 +65,8 @@ class Redirect(BaseModel):
 
     def clean(self):
         """Sanitize `local_path` value"""
-        # Remove leading slashes in local path
+        # Remove leading slashes from local path
         self.local_path = self.local_path.lstrip("/")
-
-        # Remove multiple slash characters in a row
-        self.local_path = re.sub("/+", "/", self.local_path)
 
         return super().clean()
 
