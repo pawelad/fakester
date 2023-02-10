@@ -124,7 +124,7 @@ STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
 LOGIN_URL = "admin:login"
-LOGIN_REDIRECT_URL = "index"
+LOGIN_REDIRECT_URL = "admin:index"
 
 ##########
 # Custom #
