@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     # Custom
     "fakester",
     "redirects",
+    "utils",
     # Third party
     "crispy_bootstrap5",
     "crispy_forms",

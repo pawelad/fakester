@@ -1,13 +1,14 @@
-<div class="row my-3">
-  <div class="col-lg-8 mx-auto border-bottom">
+{% load utils %}
+
+<div class="row">
+  <div class="col-lg-8 mx-auto pt-3">
     <h3 class="fw-light">Good news everyone!</h3>
 
+    {% create_url request.scheme request.get_host view.redirect.local_path as url %}
     <p class="lead fw-light text-justify">
-      {% with host=request.build_absolute_uri local_path=view.redirect.local_path destination_url=view.redirect.destination_url %}
-        You can now send <strong><a href="{{ host }}{{ local_path }}" target="_blank">{{ host }}{{ local_path }}</a></strong>
-        to someone, and it will redirect them to <strong><a href="{{ destination_url }}">{{ destination_url }}</a></strong>
-        (don't tell them that though). How cool is that?
-      {% endwith %}
+      You can now send <strong><a href="{{ url }}" target="_blank">{{ url }}</a></strong>
+      to someone, and it will redirect them to <strong><a href="{{ view.redirect.destination_url }}">{{ view.redirect.destination_url }}</a></strong>
+      (don't tell them that though). How cool is that?
     </p>
 
     <p class="lead fw-light">
@@ -16,18 +17,19 @@
   </div>
 </div>
 
-<div class="row my-3">
-  <div class="col-lg-8 mx-auto">
-    <h5 class="fw-light">List of all available URLs:</h5>
+{% if available_domains %}
+  <div class="row">
+    <div class="col-lg-8 mx-auto pt-3 border-top">
+      <h5 class="fw-light">List of all available URLs:</h5>
 
-    <ul>
-      {% for domain in available_domains %}
-        <li>
-          <a href="https://{{ domain }}/{{ view.redirect.local_path }}" target="_blank">
-              https://{{ domain }}/{{ view.redirect.local_path }}
-          </a>
-        </li>
-      {% endfor %}
-    </ul>
+      <ul>
+        {% for domain in available_domains %}
+          {% create_url request.scheme domain view.redirect.local_path as url %}
+          <li>
+            <a href="{{ url }}" target="_blank">{{ url }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
   </div>
-</div>
+{% endif %}
