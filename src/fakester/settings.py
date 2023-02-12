@@ -130,21 +130,7 @@ LOGIN_REDIRECT_URL = "admin:index"
 ##########
 # Custom #
 ##########
-AVAILABLE_DOMAINS = (
-    "badsoftware.review",
-    "doubledouce.club",
-    "farnsworth.science",
-    "forgettable.men",
-    "momcorp.science",
-    "mortifex.tech",
-    "notarickyroll.website",
-    "notarobot.date",
-    "notbigon.faith",
-    "realshark.loan",
-    "sugarlumps.trade",
-    "totallyreal.accountant",
-)
-
+AVAILABLE_DOMAINS = None
 
 ###############
 # Third-party #
