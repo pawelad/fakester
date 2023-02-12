@@ -5,6 +5,7 @@ dj-database-url
 django-crispy-forms
 django-ipware
 django-ratelimit
+gunicorn
 whitenoise
 
 # PostgreSQL
@@ -13,6 +14,6 @@ psycopg2
 # Redis
 redis[hiredis]
 
-# Other
-gunicorn
+# Utils
 python-decouple
+yarl
