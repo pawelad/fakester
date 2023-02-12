@@ -47,11 +47,11 @@ class RedirectFormView(TemplateView):
 class ActualRedirectView(TemplateView):
     """Redirect user to destination URL view."""
 
-    template_name = "redirects/redirect.html"
+    template_name = "redirects/redirect_to_destination.html"
     http_method_names = ["get"]
 
     def get_context_data(self, **kwargs):
-        """Increase redirect click count and redirect user to destination URL."""
+        """Increase redirect view count and redirect user to destination URL."""
         redirect = get_object_or_404(
             Redirect,
             local_path=self.kwargs["local_path"],

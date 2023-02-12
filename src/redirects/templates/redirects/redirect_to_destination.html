@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block css %}{% endblock css %}
+{% block fonts %}{% endblock fonts %}
+
+{% block head_extra %}
+  <meta http-equiv="refresh" content="1; url={{ redirect.destination_url }}">
+
+  <script>
+    window.location.href = "{{ redirect.destination_url }}";
+  </script>
+{% endblock head_extra %}
+
+{% block body %}{% endblock body %}
