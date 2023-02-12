@@ -6,10 +6,9 @@ isort
 ruff
 
 # Tests
+model_bakery
 pytest
 pytest-django
-pytest-factoryboy
-pytest-faker
 pytest-mock
 
 # Other
