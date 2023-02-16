@@ -8,15 +8,6 @@ from django.db import models
 from utils.models import BaseModel
 
 
-def validate_forbidden_paths(value: str) -> None:
-    if value in {"favicon.ico", "robots.txt", "humans.txt", "ads.txt", "sellers.json"}:
-        raise ValidationError("Path is not allowed.")
-
-    for path_prefix in ("_/", ".well-known/"):
-        if value.startswith(path_prefix):
-            raise ValidationError(f"Path cannot start with '{path_prefix}'.")
-
-
 class Redirect(BaseModel):
     """Single redirect model representation."""
 
@@ -25,9 +16,8 @@ class Redirect(BaseModel):
         max_length=255,
         unique=True,
         validators=[
-            validate_forbidden_paths,
             RegexValidator(
-                regex="[a-zA-Z0-9/._-]+",
+                regex="^[a-zA-Z0-9/._-]+$",
                 message=(
                     "Allowed characters: a-z, A-Z, 0-9, slash (/), dot (.), "
                     "underscore (_) and hyphen (-)."
@@ -64,11 +54,32 @@ class Redirect(BaseModel):
         )
 
     def clean(self):
-        """Sanitize `local_path` value"""
+        """Sanitize `local_path` value and check for forbidden values."""
         # Remove leading slashes from local path
         self.local_path = self.local_path.lstrip("/")
 
+        if self.local_path in {
+            "favicon.ico",
+            "robots.txt",
+            "humans.txt",
+            "ads.txt",
+            "sellers.json",
+        }:
+            raise ValidationError({"local_path": "Path is not allowed."})
+
+        for path_prefix in ("_/", ".well-known/"):
+            if self.local_path.startswith(path_prefix):
+                raise ValidationError(
+                    {"local_path": f"Path cannot start with '{path_prefix}'."}
+                )
+
         return super().clean()
+
+    def get_absolute_url(self) -> str:
+        """Return redirect URL."""
+        from django.urls import reverse
+
+        return reverse("redirects:redirect", kwargs={"local_path": self.local_path})
 
     def increase_view_count(self):
         """Increase redirect view count by 1."""

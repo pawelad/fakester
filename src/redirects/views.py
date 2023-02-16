@@ -26,7 +26,7 @@ class RedirectFormView(TemplateView):
 
         return super().get_context_data(**kwargs)
 
-    @method_decorator(ratelimit(key="ip", rate="1/s"))
+    @method_decorator(ratelimit(key="ip", rate="3/m"))
     def post(self, request, *args, **kwargs):
         """Handle redirect form saving and default to GET response."""
         ctx = self.get_context_data(**kwargs)

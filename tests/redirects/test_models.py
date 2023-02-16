@@ -1,99 +1,109 @@
 """
-Test `redirects.models` file.
+Test `redirects.models` module.
 """
-from django.core.validators import RegexValidator
+from django.core.exceptions import ValidationError
 from django.db import models
 
 import pytest
+from model_bakery import baker
 
 from redirects.models import Redirect
 from utils.models import BaseModel
 
 
-class TestRedirectModel:
+class TestRedirect:
     """
-    Tests for 'redirects.models.Redirect'.
+    Test `Redirect` model.
     """
 
-    model = Redirect
+    model_class = Redirect
 
-    def test_model_inheritance(self):
-        """Test model inheritance."""
-        assert isinstance(self.model(), BaseModel)
-        assert isinstance(self.model(), models.Model)
+    def test_inheritance(self) -> None:
+        """Inherits from Django's `Model`."""
+        assert issubclass(self.model_class, BaseModel)
+        assert issubclass(self.model_class, models.Model)
 
-    def test_model_local_path_field(self):
-        """Test model 'local_path' field."""
-        field = self.model._meta.get_field("local_path")
+    def test_str(self, redirect: Redirect) -> None:
+        """Contains model primary key, `local_path` and `destination_url` fields."""
+        redirect_str = str(redirect)
 
-        assert isinstance(field, models.SlugField)
-        assert field.verbose_name == "local path"
-        assert field.max_length == 255
-        assert field.unique
-        assert (
-            field.error_messages["unique"] == "Sorry, but this path is already taken."
-        )
+        assert str(redirect.pk) in redirect_str
+        assert redirect.local_path in redirect_str
+        assert redirect.destination_url in redirect_str
 
-    def test_model_local_path_field_validator(self):
-        """Test model 'local_path' field `RegexValidator`."""
-        instance = self.model()
-        field = instance._meta.get_field("local_path")
-        validator = field.validators[0]
+    def test_clean(self) -> None:
+        """Leading slashes from `local_path` field are removed."""
+        data = {
+            "local_path": "//this_is/////a//local_path",
+            "destination_url": "https://example.com/",
+        }
+        redirect = self.model_class(**data)
+        redirect.clean()
 
-        assert isinstance(validator, RegexValidator)
-        assert validator.regex.pattern == "[a-zA-Z0-9/._-]+"
-        assert (
-            validator.message
-            == "Allowed characters: a-z, A-Z, 0-9, slash (/), dot (.), "
-            "underscore (_) and hyphen (-)."
-        )
+        assert redirect.local_path == "this_is/////a//local_path"
+        assert redirect.destination_url == "https://example.com/"
 
-    def test_model_destination_url_field(self):
-        """Test model 'destination_url' field."""
-        field = self.model._meta.get_field("destination_url")
+    def test_increase_view_count(self, redirect: Redirect) -> None:
+        """Redirect view count is increased."""
+        assert redirect.views == 0
 
-        assert isinstance(field, models.URLField)
-        assert field.verbose_name == "destination url"
+        redirect.increase_view_count()
+        redirect.refresh_from_db()
+        assert redirect.views == 1
 
-    def test_model_clicks_field(self):
-        """Test model 'clicks' field."""
-        field = self.model._meta.get_field("clicks")
+        redirect.increase_view_count()
+        redirect.refresh_from_db()
+        assert redirect.views == 2
 
-        assert isinstance(field, models.PositiveIntegerField)
-        assert field.verbose_name == "clicks"
-        assert field.default == 0
-        assert not field.editable
-
-    def test_model_sender_ip_field(self):
-        """Test model 'sender_ip' field."""
-        field = self.model._meta.get_field("sender_ip")
-
-        assert isinstance(field, models.GenericIPAddressField)
-        assert field.verbose_name == "sender IP"
-        assert field.null
-        assert not field.editable
-
-    def test_model_meta_class(self):
-        """Test model `Meta` class."""
-        meta = self.model._meta
-
-        assert meta.verbose_name == "redirect"
-        assert meta.verbose_name_plural == "redirects"
+        redirect.increase_view_count()
+        redirect.refresh_from_db()
+        assert redirect.views == 3
 
     @pytest.mark.django_db()
-    def test_model_clean_method(self):
-        """Test model `clean()` method."""
-        redirect = Redirect(
-            local_path="//this_is/////a//local_path",
-            destination_url="http://example.com",
+    def test_invalid_local_path(self, invalid_local_path: str) -> None:
+        """Fails validation for incorrect `local_path` values."""
+        redirect = baker.make(self.model_class, local_path=invalid_local_path)
+
+        with pytest.raises(ValidationError, match="local_path"):
+            redirect.full_clean()
+
+    @pytest.mark.django_db()
+    def test_invalid_destination_url(self, invalid_destination_url: str) -> None:
+        """Fails validation for incorrect `destination_url` values."""
+        redirect = baker.make(self.model_class, destination_url=invalid_destination_url)
+
+        with pytest.raises(ValidationError, match="destination_url"):
+            redirect.full_clean()
+
+    @pytest.mark.django_db()
+    @pytest.mark.parametrize(
+        ("local_path", "destination_url"),
+        [
+            ("foo/bar/baz.html", "https://youtu.be/I6OXjnBIW-4"),
+            ("2023/01/01/good-news-everyone", "https://pawelad.me/"),
+        ],
+    )
+    def test_model_valid(self, local_path: str, destination_url: str) -> None:
+        """Requires valid `local_path` and `destination_url` fields."""
+        redirect = baker.make(
+            self.model_class,
+            local_path=local_path,
+            destination_url=destination_url,
         )
 
         redirect.full_clean()
 
-        assert redirect.local_path == "this_is/a/local_path"
-
     @pytest.mark.django_db()
-    def test_model_str_method(self, redirect):
-        """Test model string representation."""
-        assert redirect.local_path in str(redirect)
-        assert redirect.destination_url in str(redirect)
+    def test_model_save(self) -> None:
+        """Create `Redirect` on save."""
+        data = {
+            "local_path": "foo/bar/baz.html",
+            "destination_url": "https://youtu.be/I6OXjnBIW-4",
+        }
+        redirect = self.model_class(**data)
+        redirect.full_clean()
+        redirect.save()
+
+        redirect = self.model_class.objects.get(local_path=data["local_path"])
+        assert redirect
+        assert redirect.destination_url == data["destination_url"]

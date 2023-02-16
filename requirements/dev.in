@@ -6,6 +6,7 @@ isort
 ruff
 
 # Tests
+fakeredis
 model_bakery
 pytest
 pytest-django
