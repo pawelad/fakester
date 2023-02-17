@@ -1,6 +1,15 @@
 [tool.black]
 target-version = ["py310"]
 
+[tool.coverage.run]
+branch = true
+omit = [
+  "*/asgi.py",
+  "*/manage.py",
+  "*/migrations/*",
+  "*/wsgi.py",
+]
+
 [tool.isort]
 profile = "black"
 src_paths = ["src"]
@@ -9,7 +18,7 @@ sections = "FUTURE,STDLIB,DJANGO,THIRDPARTY,FIRSTPARTY,LOCALFOLDER"
 
 [tool.pytest.ini_options]
 minversion = "6.0"
-addopts = "-ra --verbose"
+addopts = "-ra --cov=src --verbose"
 testpaths = "tests"
 pythonpath = "src"
 DJANGO_SETTINGS_MODULE = "fakester.settings"
