@@ -1,19 +1,9 @@
 -c main.txt
 
-# Code style
-black
-isort
-ruff
+-r code_style.txt
+-r tests.txt
 
-# Tests
-fakeredis
-model_bakery
-pytest
-pytest-cov
-pytest-django
-pytest-mock
-
-# Other
+# Misc
 ipython
+nox
 pip-tools
-tox

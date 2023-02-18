@@ -27,6 +27,18 @@ pip-compile: ## Compile requirements files
 		--allow-unsafe `# This will be the default option in future release` \
 		--strip-extras \
 		--generate-hashes \
+		requirements/tests.in
+	@CUSTOM_COMPILE_COMMAND="make pip-compile" python -m piptools compile \
+		--resolver=backtracking `# This will be the default option in future release` \
+		--allow-unsafe `# This will be the default option in future release` \
+		--strip-extras \
+		--generate-hashes \
+		requirements/code_style.in
+	@CUSTOM_COMPILE_COMMAND="make pip-compile" python -m piptools compile \
+		--resolver=backtracking `# This will be the default option in future release` \
+		--allow-unsafe `# This will be the default option in future release` \
+		--strip-extras \
+		--generate-hashes \
 		requirements/dev.in
 
 .PHONY: upgrade-package
@@ -45,6 +57,20 @@ upgrade-package: ## Upgrade Python package version (pass "package=<PACKAGE_NAME>
 		--strip-extras \
 		--upgrade-package $(package) \
 		requirements/dev.in
+	@CUSTOM_COMPILE_COMMAND="make pip-compile" python -m piptools compile \
+		--resolver=backtracking `# This will be the default option in future release` \
+		--allow-unsafe `# This will be the default option in future release` \
+		--generate-hashes \
+		--strip-extras \
+		--upgrade-package $(package) \
+		requirements/tests.in
+	@CUSTOM_COMPILE_COMMAND="make pip-compile" python -m piptools compile \
+		--resolver=backtracking `# This will be the default option in future release` \
+		--allow-unsafe `# This will be the default option in future release` \
+		--generate-hashes \
+		--strip-extras \
+		--upgrade-package $(package) \
+		requirements/code_style.in
 
 .PHONY: run
 run: ## Run the app
@@ -60,9 +86,9 @@ apply-migrations: ## Apply Django migrations
 
 .PHONY: format
 format: ## Format code
-	black src tests
-	isort src tests
-	ruff --fix src tests
+	black .
+	isort .
+	ruff --fix .
 
 .PHONY: test
 test: ## Run tests
@@ -86,7 +112,7 @@ docker-shell: ## Run bash inside dev Docker image
 
 .PHONY: clean
 clean: ## Clean dev artifacts
-	rm -rf .mypy_cache/ .pytest_cache/ .ruff_cache/ .tox/
+	rm -rf .coverage .mypy_cache/ .nox/ .pytest_cache/ .ruff_cache/ htmlcov/
 
 # Source: https://www.client9.com/self-documenting-makefiles/
 .PHONY: help

@@ -3,6 +3,7 @@ target-version = ["py310"]
 
 [tool.coverage.run]
 branch = true
+source = ["src"]
 omit = [
   "*/asgi.py",
   "*/manage.py",
@@ -18,7 +19,7 @@ sections = "FUTURE,STDLIB,DJANGO,THIRDPARTY,FIRSTPARTY,LOCALFOLDER"
 
 [tool.pytest.ini_options]
 minversion = "6.0"
-addopts = "-ra --cov=src --verbose"
+addopts = "-ra --cov --verbose"
 testpaths = "tests"
 pythonpath = "src"
 DJANGO_SETTINGS_MODULE = "fakester.settings"
