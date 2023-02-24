@@ -1,4 +1,4 @@
--c dev.txt
+-c main.txt
 
 black
 isort

@@ -16,61 +16,29 @@ install-dev: ## Install app dev dependencies
 
 .PHONY: pip-compile
 pip-compile: ## Compile requirements files
-	@CUSTOM_COMPILE_COMMAND="make pip-compile" python -m piptools compile \
+	@for FILE in main.in tests.in code_style.in dev.in; do\
+		echo "-> Compiling $${FILE}..." && \
+		CUSTOM_COMPILE_COMMAND="make pip-compile" python -m piptools compile \
 		--resolver=backtracking `# This will be the default option in future release` \
 		--allow-unsafe `# This will be the default option in future release` \
 		--strip-extras \
 		--generate-hashes \
-		requirements/main.in
-	@CUSTOM_COMPILE_COMMAND="make pip-compile" python -m piptools compile \
-		--resolver=backtracking `# This will be the default option in future release` \
-		--allow-unsafe `# This will be the default option in future release` \
-		--strip-extras \
-		--generate-hashes \
-		requirements/dev.in
-	@CUSTOM_COMPILE_COMMAND="make pip-compile" python -m piptools compile \
-		--resolver=backtracking `# This will be the default option in future release` \
-		--allow-unsafe `# This will be the default option in future release` \
-		--strip-extras \
-		--generate-hashes \
-		requirements/tests.in
-	@CUSTOM_COMPILE_COMMAND="make pip-compile" python -m piptools compile \
-		--resolver=backtracking `# This will be the default option in future release` \
-		--allow-unsafe `# This will be the default option in future release` \
-		--strip-extras \
-		--generate-hashes \
-		requirements/code_style.in
+		--quiet \
+		requirements/$${FILE}; \
+	done
 
 .PHONY: upgrade-package
 upgrade-package: ## Upgrade Python package version (pass "package=<PACKAGE_NAME>")
-	@CUSTOM_COMPILE_COMMAND="make pip-compile" python -m piptools compile \
+	@for FILE in main.in tests.in code_style.in dev.in; do\
+		CUSTOM_COMPILE_COMMAND="make pip-compile" python -m piptools compile \
 		--resolver=backtracking `# This will be the default option in future release` \
 		--allow-unsafe `# This will be the default option in future release` \
-		--generate-hashes \
 		--strip-extras \
-		--upgrade-package $(package) \
-		requirements/main.in
-	@CUSTOM_COMPILE_COMMAND="make pip-compile" python -m piptools compile \
-		--resolver=backtracking `# This will be the default option in future release` \
-		--allow-unsafe `# This will be the default option in future release` \
 		--generate-hashes \
-		--strip-extras \
+		--quiet \
 		--upgrade-package $(package) \
-		requirements/dev.in
-	@CUSTOM_COMPILE_COMMAND="make pip-compile" python -m piptools compile \
-		--resolver=backtracking `# This will be the default option in future release` \
-		--allow-unsafe `# This will be the default option in future release` \
-		--generate-hashes \
-		--strip-extras \
-		--upgrade-package $(package) \
-		requirements/tests.in
-	@CUSTOM_COMPILE_COMMAND="make pip-compile" python -m piptools compile \
-		--resolver=backtracking `# This will be the default option in future release` \
-		--allow-unsafe `# This will be the default option in future release` \
-		--generate-hashes \
-		--strip-extras \
-		--upgrade-package $(package) \
-		requirements/code_style.in
+		requirements/$${FILE}; \
+	done
 
 .PHONY: run
 run: ## Run the app
