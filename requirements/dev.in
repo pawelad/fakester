@@ -3,6 +3,11 @@
 -r code_style.txt
 -r tests.txt
 
+# Type checking
+django-stubs
+mypy
+types-dj-database-url
+
 # Misc
 ipython
 nox

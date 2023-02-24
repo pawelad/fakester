@@ -1,7 +1,10 @@
 """
 Redirects application related views.
 """
+from typing import Any
+
 from django.conf import settings
+from django.http import HttpRequest, HttpResponseBase
 from django.shortcuts import get_object_or_404
 from django.utils.decorators import method_decorator
 from django.views.generic import TemplateView
@@ -19,7 +22,7 @@ class RedirectFormView(TemplateView):
     template_name = "redirects/form.html"
     http_method_names = ["get", "post"]
 
-    def get_context_data(self, **kwargs):
+    def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
         """Add available domains and initialised form to the template."""
         kwargs["available_domains"] = settings.AVAILABLE_DOMAINS
         kwargs["form"] = RedirectModelForm(data=self.request.POST or None)
@@ -27,7 +30,7 @@ class RedirectFormView(TemplateView):
         return super().get_context_data(**kwargs)
 
     @method_decorator(ratelimit(key="ip", rate="3/m"))
-    def post(self, request, *args, **kwargs):
+    def post(self, request: HttpRequest, *args: Any, **kwargs: Any) -> HttpResponseBase:
         """Handle redirect form saving and default to GET response."""
         ctx = self.get_context_data(**kwargs)
 
@@ -50,7 +53,7 @@ class ActualRedirectView(TemplateView):
     template_name = "redirects/redirect_to_destination.html"
     http_method_names = ["get"]
 
-    def get_context_data(self, **kwargs):
+    def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
         """Increase redirect view count and redirect user to destination URL."""
         redirect = get_object_or_404(
             Redirect,

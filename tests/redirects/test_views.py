@@ -3,6 +3,7 @@ Test `redirects.views` module.
 """
 from http import HTTPStatus
 
+from django.template.response import TemplateResponse
 from django.test import Client
 from django.urls import resolve, reverse
 from django.views.generic import TemplateView, View
@@ -35,7 +36,7 @@ class TestRedirectFormView:
         assert reverse(self.view_name) == self.url
 
         resolver = resolve(self.url)
-        assert resolver.func.view_class == self.view_class
+        assert resolver.func.view_class == self.view_class  # type: ignore
         assert resolver.view_name == self.view_name
 
     def test_allowed_http_methods(self, client: Client) -> None:
@@ -52,16 +53,19 @@ class TestRedirectFormView:
     def test_template_used(self, client: Client) -> None:
         """Uses expected template"""
         response = client.get(self.url)
+
+        assert isinstance(response, TemplateResponse)
         assertTemplateUsed(response, "redirects/form.html")
 
     def test_render_form(self, client: Client) -> None:
         """Renders redirect form."""
         response = client.get(self.url)
 
+        assert isinstance(response, TemplateResponse)
         assert response.status_code == 200
 
-        assert "form" in response.context
-        assert isinstance(response.context["form"], RedirectModelForm)
+        assert "form" in response.context_data
+        assert isinstance(response.context_data["form"], RedirectModelForm)
 
         assertContains(response, "<form", count=1)
 
@@ -79,7 +83,7 @@ class TestRedirectFormView:
         client: Client,
         local_path: str,
         destination_url: str,
-    ):
+    ) -> None:
         """Creates a new `Redirect` instance."""
         ip_address = "192.168.1.1"
         mocker.patch("redirects.views.get_client_ip", return_value=(ip_address, True))
@@ -141,7 +145,7 @@ class TestActualRedirectView:
     view_class = ActualRedirectView
     view_name = "redirects:redirect"
 
-    def test_inheritance(self):
+    def test_inheritance(self) -> None:
         """Inherits from Django's `TemplateView`."""
         assert issubclass(self.view_class, View)
         assert issubclass(self.view_class, TemplateView)
@@ -151,7 +155,7 @@ class TestActualRedirectView:
         url = redirect.get_absolute_url()
 
         resolver = resolve(url)
-        assert resolver.func.view_class == self.view_class
+        assert resolver.func.view_class == self.view_class  # type: ignore
         assert resolver.view_name == self.view_name
 
     def test_allowed_http_methods(self, client: Client, redirect: Redirect) -> None:
@@ -172,6 +176,8 @@ class TestActualRedirectView:
         url = redirect.get_absolute_url()
 
         response = client.get(url)
+
+        assert isinstance(response, TemplateResponse)
         assertTemplateUsed(response, "redirects/redirect_to_destination.html")
 
     @pytest.mark.django_db()
@@ -180,6 +186,8 @@ class TestActualRedirectView:
         url = redirect.get_absolute_url()
 
         response = client.get(url)
+
+        assert isinstance(response, TemplateResponse)
         assert response.status_code == 200
 
         html_redirect = (

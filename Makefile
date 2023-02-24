@@ -27,6 +27,12 @@ pip-compile: ## Compile requirements files
 		--allow-unsafe `# This will be the default option in future release` \
 		--strip-extras \
 		--generate-hashes \
+		requirements/dev.in
+	@CUSTOM_COMPILE_COMMAND="make pip-compile" python -m piptools compile \
+		--resolver=backtracking `# This will be the default option in future release` \
+		--allow-unsafe `# This will be the default option in future release` \
+		--strip-extras \
+		--generate-hashes \
 		requirements/tests.in
 	@CUSTOM_COMPILE_COMMAND="make pip-compile" python -m piptools compile \
 		--resolver=backtracking `# This will be the default option in future release` \
@@ -34,12 +40,6 @@ pip-compile: ## Compile requirements files
 		--strip-extras \
 		--generate-hashes \
 		requirements/code_style.in
-	@CUSTOM_COMPILE_COMMAND="make pip-compile" python -m piptools compile \
-		--resolver=backtracking `# This will be the default option in future release` \
-		--allow-unsafe `# This will be the default option in future release` \
-		--strip-extras \
-		--generate-hashes \
-		requirements/dev.in
 
 .PHONY: upgrade-package
 upgrade-package: ## Upgrade Python package version (pass "package=<PACKAGE_NAME>")
@@ -92,7 +92,7 @@ format: ## Format code
 
 .PHONY: test
 test: ## Run tests
-	tox --parallel
+	nox
 
 .PHONY: docker-build
 docker-build: ## Build Docker compose stack

@@ -25,3 +25,13 @@ def code_style(session: nox.Session) -> None:
     session.run("black", "--check", "--diff", *dirs)
     session.run("isort", "--check", "--diff", *dirs)
     session.run("ruff", "check", "--diff", *dirs)
+
+
+@nox.session()
+def type_checks(session: nox.Session) -> None:
+    """Type checks."""
+    dirs = session.posargs or ["."]
+
+    session.install("-r", "requirements/dev.txt", "-r", "requirements/main.txt")
+
+    session.run("mypy", *dirs)

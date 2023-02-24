@@ -3,10 +3,12 @@ Shared fakester test fixtures.
 """
 import pytest
 from fakeredis import FakeRedis, FakeStrictRedis
+from pytest_django.fixtures import SettingsWrapper
+from pytest_mock import MockerFixture
 
 
 @pytest.fixture(autouse=True)
-def _enable_whitenoise_autorefresh(settings):
+def _enable_whitenoise_autorefresh(settings: SettingsWrapper) -> None:
     """
     Enable `WHITENOISE_AUTOREFRESH` setting to get rid of "No directory at" warning.
 
@@ -19,7 +21,7 @@ def _enable_whitenoise_autorefresh(settings):
 
 
 @pytest.fixture(autouse=True)
-def _use_fake_redis(mocker):
+def _use_fake_redis(mocker: MockerFixture) -> None:
     """Use `fakeredis` in all tests."""
     mocker.patch("redis.Redis", FakeRedis)
     mocker.patch("redis.StrictRedis", FakeStrictRedis)

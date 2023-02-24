@@ -29,7 +29,7 @@ target-version = "py310"
 select = [
   "E",  # flake8
   "F",  # flake8
-#  "ANN",  # flake8-annotations
+  "ANN",  # flake8-annotations
   "S",  # flake8-bandit
   "B",  # flake8-bugbear
   "C4",  # flake8-comprehensions
@@ -40,5 +40,26 @@ select = [
 #  "D",  # pydocstyle
 ]
 ignore = [
+  "ANN101",  # Missing type annotation for `self` in method
+  "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed in `**kwargs`
   "S101",  # Use of `assert` detected
 ]
+
+[tool.mypy]
+python_version = "3.10"
+mypy_path = "src"
+plugins = ["mypy_django_plugin.main"]
+exclude = ["migrations"]
+
+[[tool.mypy.overrides]]
+module = [
+  "crispy_forms.helper",
+  "crispy_forms.layout",
+  "decouple",
+  "django_ratelimit.decorators",
+  "ipware",
+]
+ignore_missing_imports = true
+
+[tool.django-stubs]
+django_settings_module = "fakester.settings"

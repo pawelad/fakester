@@ -19,7 +19,7 @@ class TestRedirectModelForm:
     model_class = Redirect
 
     @pytest.fixture()
-    def redirect_form(self, db) -> RedirectModelForm:
+    def redirect_form(self, db: None) -> RedirectModelForm:
         """Initialize `RedirectModelForm` form."""
         return RedirectModelForm()
 

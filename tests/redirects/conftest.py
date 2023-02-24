@@ -9,7 +9,7 @@ from redirects.models import Redirect
 
 
 @pytest.fixture()
-def redirect(db) -> Redirect:
+def redirect(db: None) -> Redirect:
     """Initialize `Redirect` model."""
     return baker.make(Redirect)
 

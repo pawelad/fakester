@@ -47,13 +47,13 @@ class Redirect(BaseModel):
         verbose_name = "redirect"
         verbose_name_plural = "redirects"
 
-    def __str__(self):
+    def __str__(self) -> str:
         return (
             f"Redirect from '{self.local_path}' to '{self.destination_url}' "
             f"(ID: {self.pk})"
         )
 
-    def clean(self):
+    def clean(self) -> None:
         """Sanitize `local_path` value and check for forbidden values."""
         # Remove leading slashes from local path
         self.local_path = self.local_path.lstrip("/")
@@ -81,7 +81,7 @@ class Redirect(BaseModel):
 
         return reverse("redirects:redirect", kwargs={"local_path": self.local_path})
 
-    def increase_view_count(self):
+    def increase_view_count(self) -> None:
         """Increase redirect view count by 1."""
         self.views += 1
         self.save()

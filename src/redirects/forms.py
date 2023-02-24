@@ -13,7 +13,7 @@ class RedirectModelForm(forms.ModelForm):
     """New redirect creation form."""
 
     @property
-    def helper(self):
+    def helper(self) -> FormHelper:
         helper = FormHelper()
         helper.form_class = "form-horizontal"
         helper.label_class = "col-md-3"

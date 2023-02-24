@@ -148,7 +148,17 @@ django==4.1.6 \
     --hash=sha256:c6fe7ebe7c017fe59f1029821dae0acb5a2ddcd6c9a0138fd20a8bfefac914bc
     # via
     #   -r requirements/tests.txt
+    #   django-stubs
+    #   django-stubs-ext
     #   model-bakery
+django-stubs==1.14.0 \
+    --hash=sha256:b081d64d923171f79d4e57899b0980da847e4046b91166e3658a6151645a36c5 \
+    --hash=sha256:d53bcd4975a54ca5c9abbbd33b61f40d44191971018f2ea54f73b0a6a99e1a8b
+    # via -r requirements/dev.in
+django-stubs-ext==0.7.0 \
+    --hash=sha256:4fd8cdbc68d1a421f21bb7e0d9e76d50f6a4b504d350ba786405daf536e90c21 \
+    --hash=sha256:d729fbc7fe8970a7e26b35956c35b48502516f011d523c0577bdfb02ed956284
+    # via django-stubs
 exceptiongroup==1.1.0 \
     --hash=sha256:327cbda3da756e2de031a3107b81ab7b3770a602c4d16ca618298c526f4bec1e \
     --hash=sha256:bcb67d800a4497e1b404c2dd44fca47d3b7a5e5433dbab67f96c1a685cdfdf23
@@ -193,12 +203,43 @@ model-bakery==1.10.1 \
     --hash=sha256:1b74ada5e33f824bb267adf8a9f81fefd193ecaa53902b0af377c385ab04ad5e \
     --hash=sha256:fba6f903d1de4bd2cf62b8654306875fa6c3772467044952f1bde76a5ed6300e
     # via -r requirements/tests.txt
+mypy==1.0.1 \
+    --hash=sha256:0af4f0e20706aadf4e6f8f8dc5ab739089146b83fd53cb4a7e0e850ef3de0bb6 \
+    --hash=sha256:15b5a824b58c7c822c51bc66308e759243c32631896743f030daf449fe3677f3 \
+    --hash=sha256:17455cda53eeee0a4adb6371a21dd3dbf465897de82843751cf822605d152c8c \
+    --hash=sha256:2013226d17f20468f34feddd6aae4635a55f79626549099354ce641bc7d40262 \
+    --hash=sha256:24189f23dc66f83b839bd1cce2dfc356020dfc9a8bae03978477b15be61b062e \
+    --hash=sha256:27a0f74a298769d9fdc8498fcb4f2beb86f0564bcdb1a37b58cbbe78e55cf8c0 \
+    --hash=sha256:28cea5a6392bb43d266782983b5a4216c25544cd7d80be681a155ddcdafd152d \
+    --hash=sha256:448de661536d270ce04f2d7dddaa49b2fdba6e3bd8a83212164d4174ff43aa65 \
+    --hash=sha256:48525aec92b47baed9b3380371ab8ab6e63a5aab317347dfe9e55e02aaad22e8 \
+    --hash=sha256:5bc8d6bd3b274dd3846597855d96d38d947aedba18776aa998a8d46fabdaed76 \
+    --hash=sha256:5deb252fd42a77add936b463033a59b8e48eb2eaec2976d76b6878d031933fe4 \
+    --hash=sha256:5f546ac34093c6ce33f6278f7c88f0f147a4849386d3bf3ae193702f4fe31407 \
+    --hash=sha256:5fdd63e4f50e3538617887e9aee91855368d9fc1dea30da743837b0df7373bc4 \
+    --hash=sha256:65b122a993d9c81ea0bfde7689b3365318a88bde952e4dfa1b3a8b4ac05d168b \
+    --hash=sha256:71a808334d3f41ef011faa5a5cd8153606df5fc0b56de5b2e89566c8093a0c9a \
+    --hash=sha256:920169f0184215eef19294fa86ea49ffd4635dedfdea2b57e45cb4ee85d5ccaf \
+    --hash=sha256:93a85495fb13dc484251b4c1fd7a5ac370cd0d812bbfc3b39c1bafefe95275d5 \
+    --hash=sha256:a2948c40a7dd46c1c33765718936669dc1f628f134013b02ff5ac6c7ef6942bf \
+    --hash=sha256:c6c2ccb7af7154673c591189c3687b013122c5a891bb5651eca3db8e6c6c55bd \
+    --hash=sha256:c96b8a0c019fe29040d520d9257d8c8f122a7343a8307bf8d6d4a43f5c5bfcc8 \
+    --hash=sha256:d42a98e76070a365a1d1c220fcac8aa4ada12ae0db679cb4d910fabefc88b994 \
+    --hash=sha256:dbeb24514c4acbc78d205f85dd0e800f34062efcc1f4a4857c57e4b4b8712bff \
+    --hash=sha256:e60d0b09f62ae97a94605c3f73fd952395286cf3e3b9e7b97f60b01ddfbbda88 \
+    --hash=sha256:e64f48c6176e243ad015e995de05af7f22bbe370dbb5b32bd6988438ec873919 \
+    --hash=sha256:e831662208055b006eef68392a768ff83596035ffd6d846786578ba1714ba8f6 \
+    --hash=sha256:eda5c8b9949ed411ff752b9a01adda31afe7eae1e53e946dbdf9db23865e66c4
+    # via
+    #   -r requirements/dev.in
+    #   django-stubs
 mypy-extensions==0.4.3 \
     --hash=sha256:090fedd75945a69ae91ce1303b5824f428daf5a028d2f6ab8a299250a846f15d \
     --hash=sha256:2d82818f5bb3e369420cb3c4060a7970edba416647068eb4c5343488a6c604a8
     # via
     #   -r requirements/code_style.txt
     #   black
+    #   mypy
 nox==2022.11.21 \
     --hash=sha256:0e41a990e290e274cb205a976c4c97ee3c5234441a8132c8c3fd9ea3c22149eb \
     --hash=sha256:e21c31de0711d1274ca585a2c5fde36b1aa962005ba8e9322bf5eeed16dcd684
@@ -341,6 +382,8 @@ tomli==2.0.1 \
     #   black
     #   build
     #   coverage
+    #   django-stubs
+    #   mypy
     #   pyproject-hooks
     #   pytest
 traitlets==5.8.1 \
@@ -349,6 +392,25 @@ traitlets==5.8.1 \
     # via
     #   ipython
     #   matplotlib-inline
+types-dj-database-url==1.2.0.0 \
+    --hash=sha256:558a44f55d5cba4cfdf4d8ec0fc813ece7ad75a73ea269866aa385ef4c8c4992 \
+    --hash=sha256:dfbdac34e5ff57e6dfb07ada7326331711757bbe3a1772f576e32834c16ce04e
+    # via -r requirements/dev.in
+types-pytz==2022.7.1.0 \
+    --hash=sha256:10ec7d009a02340f1cecd654ac03f0c29b6088a03b63d164401fc52df45936b2 \
+    --hash=sha256:918f9c3e7a950ba7e7d6f84b18a7cacabc8886cb7125fb1927ff1c752b4b59de
+    # via django-stubs
+types-pyyaml==6.0.12.7 \
+    --hash=sha256:91c64379a9ae88471a473d1ce0abf6a09c285700a297621b2177163d506584b8 \
+    --hash=sha256:ad40c99142b1812615bac08d5e240d35107a27ec285af501682c685957692f95
+    # via django-stubs
+typing-extensions==4.5.0 \
+    --hash=sha256:5cb5f4a79139d699607b3ef622a1dedafa84e115ab0024e0d9c044a9479ca7cb \
+    --hash=sha256:fb33085c39dd998ac16d1431ebc293a8b3eedd00fd4a32de0ff79002c19511b4
+    # via
+    #   django-stubs
+    #   django-stubs-ext
+    #   mypy
 virtualenv==20.17.1 \
     --hash=sha256:ce3b1684d6e1a20a3e5ed36795a97dfc6af29bc3970ca8dab93e11ac6094b3c4 \
     --hash=sha256:f8b927684efc6f1cc206c9db297a570ab9ad0e51c16fa9e45487d36d1905c058
