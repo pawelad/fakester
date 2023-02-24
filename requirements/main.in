@@ -16,4 +16,5 @@ redis[hiredis]
 
 # Utils
 python-decouple
+sentry-sdk
 yarl
