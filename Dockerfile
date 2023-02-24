@@ -57,7 +57,7 @@ ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 # Install Python dependencies
 COPY --chown=$USER:$USER requirements/main.txt $APP_DIR/requirements/main.txt
 RUN --mount=type=cache,uid=${UID},gid=${GID},target=$HOME/.cache \
-    python -m pip install -r requirements/main.txt
+    python -m pip install --no-deps -r requirements/main.txt
 
 ###########
 #   App   #
@@ -80,4 +80,4 @@ FROM builder as dev
 # Install dev dependencies
 COPY --chown=$USER:$USER requirements/dev.txt $APP_DIR/requirements/dev.txt
 RUN --mount=type=cache,uid=${UID},gid=${GID},target=$HOME/.cache \
-    python -m pip install -r requirements/dev.txt
+    python -m pip install --no-deps -r requirements/dev.txt

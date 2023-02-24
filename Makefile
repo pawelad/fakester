@@ -86,9 +86,9 @@ apply-migrations: ## Apply Django migrations
 
 .PHONY: format
 format: ## Format code
-	black .
-	isort .
-	ruff --fix .
+	black src/ tests/ noxfile.py
+	isort src/ tests/ noxfile.py
+	ruff --fix src/ tests/ noxfile.py
 
 .PHONY: test
 test: ## Run tests

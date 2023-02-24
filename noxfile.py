@@ -6,21 +6,36 @@ import nox
 nox.options.reuse_existing_virtualenvs = True
 nox.options.error_on_external_run = True
 
+DEFAULT_PATHS = ["src/", "tests/", "noxfile.py"]
+
 
 @nox.session()
 def test(session: nox.Session) -> None:
     """Run tests."""
-    session.install("-r", "requirements/dev.txt", "-r", "requirements/main.txt")
+    dirs = session.posargs or ["tests/"]
 
-    session.run("pytest", *session.posargs)
+    # fmt: off
+    session.install(
+        "--no-deps",
+        "-r", "requirements/main.txt",
+        "-r", "requirements/tests.txt",
+    )
+    # fmt: on
+
+    session.run("pytest", *dirs)
 
 
 @nox.session()
 def code_style(session: nox.Session) -> None:
     """Check code style."""
-    dirs = session.posargs or ["."]
+    dirs = session.posargs or DEFAULT_PATHS
 
-    session.install("-r", "requirements/code_style.txt")
+    # fmt: off
+    session.install(
+        "--no-deps",
+        "-r", "requirements/code_style.txt",
+    )
+    # fmt: on
 
     session.run("black", "--check", "--diff", *dirs)
     session.run("isort", "--check", "--diff", *dirs)
@@ -30,8 +45,14 @@ def code_style(session: nox.Session) -> None:
 @nox.session()
 def type_checks(session: nox.Session) -> None:
     """Type checks."""
-    dirs = session.posargs or ["."]
+    dirs = session.posargs or DEFAULT_PATHS
 
-    session.install("-r", "requirements/dev.txt", "-r", "requirements/main.txt")
+    # fmt: off
+    session.install(
+        "--no-deps",
+        "-r", "requirements/main.txt",
+        "-r", "requirements/dev.txt",
+    )
+    # fmt: on
 
     session.run("mypy", *dirs)
