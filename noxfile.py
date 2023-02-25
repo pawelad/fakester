@@ -56,3 +56,17 @@ def type_checks(session: nox.Session) -> None:
     # fmt: on
 
     session.run("mypy", *dirs)
+
+
+@nox.session()
+def django_checks(session: nox.Session) -> None:
+    """Django checks."""
+    # fmt: off
+    session.install(
+        "--no-deps",
+        "-r", "requirements/main.txt",
+    )
+    # fmt: on
+
+    session.run("src/manage.py", "check", external=True)
+    session.run("src/manage.py", "makemigrations", "--check", external=True)
