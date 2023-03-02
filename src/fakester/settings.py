@@ -142,7 +142,7 @@ AVAILABLE_DOMAINS = None
 # sentry-sdk
 SENTRY_DSN = config("SENTRY_DSN", default=None)
 
-if SENTRY_DSN:
+if SENTRY_DSN:  # pragma: no cover
     import sentry_sdk
     from sentry_sdk.integrations.django import DjangoIntegration
 
