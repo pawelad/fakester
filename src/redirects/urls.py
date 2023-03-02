@@ -1,6 +1,4 @@
-"""
-Redirects application URLs config.
-"""
+"""Redirects app URLs config."""
 from django.urls import path, re_path
 
 from redirects import views

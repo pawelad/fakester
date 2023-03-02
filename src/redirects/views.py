@@ -1,6 +1,4 @@
-"""
-Redirects application related views.
-"""
+"""Redirects app views."""
 from typing import Any
 
 from django.conf import settings

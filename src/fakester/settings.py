@@ -1,5 +1,8 @@
-"""
-fakester Django settings.
+"""fakester Django settings.
+
+We use `python-decouple` to get values from environment variables or local `.env`
+file (in that order). Custom and third party settings should be put in their respective
+sections at the end of the file.
 """
 from pathlib import Path
 

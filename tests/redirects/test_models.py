@@ -1,6 +1,4 @@
-"""
-Test `redirects.models` module.
-"""
+"""Test `redirects.models` module."""
 from django.core.exceptions import ValidationError
 from django.db import models
 
@@ -12,9 +10,7 @@ from utils.models import BaseModel
 
 
 class TestRedirect:
-    """
-    Test `Redirect` model.
-    """
+    """Test `Redirect` model."""
 
     model_class = Redirect
 
@@ -95,7 +91,7 @@ class TestRedirect:
 
     @pytest.mark.django_db()
     def test_model_save(self) -> None:
-        """Create `Redirect` on save."""
+        """Creates `Redirect` on save."""
         data = {
             "local_path": "foo/bar/baz.html",
             "destination_url": "https://youtu.be/I6OXjnBIW-4",

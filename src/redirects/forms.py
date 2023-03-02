@@ -1,6 +1,4 @@
-"""
-Redirects application related forms.
-"""
+"""Redirects app forms."""
 from django import forms
 
 from crispy_forms.helper import FormHelper
@@ -14,6 +12,7 @@ class RedirectModelForm(forms.ModelForm):
 
     @property
     def helper(self) -> FormHelper:
+        """Return a `crispy_forms` compatible form helper."""
         helper = FormHelper()
         helper.form_class = "form-horizontal"
         helper.label_class = "col-md-3"

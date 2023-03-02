@@ -1,6 +1,4 @@
-"""
-Test `redirects.views` module.
-"""
+"""Test `redirects.views` module."""
 from http import HTTPStatus
 
 from django.template.response import TemplateResponse
@@ -18,9 +16,7 @@ from redirects.views import ActualRedirectView, RedirectFormView
 
 
 class TestRedirectFormView:
-    """
-    Test 'RedirectFormView' view.
-    """
+    """Test 'RedirectFormView' view."""
 
     view_class = RedirectFormView
     view_name = "redirects:form"
@@ -51,7 +47,7 @@ class TestRedirectFormView:
         assert client.put(self.url).status_code == HTTPStatus.METHOD_NOT_ALLOWED
 
     def test_template_used(self, client: Client) -> None:
-        """Uses expected template"""
+        """Uses expected template."""
         response = client.get(self.url)
 
         assert isinstance(response, TemplateResponse)
@@ -138,9 +134,7 @@ class TestRedirectFormView:
 
 
 class TestActualRedirectView:
-    """
-    Test `ActualRedirectView` view.
-    """
+    """Test `ActualRedirectView` view."""
 
     view_class = ActualRedirectView
     view_name = "redirects:redirect"
@@ -172,7 +166,7 @@ class TestActualRedirectView:
         assert client.put(url).status_code == HTTPStatus.METHOD_NOT_ALLOWED
 
     def test_template_used(self, client: Client, redirect: Redirect) -> None:
-        """Uses expected template"""
+        """Uses expected template."""
         url = redirect.get_absolute_url()
 
         response = client.get(url)
@@ -201,13 +195,13 @@ class TestActualRedirectView:
         assertContains(response, js_redirect, count=1, html=True)
 
     def test_render_404(self, client: Client) -> None:
-        """Accessing nonexistent redirect results in HTTP 404."""
+        """Results in HTTP 404 when trying to access nonexistent redirect."""
         response = client.get("foo.html")
         assert response.status_code == 404
 
     @pytest.mark.django_db()
     def test_view_counting(self, client: Client, redirect: Redirect) -> None:
-        """Accessing redirect increases its view count."""
+        """Increases redirect view count when viewed."""
         url = redirect.get_absolute_url()
 
         assert redirect.views == 0

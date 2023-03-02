@@ -37,13 +37,18 @@ select = [
   "PT",  # flake8-pytest-style
   "SIM",  # flake8-simplify
   "N",  # pep8-naming
-#  "D",  # pydocstyle
+  "D",  # pydocstyle
 ]
 ignore = [
   "ANN101",  # Missing type annotation for `self` in method
   "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed in `**kwargs`
+  "D106",  # Missing docstring in public nested class
   "S101",  # Use of `assert` detected
 ]
+extend-exclude = ["migrations"]
+
+[tool.ruff.pydocstyle]
+convention = "google"
 
 [tool.mypy]
 python_version = "3.10"

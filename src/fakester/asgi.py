@@ -1,7 +1,6 @@
-"""
-fakester ASGI config.
+"""fakester ASGI config.
 
-It exposes the ASGI callable as a module-level variable named ``application``.
+It exposes the ASGI callable as a module-level variable named `application`.
 """
 import os
 

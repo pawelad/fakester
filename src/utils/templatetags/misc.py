@@ -1,6 +1,4 @@
-"""
-Misc Django template tags.
-"""
+"""Misc Django template tags."""
 from django import template
 
 from yarl import URL

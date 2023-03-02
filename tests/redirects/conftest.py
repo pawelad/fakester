@@ -1,6 +1,4 @@
-"""
-Shared redirects test fixtures.
-"""
+"""Redirect app test fixtures."""
 import pytest
 from _pytest.fixtures import SubRequest
 from model_bakery import baker

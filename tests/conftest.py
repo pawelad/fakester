@@ -1,6 +1,4 @@
-"""
-Shared fakester test fixtures.
-"""
+"""Shared fakester test fixtures."""
 import pytest
 from fakeredis import FakeRedis, FakeStrictRedis
 from pytest_django.fixtures import SettingsWrapper
@@ -9,8 +7,7 @@ from pytest_mock import MockerFixture
 
 @pytest.fixture(autouse=True)
 def _enable_whitenoise_autorefresh(settings: SettingsWrapper) -> None:
-    """
-    Enable `WHITENOISE_AUTOREFRESH` setting to get rid of "No directory at" warning.
+    """Enable `WHITENOISE_AUTOREFRESH` setting to get rid of "No directory at" warning.
 
     Related:
         - https://github.com/evansd/whitenoise/issues/191

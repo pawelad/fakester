@@ -1,7 +1,6 @@
-"""
-fakester WSGI config.
+"""fakester WSGI config.
 
-It exposes the WSGI callable as a module-level variable named ``application``.
+It exposes the WSGI callable as a module-level variable named `application`.
 """
 import os
 

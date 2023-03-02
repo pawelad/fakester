@@ -1,6 +1,4 @@
-"""
-fakester - Rickyroll your boss while preserving the element of surprise.
-"""
+"""fakester - Rickroll your boss while preserving the element of surprise."""
 
 __title__ = "fakester"
 __description__ = "Rickroll your boss while preserving the element of surprise"

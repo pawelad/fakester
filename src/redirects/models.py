@@ -1,6 +1,4 @@
-"""
-Redirects application related models.
-"""
+"""Redirects app models."""
 from django.core.exceptions import ValidationError
 from django.core.validators import RegexValidator
 from django.db import models
@@ -48,6 +46,7 @@ class Redirect(BaseModel):
         verbose_name_plural = "redirects"
 
     def __str__(self) -> str:
+        """Return a human-readable redirect name."""
         return (
             f"Redirect from '{self.local_path}' to '{self.destination_url}' "
             f"(ID: {self.pk})"

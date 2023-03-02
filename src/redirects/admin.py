@@ -1,6 +1,4 @@
-"""
-Redirects application Django Admin integration.
-"""
+"""Redirects app Django Admin integration."""
 from django.contrib import admin
 
 from redirects.models import Redirect

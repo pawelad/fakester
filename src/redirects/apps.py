@@ -1,6 +1,4 @@
-"""
-Redirects application `AppConfig` integration.
-"""
+"""Redirects app config."""
 from django.apps import AppConfig
 
 

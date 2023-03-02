@@ -1,6 +1,4 @@
-"""
-Test `redirects.forms` module.
-"""
+"""Test `redirects.forms` module."""
 from django import forms
 
 import pytest
@@ -11,9 +9,7 @@ from redirects.models import Redirect
 
 
 class TestRedirectModelForm:
-    """
-    Test `RedirectModelForm` form.
-    """
+    """Test `RedirectModelForm` form."""
 
     form_class = RedirectModelForm
     model_class = Redirect
@@ -95,7 +91,7 @@ class TestRedirectModelForm:
 
     @pytest.mark.django_db()
     def test_form_save(self) -> None:
-        """Create `Redirect` on save."""
+        """Creates `Redirect` on save."""
         data = {
             "local_path": "foo/bar.html",
             "destination_url": "https://example.com/",
