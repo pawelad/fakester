@@ -12,7 +12,7 @@ from pytest_mock import MockerFixture
 
 from redirects.forms import RedirectModelForm
 from redirects.models import Redirect
-from redirects.views import ActualRedirectView, RedirectFormView
+from redirects.views import RedirectFormView, RedirectToDestinationView
 
 
 class TestRedirectFormView:
@@ -133,10 +133,10 @@ class TestRedirectFormView:
         assert response.status_code == 403
 
 
-class TestActualRedirectView:
-    """Test `ActualRedirectView` view."""
+class TestRedirectToDestinationView:
+    """Test `RedirectToDestinationView` view."""
 
-    view_class = ActualRedirectView
+    view_class = RedirectToDestinationView
     view_name = "redirects:redirect"
 
     def test_inheritance(self) -> None:

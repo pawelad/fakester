@@ -45,7 +45,7 @@ class RedirectFormView(TemplateView):
         return super().get(request, *args, **kwargs)
 
 
-class ActualRedirectView(TemplateView):
+class RedirectToDestinationView(TemplateView):
     """Redirect user to destination URL view."""
 
     template_name = "redirects/redirect_to_destination.html"

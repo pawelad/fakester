@@ -10,7 +10,7 @@ urlpatterns = [
     re_path(
         # Select everything, except for private `_/` and `.well-known/` paths
         r"^(?!_/|.well-known/)(?P<local_path>[a-zA-Z0-9/._-]+)$",
-        views.ActualRedirectView.as_view(),
+        views.RedirectToDestinationView.as_view(),
         name="redirect",
     ),
 ]
