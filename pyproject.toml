@@ -11,6 +11,16 @@ omit = [
   "*/wsgi.py",
 ]
 
+[tool.interrogate]
+ignore-nested-classes = true
+fail-under = 95
+exclude = [
+  "*/asgi.py",
+  "*/manage.py",
+  "*/migrations/*",
+  "*/wsgi.py",
+]
+
 [tool.isort]
 profile = "black"
 src_paths = ["src"]
