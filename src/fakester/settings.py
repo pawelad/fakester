@@ -1,23 +1,40 @@
 """fakester Django settings.
 
-We use `python-decouple` to get values from environment variables or local `.env`
+We use `python-decouple` to load values from environment variables and a local `.env`
 file (in that order). Custom and third party settings should be put in their respective
 sections at the end of the file.
 """
 from pathlib import Path
 
-from decouple import Csv, config
+from django.core.exceptions import ImproperlyConfigured
+
+from decouple import Choices, Csv, config
 from dj_database_url import parse as db_url
 
 SRC_DIR = Path(__file__).resolve().parent.parent
 BASE_DIR = SRC_DIR.parent
 
-SECRET_KEY = config(
-    "SECRET_KEY",
-    default="django-insecure-y+rcy_fkylgf*=h5iu%a3hijnfwj)kx=a)-!$(+!gz_t4cr!7j",
+ENVIRONMENT = config(
+    "ENVIRONMENT",
+    default="local",
+    cast=Choices(["local", "production"]),
 )
 
+SECRET_KEY = config("SECRET_KEY", default=None)
+if not SECRET_KEY:
+    if ENVIRONMENT == "local":
+        SECRET_KEY = "CHANGE_ME"  # noqa
+    else:
+        raise ImproperlyConfigured(
+            "You need to provide 'SECRET_KEY' when not running local environment"
+        )
+
+
 DEBUG = config("DEBUG", default=False, cast=bool)
+if DEBUG and ENVIRONMENT != "local":
+    raise ImproperlyConfigured(
+        "You need to disable 'DEBUG' when running production environment"
+    )
 
 ALLOWED_HOSTS = config(
     "ALLOWED_HOSTS",

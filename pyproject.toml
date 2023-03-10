@@ -59,6 +59,7 @@ ignore = [
   "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed in `**kwargs`
   "D106",  # Missing docstring in public nested class
   "S101",  # Use of `assert` detected
+  "TRY003",  # Avoid specifying long messages outside the exception class
 ]
 extend-exclude = ["migrations"]
 

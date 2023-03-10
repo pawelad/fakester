@@ -10,7 +10,7 @@ install: ## Install app dependencies
 	python -m piptools sync requirements/main.txt
 
 .PHONY: install-dev
-install-dev: ## Install app dev dependencies
+install-dev: ## Install app dependencies (including dev)
 	python -m pip install pip-tools
 	python -m piptools sync requirements/main.txt requirements/dev.txt
 
@@ -59,7 +59,7 @@ format: ## Format code
 	ruff --fix src/ tests/ noxfile.py
 
 .PHONY: test
-test: ## Run tests
+test: ## Run the test suite
 	nox
 
 .PHONY: docker-build
