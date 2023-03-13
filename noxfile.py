@@ -8,7 +8,7 @@ DEFAULT_PATHS = ["src/", "tests/", "noxfile.py"]
 
 
 @nox.session()
-def test(session: nox.Session) -> None:
+def tests(session: nox.Session) -> None:
     """Run tests."""
     dirs = session.posargs or ["tests/"]
 
@@ -16,7 +16,7 @@ def test(session: nox.Session) -> None:
     session.install(
         "--no-deps",
         "-r", "requirements/main.txt",
-        "-r", "requirements/tests.txt",
+        "-r", "requirements/dev.txt",
     )
     # fmt: on
 
@@ -30,8 +30,8 @@ def code_style(session: nox.Session) -> None:
 
     # fmt: off
     session.install(
-        "--no-deps",
-        "-r", "requirements/code_style.txt",
+        "black", "isort", "ruff", "interrogate",
+        "-c", "requirements/constraints.txt",
     )
     # fmt: on
 
@@ -43,7 +43,7 @@ def code_style(session: nox.Session) -> None:
 
 @nox.session()
 def type_checks(session: nox.Session) -> None:
-    """Type checks."""
+    """Run type checks."""
     dirs = session.posargs or DEFAULT_PATHS
 
     # fmt: off
@@ -59,7 +59,7 @@ def type_checks(session: nox.Session) -> None:
 
 @nox.session()
 def django_checks(session: nox.Session) -> None:
-    """Django checks."""
+    """Run Django checks."""
     # fmt: off
     session.install(
         "--no-deps",

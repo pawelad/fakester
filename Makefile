@@ -2,43 +2,32 @@
 MAKEFLAGS += --warn-undefined-variables
 .DEFAULT_GOAL := help
 
-NAME = fakester
+PIP_COMPILE = CUSTOM_COMPILE_COMMAND='make pip-compile' python -m piptools compile \
+	--resolver=backtracking \
+	--allow-unsafe \
+	--strip-extras \
+	--quiet
 
 .PHONY: install
 install: ## Install app dependencies
 	python -m pip install pip-tools
-	python -m piptools sync requirements/main.txt
+	python -m piptools sync --pip-args "--no-deps" requirements/main.txt
 
 .PHONY: install-dev
 install-dev: ## Install app dependencies (including dev)
 	python -m pip install pip-tools
-	python -m piptools sync requirements/main.txt requirements/dev.txt
+	python -m piptools sync --pip-args "--no-deps" requirements/main.txt requirements/dev.txt
 
 .PHONY: pip-compile
 pip-compile: ## Compile requirements files
-	@for FILE in main.in tests.in code_style.in dev.in; do\
-		echo "-> Compiling $${FILE}..." && \
-		CUSTOM_COMPILE_COMMAND="make pip-compile" python -m piptools compile \
-		--resolver=backtracking `# This will be the default option in future release` \
-		--allow-unsafe `# This will be the default option in future release` \
-		--strip-extras \
-		--generate-hashes \
-		--quiet \
-		requirements/$${FILE}; \
-	done
+	@$(PIP_COMPILE) --generate-hashes requirements/main.in
+	@$(PIP_COMPILE) --generate-hashes requirements/dev.in
+	@$(PIP_COMPILE) --output-file requirements/constraints.txt requirements/main.in requirements/dev.in
 
 .PHONY: upgrade-package
 upgrade-package: ## Upgrade Python package version (pass "package=<PACKAGE_NAME>")
-	@for FILE in main.in tests.in code_style.in dev.in; do\
-		CUSTOM_COMPILE_COMMAND="make pip-compile" python -m piptools compile \
-		--resolver=backtracking `# This will be the default option in future release` \
-		--allow-unsafe `# This will be the default option in future release` \
-		--strip-extras \
-		--generate-hashes \
-		--quiet \
-		--upgrade-package $(package) \
-		requirements/$${FILE}; \
-	done
+	$(PIP_COMPILE) --generate-hashes --upgrade-package $(package) requirements/main.in
+	$(PIP_COMPILE) --generate-hashes --upgrade-package $(package) requirements/dev.in
 
 .PHONY: run
 run: ## Run the app

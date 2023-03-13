@@ -1,8 +1,0 @@
--c main.txt
-
-fakeredis
-model_bakery
-pytest
-pytest-cov
-pytest-django
-pytest-mock

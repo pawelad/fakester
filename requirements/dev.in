@@ -1,7 +1,18 @@
 -c main.txt
 
--r code_style.txt
--r tests.txt
+# Code style
+black
+interrogate
+isort
+ruff
+
+# Tests
+fakeredis
+model_bakery
+pytest
+pytest-cov
+pytest-django
+pytest-mock
 
 # Type checking
 django-stubs
