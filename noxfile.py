@@ -24,7 +24,7 @@ def tests(session: nox.Session) -> None:
 
 
 @nox.session()
-def code_style(session: nox.Session) -> None:
+def code_style_checks(session: nox.Session) -> None:
     """Check code style."""
     dirs = session.posargs or DEFAULT_PATHS
 
