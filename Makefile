@@ -49,6 +49,7 @@ format: ## Format code
 
 .PHONY: test
 test: ## Run the test suite
+	docker compose up --detach db
 	nox
 
 .PHONY: docker-build

@@ -1,20 +1,18 @@
 version: "3.4"
 
 x-common-variables: &common-variables
-  DATABASE_URL: "postgres://fakester:fakester@db/fakester"
+  DATABASE_URL: "postgres://postgres@db/fakester"
   REDIS_URL: "redis://redis:6379"
 
 services:
   db:
     image: "postgres:15.1"
     environment:
-      POSTGRES_USER: "fakester"
-      POSTGRES_PASSWORD: "fakester"
-      POSTGRES_DB: "fakester"
+      POSTGRES_HOST_AUTH_METHOD: "trust"
     volumes:
       - "postgres_data:/var/lib/postgresql/data/"
     ports:
-      - "54320:5432"
+      - "5432:5432"
 
   redis:
     image: "redis:7.0"

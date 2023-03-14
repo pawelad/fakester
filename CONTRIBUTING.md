@@ -20,7 +20,8 @@ All code is formatted with the amazing `black`, `isort` and `ruff` tools via
 
 ## Tests
 Tests are written with help of [pytest] and run via [nox] (alongside other checks).
-To run the test suite yourself, all you need to do is:
+To run the test suite yourself, all you need to do is remember to have the database
+running locally and run:
 
 ```console
 $ # Install nox
@@ -28,10 +29,6 @@ $ python -m pip install nox
 $ # Run nox
 $ make test
 ```
-
-Just remember to have the database running (and set `DATABASE_URL` to
-`postgres://fakester:fakester@localhost:54320/fakester` if you want to use the
-one from [Docker Compose]).
 
 ## Running locally
 The easiest way run fakester locally is to install [Docker] and run:

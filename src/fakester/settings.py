@@ -102,7 +102,7 @@ WSGI_APPLICATION = "fakester.wsgi.application"
 DATABASES = {
     "default": config(
         "DATABASE_URL",
-        default="postgres://localhost/fakester",
+        default="postgres://postgres@localhost/fakester",
         cast=db_url,
     ),
 }
