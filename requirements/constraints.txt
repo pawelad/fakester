@@ -4,7 +4,7 @@
 #
 #    make pip-compile
 #
-argcomplete==2.0.0
+argcomplete==2.1.2
     # via
     #   -r requirements/dev.txt
     #   nox
@@ -42,7 +42,7 @@ colorlog==6.7.0
     # via
     #   -r requirements/dev.txt
     #   nox
-coverage==7.1.0
+coverage==7.2.2
     # via
     #   -r requirements/dev.txt
     #   pytest-cov
@@ -80,7 +80,7 @@ django-stubs-ext==0.8.0
     #   django-stubs
 fakeredis==2.10.1
     # via -r requirements/dev.txt
-filelock==3.9.0
+filelock==3.10.0
     # via
     #   -r requirements/dev.txt
     #   virtualenv
@@ -124,13 +124,13 @@ packaging==23.0
     #   build
     #   nox
     #   pytest
-pathspec==0.10.3
+pathspec==0.11.1
     # via
     #   -r requirements/dev.txt
     #   black
 pip-tools==6.12.3
     # via -r requirements/dev.txt
-platformdirs==2.6.2
+platformdirs==3.1.1
     # via
     #   -r requirements/dev.txt
     #   black
@@ -193,13 +193,13 @@ tomli==2.0.1
     # via
     #   -r requirements/dev.txt
     #   django-stubs
-types-dj-database-url==1.2.0.0
+types-dj-database-url==1.2.0.1
     # via -r requirements/dev.txt
-types-pytz==2022.7.1.0
+types-pytz==2022.7.1.2
     # via
     #   -r requirements/dev.txt
     #   django-stubs
-types-pyyaml==6.0.12.7
+types-pyyaml==6.0.12.8
     # via
     #   -r requirements/dev.txt
     #   django-stubs
@@ -209,15 +209,15 @@ typing-extensions==4.5.0
     #   django-stubs
     #   django-stubs-ext
     #   mypy
-urllib3==1.26.14
+urllib3==1.26.15
     # via
     #   -r requirements/main.txt
     #   sentry-sdk
-virtualenv==20.17.1
+virtualenv==20.21.0
     # via
     #   -r requirements/dev.txt
     #   nox
-wheel==0.38.4
+wheel==0.40.0
     # via
     #   -r requirements/dev.txt
     #   pip-tools
@@ -231,7 +231,7 @@ pip==23.0.1
     # via
     #   -r requirements/dev.txt
     #   pip-tools
-setuptools==66.0.0
+setuptools==67.6.0
     # via
     #   -r requirements/dev.txt
     #   -r requirements/main.txt
