@@ -165,9 +165,9 @@ executing==1.2.0 \
     --hash=sha256:0314a69e37426e3608aada02473b4161d4caf5a4b244d1d0c48072b8fee7bacc \
     --hash=sha256:19da64c18d2d851112f09c287f8d3dbbdf725ab0e569077efb6cdcbd3497c107
     # via stack-data
-fakeredis==2.9.0 \
-    --hash=sha256:ea29b10277efce23ade22ef33ccd273e365db658313ceace299e4027b066bbd6 \
-    --hash=sha256:fc0c48216bb40a01e51b002c70966cd17242cf7406e7ced4ff85235f4971d096
+fakeredis==2.10.1 \
+    --hash=sha256:6f31e6213b724147f21d3f560ac2ea0b67cf4402a7ee98f5c338b7d5178151dc \
+    --hash=sha256:c27e175da47ebe30174cc22e1a99155c5c3b8583d1b7a3c69008fdbf1c7096f1
     # via -r requirements/dev.in
 filelock==3.9.0 \
     --hash=sha256:7b319f24340b51f55a2bf7a12ac0755a9b03e718311dac567a0f4f7fabd2f5de \

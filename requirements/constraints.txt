@@ -103,7 +103,7 @@ executing==1.2.0
     # via
     #   -r requirements/dev.txt
     #   stack-data
-fakeredis==2.9.0
+fakeredis==2.10.1
     # via -r requirements/dev.txt
 filelock==3.9.0
     # via
