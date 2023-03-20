@@ -231,7 +231,7 @@ redis==4.4.2
     #   -r requirements/dev.txt
     #   -r requirements/main.txt
     #   fakeredis
-ruff==0.0.253
+ruff==0.0.257
     # via -r requirements/dev.txt
 sentry-sdk==1.17.0
     # via -r requirements/main.txt
