@@ -21,11 +21,6 @@ asttokens==2.2.1
     # via
     #   -r requirements/dev.txt
     #   stack-data
-async-timeout==4.0.2
-    # via
-    #   -r requirements/dev.txt
-    #   -r requirements/main.txt
-    #   redis
 attrs==22.2.0
     # via
     #   -r requirements/dev.txt
@@ -111,7 +106,7 @@ filelock==3.9.0
     #   virtualenv
 gunicorn==20.1.0
     # via -r requirements/main.txt
-hiredis==2.2.1
+hiredis==2.2.2
     # via -r requirements/main.txt
 idna==3.4
     # via
@@ -226,7 +221,7 @@ pytest-mock==3.10.0
     # via -r requirements/dev.txt
 python-decouple==3.7
     # via -r requirements/main.txt
-redis==4.4.2
+redis==4.5.2
     # via
     #   -r requirements/dev.txt
     #   -r requirements/main.txt
