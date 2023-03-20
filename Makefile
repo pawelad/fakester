@@ -25,9 +25,15 @@ pip-compile: ## Compile requirements files
 	@$(PIP_COMPILE) --output-file requirements/constraints.txt requirements/main.txt requirements/dev.txt
 
 .PHONY: upgrade-package
-upgrade-package: ## Upgrade Python package version (pass "package=<PACKAGE_NAME>")
+upgrade-package: ## Upgrade Python package (pass "package=<PACKAGE_NAME>")
 	@$(PIP_COMPILE) --generate-hashes --upgrade-package $(package) requirements/main.in
 	@$(PIP_COMPILE) --generate-hashes --upgrade-package $(package) requirements/dev.in
+	@$(PIP_COMPILE) --output-file requirements/constraints.txt requirements/main.txt requirements/dev.txt
+
+.PHONY: upgrade-all
+upgrade-all: ## Upgrade all Python packages
+	@$(PIP_COMPILE) --generate-hashes --upgrade requirements/main.in
+	@$(PIP_COMPILE) --generate-hashes --upgrade requirements/dev.in
 	@$(PIP_COMPILE) --output-file requirements/constraints.txt requirements/main.txt requirements/dev.txt
 
 .PHONY: run

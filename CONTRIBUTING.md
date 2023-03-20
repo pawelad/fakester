@@ -113,7 +113,8 @@ $ make help
 install                                   Install app dependencies
 install-dev                               Install app dependencies (including dev)
 pip-compile                               Compile requirements files
-upgrade-package                           Upgrade Python package version (pass "package=<PACKAGE_NAME>")
+upgrade-package                           Upgrade Python package (pass "package=<PACKAGE_NAME>")
+upgrade-all                               Upgrade all Python packages
 run                                       Run the app
 create-migration                          Create Django migration (pass "name=<MIGRATION_NAME>")
 apply-migrations                          Apply Django migrations
