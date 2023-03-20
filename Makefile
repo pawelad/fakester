@@ -70,7 +70,7 @@ docker-shell: ## Run bash inside dev Docker image
 
 .PHONY: clean
 clean: ## Clean dev artifacts
-	rm -rf .coverage .mypy_cache/ .nox/ .pytest_cache/ .ruff_cache/ htmlcov/
+	rm -rf .coverage .mypy_cache/ .nox/ .pytest_cache/ .ruff_cache/ staticfiles/ htmlcov/
 
 # Source: https://www.client9.com/self-documenting-makefiles/
 .PHONY: help

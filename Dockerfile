@@ -68,6 +68,9 @@ FROM base as app
 COPY --from=builder $VIRTUAL_ENV $VIRTUAL_ENV
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
+# Collect static assets
+RUN python src/manage.py collectstatic --noinput
+
 # Run the app with `gunicorn`
 EXPOSE 8000
 ENTRYPOINT ["gunicorn", "--pythonpath=src", "--bind=0.0.0.0:8000", "--worker-tmp-dir=/dev/shm", "fakester.wsgi"]
