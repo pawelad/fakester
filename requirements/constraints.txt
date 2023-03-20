@@ -161,7 +161,7 @@ pytest-django==4.5.2
     # via -r requirements/dev.txt
 pytest-mock==3.10.0
     # via -r requirements/dev.txt
-python-decouple==3.7
+python-decouple==3.8
     # via -r requirements/main.txt
 redis==4.5.2
     # via
