@@ -4,7 +4,7 @@ right place. Hopefully, everything noteworthy is mentioned, but if you still hav
 some questions after reading it all, don't hesitate to open up a [new discussion].
 
 ## Tools used
-**Language:** [Python 3.10][python]  
+**Language:** [Python 3.11.2][python]  
 **Web framework:** [Django]  
 **Database:** [PostgreSQL]  
 **Cache:** [Redis]  
