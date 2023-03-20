@@ -170,7 +170,7 @@ pickleshare==0.7.5
     # via
     #   -r requirements/dev.txt
     #   ipython
-pip-tools==6.12.2
+pip-tools==6.12.3
     # via -r requirements/dev.txt
 platformdirs==2.6.2
     # via
