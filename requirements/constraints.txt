@@ -81,10 +81,11 @@ django==4.1.7
     #   -r requirements/main.txt
     #   crispy-bootstrap5
     #   dj-database-url
+    #   django-crispy-forms
     #   django-stubs
     #   django-stubs-ext
     #   model-bakery
-django-crispy-forms==1.14.0
+django-crispy-forms==2.0
     # via
     #   -r requirements/main.txt
     #   crispy-bootstrap5
