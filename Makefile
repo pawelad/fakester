@@ -10,12 +10,12 @@ PIP_COMPILE = CUSTOM_COMPILE_COMMAND='make pip-compile' python -m piptools compi
 
 .PHONY: install
 install: ## Install app dependencies
-	python -m pip install pip-tools
+	python -m pip install pip-tools -c requirements/constraints.txt
 	python -m piptools sync --pip-args "--no-deps" requirements/main.txt
 
 .PHONY: install-dev
 install-dev: ## Install app dependencies (including dev)
-	python -m pip install pip-tools
+	python -m pip install pip-tools -c requirements/constraints.txt
 	python -m piptools sync --pip-args "--no-deps" requirements/main.txt requirements/dev.txt
 
 .PHONY: pip-compile
