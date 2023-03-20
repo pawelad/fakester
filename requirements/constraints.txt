@@ -141,11 +141,11 @@ multidict==6.0.4
     # via
     #   -r requirements/main.txt
     #   yarl
-mypy==1.0.1
+mypy==1.1.1
     # via
     #   -r requirements/dev.txt
     #   django-stubs
-mypy-extensions==0.4.3
+mypy-extensions==1.0.0
     # via
     #   -r requirements/dev.txt
     #   black
