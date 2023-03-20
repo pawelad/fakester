@@ -306,7 +306,7 @@ yarl==1.8.2
     # via -r requirements/main.txt
 
 # The following packages are considered to be unsafe in a requirements file:
-pip==23.0
+pip==23.0.1
     # via
     #   -r requirements/dev.txt
     #   pip-tools
