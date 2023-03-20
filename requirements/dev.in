@@ -20,6 +20,5 @@ mypy
 types-dj-database-url
 
 # Misc
-ipython
 nox
 pip-tools
