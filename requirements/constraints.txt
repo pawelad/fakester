@@ -93,9 +93,9 @@ django-ipware==5.0.0
     # via -r requirements/main.txt
 django-ratelimit==4.0.0
     # via -r requirements/main.txt
-django-stubs==1.14.0
+django-stubs==1.16.0
     # via -r requirements/dev.txt
-django-stubs-ext==0.7.0
+django-stubs-ext==0.8.0
     # via
     #   -r requirements/dev.txt
     #   django-stubs

@@ -153,13 +153,13 @@ django==4.1.7 \
     #   django-stubs
     #   django-stubs-ext
     #   model-bakery
-django-stubs==1.14.0 \
-    --hash=sha256:b081d64d923171f79d4e57899b0980da847e4046b91166e3658a6151645a36c5 \
-    --hash=sha256:d53bcd4975a54ca5c9abbbd33b61f40d44191971018f2ea54f73b0a6a99e1a8b
+django-stubs==1.16.0 \
+    --hash=sha256:1bd96207576cd220221a0e615f0259f13d453d515a80f576c1246e0fb547f561 \
+    --hash=sha256:c95f948e2bfc565f3147e969ff361ef033841a0b8a51cac974a6cc6d0486732c
     # via -r requirements/dev.in
-django-stubs-ext==0.7.0 \
-    --hash=sha256:4fd8cdbc68d1a421f21bb7e0d9e76d50f6a4b504d350ba786405daf536e90c21 \
-    --hash=sha256:d729fbc7fe8970a7e26b35956c35b48502516f011d523c0577bdfb02ed956284
+django-stubs-ext==0.8.0 \
+    --hash=sha256:9a9ba9e2808737949de96a0fce8b054f12d38e461011d77ebc074ffe8c43dfcb \
+    --hash=sha256:a454d349d19c26d6c50c4c6dbc1e8af4a9cda4ce1dc4104e3dd4c0330510cc56
     # via django-stubs
 executing==1.2.0 \
     --hash=sha256:0314a69e37426e3608aada02473b4161d4caf5a4b244d1d0c48072b8fee7bacc \
