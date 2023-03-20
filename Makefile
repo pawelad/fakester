@@ -22,12 +22,13 @@ install-dev: ## Install app dependencies (including dev)
 pip-compile: ## Compile requirements files
 	@$(PIP_COMPILE) --generate-hashes requirements/main.in
 	@$(PIP_COMPILE) --generate-hashes requirements/dev.in
-	@$(PIP_COMPILE) --output-file requirements/constraints.txt requirements/main.in requirements/dev.in
+	@$(PIP_COMPILE) --output-file requirements/constraints.txt requirements/main.txt requirements/dev.txt
 
 .PHONY: upgrade-package
 upgrade-package: ## Upgrade Python package version (pass "package=<PACKAGE_NAME>")
-	$(PIP_COMPILE) --generate-hashes --upgrade-package $(package) requirements/main.in
-	$(PIP_COMPILE) --generate-hashes --upgrade-package $(package) requirements/dev.in
+	@$(PIP_COMPILE) --generate-hashes --upgrade-package $(package) requirements/main.in
+	@$(PIP_COMPILE) --generate-hashes --upgrade-package $(package) requirements/dev.in
+	@$(PIP_COMPILE) --output-file requirements/constraints.txt requirements/main.txt requirements/dev.txt
 
 .PHONY: run
 run: ## Run the app
