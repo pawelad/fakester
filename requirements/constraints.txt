@@ -301,7 +301,7 @@ wheel==0.38.4
     # via
     #   -r requirements/dev.txt
     #   pip-tools
-whitenoise==6.3.0
+whitenoise==6.4.0
     # via -r requirements/main.txt
 yarl==1.8.2
     # via -r requirements/main.txt
