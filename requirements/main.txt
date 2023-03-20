@@ -37,9 +37,9 @@ django-crispy-forms==1.14.0 \
     # via
     #   -r requirements/main.in
     #   crispy-bootstrap5
-django-ipware==4.0.2 \
-    --hash=sha256:602a58325a4808bd19197fef2676a0b2da2df40d0ecf21be414b2ff48c72ad05 \
-    --hash=sha256:878dbb06a87e25550798e9ef3204ed70a200dd8b15e47dcef848cf08244f04c9
+django-ipware==5.0.0 \
+    --hash=sha256:4fa5607ee85e12ee5e158bc7569ff1e134fb1579681aa1ff3f0ed04be21be153 \
+    --hash=sha256:80b52a3f571a371519cc552798f1015b934dd5dd7738bfad87e101e861bd21b8
     # via -r requirements/main.in
 django-ratelimit==4.0.0 \
     --hash=sha256:19cba9e8101277f28c7a974c54c997067341ab30175431d3739e8ffb63cdd2b2 \
