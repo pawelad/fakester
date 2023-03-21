@@ -23,7 +23,10 @@ class RedirectFormView(TemplateView):
     def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
         """Add available domains and initialised form to the template."""
         kwargs["available_domains"] = settings.AVAILABLE_DOMAINS
-        kwargs["form"] = RedirectModelForm(data=self.request.POST or None)
+        kwargs["form"] = RedirectModelForm(
+            data=self.request.POST or None,
+            request=self.request,
+        )
 
         return super().get_context_data(**kwargs)
 

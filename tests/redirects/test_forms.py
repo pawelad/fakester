@@ -1,5 +1,6 @@
 """Test `redirects.forms` module."""
 from django import forms
+from django.test.client import RequestFactory
 
 import pytest
 from crispy_forms.helper import FormHelper
@@ -15,9 +16,10 @@ class TestRedirectModelForm:
     model_class = Redirect
 
     @pytest.fixture()
-    def redirect_form(self, db: None) -> RedirectModelForm:
+    def redirect_form(self, rf: RequestFactory, db: None) -> RedirectModelForm:
         """Initialize `RedirectModelForm` form."""
-        return RedirectModelForm()
+        request = rf.get("/")
+        return RedirectModelForm(request=request)
 
     def test_inheritance(self) -> None:
         """Inherits from Django's `ModelForm`."""
@@ -33,41 +35,48 @@ class TestRedirectModelForm:
         assert isinstance(redirect_form.helper, FormHelper)
 
     @pytest.mark.django_db()
-    def test_invalid_local_path(self, invalid_local_path: str) -> None:
+    def test_invalid_local_path(
+        self, rf: RequestFactory, invalid_local_path: str
+    ) -> None:
         """Fails validation for incorrect `local_path` values."""
         data = {
             "local_path": invalid_local_path,
             "destination_url": "https://example.com/",
         }
-        form = self.form_class(data)
+        request = rf.get("/")
+        form = self.form_class(data, request=request)
 
         assert not form.is_valid()
         assert "local_path" in form.errors
 
     @pytest.mark.django_db()
-    def test_unique_local_path(self) -> None:
+    def test_unique_local_path(self, rf: RequestFactory) -> None:
         """Fails validation for not unique `local_path` values."""
         data = {
             "local_path": "foo/bar.html",
             "destination_url": "https://example.com/",
         }
-        form = self.form_class(data)
+        request = rf.get("/")
+        form = self.form_class(data, request=request)
 
         assert form.is_valid()
         form.save()
 
-        form = self.form_class(data)
+        form = self.form_class(data, request=request)
         assert not form.is_valid()
         assert "local_path" in form.errors
 
     @pytest.mark.django_db()
-    def test_invalid_destination_url(self, invalid_destination_url: str) -> None:
+    def test_invalid_destination_url(
+        self, rf: RequestFactory, invalid_destination_url: str
+    ) -> None:
         """Fails validation for incorrect `destination_url` values."""
         data = {
             "local_path": "foo/bar.html",
             "destination_url": invalid_destination_url,
         }
-        form = self.form_class(data)
+        request = rf.get("/")
+        form = self.form_class(data, request=request)
 
         assert not form.is_valid()
         assert "destination_url" in form.errors
@@ -80,23 +89,27 @@ class TestRedirectModelForm:
             ("2023/01/01/good-news-everyone", "https://pawelad.me/"),
         ],
     )
-    def test_form_valid(self, local_path: str, destination_url: str) -> None:
+    def test_form_valid(
+        self, rf: RequestFactory, local_path: str, destination_url: str
+    ) -> None:
         """Requires valid `local_path` and `destination_url` fields."""
         data = {
             "local_path": local_path,
             "destination_url": destination_url,
         }
-        form = self.form_class(data)
+        request = rf.get("/")
+        form = self.form_class(data, request=request)
         assert form.is_valid()
 
     @pytest.mark.django_db()
-    def test_form_save(self) -> None:
+    def test_form_save(self, rf: RequestFactory) -> None:
         """Creates `Redirect` on save."""
         data = {
             "local_path": "foo/bar.html",
             "destination_url": "https://example.com/",
         }
-        form = self.form_class(data)
+        request = rf.get("/")
+        form = self.form_class(data, request=request)
         assert form.is_valid()
 
         form.save()

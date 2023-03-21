@@ -74,8 +74,7 @@ exclude = ["migrations"]
 
 [[tool.mypy.overrides]]
 module = [
-  "crispy_forms.helper",
-  "crispy_forms.layout",
+  "crispy_forms.*",
   "decouple",
   "django_ratelimit.decorators",
   "ipware",
