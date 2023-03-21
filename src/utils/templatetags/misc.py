@@ -3,7 +3,15 @@ from django import template
 
 from yarl import URL
 
+from fakester import __version__
+
 register = template.Library()
+
+
+@register.simple_tag
+def get_version() -> str:
+    """Get app version."""
+    return f"v{__version__}"
 
 
 @register.simple_tag
