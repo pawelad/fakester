@@ -10,6 +10,9 @@ from django.core.exceptions import ImproperlyConfigured
 
 from decouple import Choices, Csv, config
 from dj_database_url import parse as db_url
+from sentry_sdk.integrations.redis import RedisIntegration
+
+from fakester import __version__
 
 SRC_DIR = Path(__file__).resolve().parent.parent
 BASE_DIR = SRC_DIR.parent
@@ -165,11 +168,17 @@ if SENTRY_DSN:  # pragma: no cover
 
     sentry_sdk.init(
         dsn=SENTRY_DSN,
+        release=__version__,
+        environment=ENVIRONMENT,
         integrations=[
             DjangoIntegration(),
+            RedisIntegration(),
         ],
         traces_sample_rate=1.0,
         send_default_pii=True,
+        _experiments={
+            "profiles_sample_rate": 1.0,
+        },
     )
 
 # django-crispy-forms
