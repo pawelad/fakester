@@ -73,36 +73,40 @@ Available settings:
 ```
 # App environment. Should be set to one of: "local" or "production"
 # Default: "local"
-ENVIRONMENT=production
+ENVIRONMENT='production'
 
 # Django's secret key. Should be kept private and needs to be set on a non-local enviroment.
 # Defualt: "CHANGE_ME"
 # Docs: https://docs.djangoproject.com/en/4.1/ref/settings/#secret-key
-SECRET_KEY=THIS_IS_A_VERY_SECRET_KEY
+SECRET_KEY='THIS_IS_A_VERY_SECRET_KEY'
 
 # Controls Django's debug mode. Can't be enabled on a non-local enviroment.
 # Docs: https://docs.djangoproject.com/en/4.1/ref/settings/#debug
-DEBUG=True
+DEBUG='True'
 
 # Comma separated list of allowed hosts
 # Default: "localhost, 127.0.0.1, 0.0.0.0"
 # Docs: https://docs.djangoproject.com/en/4.1/ref/settings/#allowed-hosts
-ALLOWED_HOSTS=*
+ALLOWED_HOSTS='*'
 
 # Database URL
 # Default: "postgres://localhost/fakester"
 # Docs: https://github.com/jazzband/dj-database-url#url-schema
-DATABASE_URL=postgres://fakester:fakester@localhost:54320/fakester
+DATABASE_URL='postgres://fakester:fakester@localhost:54320/fakester'
 
 # Redis URL
 # Default: "redis://localhost:6379"
 # Docs: https://docs.djangoproject.com/en/4.1/topics/cache/#redis
-REDIS_URL=redis://redis:6379
+REDIS_URL='redis://redis:6379'
+
+# Comma separated list of avaible domains
+# Default: None
+AVAILABLE_DOMAINS='example.com,foo.bar'
 
 # Sentry DSN. If not set, Sentry integration will be disabled.
 # Default: None
 # Docs: https://docs.sentry.io/platforms/python/#configure
-SENTRY_DSN=https://*****@*****.ingest.sentry.io/*****
+SENTRY_DSN='https://*****@*****.ingest.sentry.io/*****'
 ```
 
 ## Makefile

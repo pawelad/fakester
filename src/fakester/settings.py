@@ -153,7 +153,11 @@ LOGIN_REDIRECT_URL = "admin:index"
 ##########
 # Custom #
 ##########
-AVAILABLE_DOMAINS = None
+AVAILABLE_DOMAINS = config(
+    "AVAILABLE_DOMAINS",
+    default=None,
+    cast=Csv(),
+)
 
 ###############
 # Third-party #
