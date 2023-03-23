@@ -1,7 +1,11 @@
 """Redirects app models."""
+from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.core.validators import RegexValidator
 from django.db import models
+from django.http import HttpRequest
+
+from yarl import URL
 
 from utils.models import BaseModel
 
@@ -80,7 +84,40 @@ class Redirect(BaseModel):
 
         return reverse("redirects:redirect", kwargs={"local_path": self.local_path})
 
+    @property
+    def absolute_path(self) -> str:
+        """Return absolute fake URL path."""
+        if not self.local_path.startswith("/"):
+            return f"/{self.local_path}"
+
+        return self.local_path
+
     def increase_view_count(self) -> None:
         """Increase redirect view count by 1."""
         self.views += 1
         self.save()
+
+    def get_fakester_links(self, request: HttpRequest | None = None) -> list[str]:
+        """Return fakester redirect links for all available domains."""
+        urls = []
+
+        scheme = request.scheme if request and request.scheme else "http"
+
+        if request:
+            # The domain currently browsed by the user should always be shown first
+            url = URL.build(
+                scheme=scheme,
+                host=request.get_host(),
+                path=self.absolute_path,
+            )
+            urls.append(str(url))
+
+        if settings.AVAILABLE_DOMAINS:
+            for domain in settings.AVAILABLE_DOMAINS:
+                url = URL.build(scheme=scheme, host=domain, path=self.absolute_path)
+
+                # Avoid duplicating the currently browsed domain
+                if str(url) not in urls:
+                    urls.append(str(url))
+
+        return urls

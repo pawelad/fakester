@@ -1,14 +1,22 @@
-{% load misc %}
-
 <div class="row">
   <div class="col-lg-8 mx-auto pt-3">
     <h3 class="fw-light">Good news everyone!</h3>
 
-    {% create_url request.scheme request.get_host view.redirect.local_path as url %}
     <p class="lead fw-light text-justify">
-      You can now send <strong><a href="{{ url }}" target="_blank">{{ url }}</a></strong>
-      to someone, and it will redirect them to <strong><a href="{{ view.redirect.destination_url }}">{{ view.redirect.destination_url }}</a></strong>
+      You can now send one of the links below to someone, and it will redirect them to
+      <strong><a href="{{ view.redirect.destination_url }}" target="_blank">{{ view.redirect.destination_url }}</a></strong>
       (don't tell them that though). How cool is that?
+    </p>
+
+    <p>
+      {% for url in view.redirect_fakester_links %}
+        <div class="input-group mb-3">
+          <input id="fakesterLink{{ forloop.counter }}" class="form-control" type="text" value="{{ url }}" readonly>
+          <button class="btn btn-outline-info copy-button" type="button" data-clipboard-target="#fakesterLink{{ forloop.counter }}">
+            <i class="fa-regular fa-copy fa-fw"></i>
+          </button>
+        </div>
+      {% endfor %}
     </p>
 
     <p class="lead fw-light">
@@ -16,20 +24,3 @@
     </p>
   </div>
 </div>
-
-{% if available_domains %}
-  <div class="row">
-    <div class="col-lg-8 mx-auto pt-3 border-top">
-      <h5 class="fw-light">List of all available URLs:</h5>
-
-      <ul>
-        {% for domain in available_domains %}
-          {% create_url request.scheme domain view.redirect.local_path as url %}
-          <li>
-            <a href="{{ url }}" target="_blank">{{ url }}</a>
-          </li>
-        {% endfor %}
-      </ul>
-    </div>
-  </div>
-{% endif %}

@@ -1,9 +1,11 @@
 """Test `redirects.models` module."""
 from django.core.exceptions import ValidationError
 from django.db import models
+from django.test.client import RequestFactory
 
 import pytest
 from model_bakery import baker
+from pytest_django.fixtures import SettingsWrapper
 
 from redirects.models import Redirect
 from utils.models import BaseModel
@@ -103,3 +105,52 @@ class TestRedirect:
         redirect = self.model_class.objects.get(local_path=data["local_path"])
         assert redirect
         assert redirect.destination_url == data["destination_url"]
+
+    @pytest.mark.django_db()
+    @pytest.mark.parametrize(
+        ("local_path", "available_domains", "fakester_links"),
+        [
+            ("pawelad.html", None, ["http://localhost/pawelad.html"]),
+            (
+                "local_path",
+                ["example.com", "foo.bar"],
+                [
+                    "http://localhost/local_path",
+                    "http://example.com/local_path",
+                    "http://foo.bar/local_path",
+                ],
+            ),
+            (
+                "with/a/slash",
+                ["example.com", "foo.bar", "localhost"],
+                [
+                    "http://localhost/with/a/slash",
+                    "http://example.com/with/a/slash",
+                    "http://foo.bar/with/a/slash",
+                ],
+            ),
+        ],
+    )
+    def test_get_fakester_links(
+        self,
+        settings: SettingsWrapper,
+        rf: RequestFactory,
+        redirect: Redirect,
+        local_path: str,
+        available_domains: list[str],
+        fakester_links: list[str],
+    ) -> None:
+        """Creates all fakester links based on available domains."""
+        settings.AVAILABLE_DOMAINS = available_domains
+
+        data = {
+            "local_path": local_path,
+            "destination_url": "https://youtu.be/I6OXjnBIW-4",
+        }
+        redirect = self.model_class(**data)
+        redirect.full_clean()
+        redirect.save()
+
+        request = rf.get(f"/{local_path}", HTTP_HOST="localhost")
+
+        assert redirect.get_fakester_links(request) == fakester_links

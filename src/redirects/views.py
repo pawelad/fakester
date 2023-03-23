@@ -1,7 +1,6 @@
 """Redirects app views."""
 from typing import Any
 
-from django.conf import settings
 from django.http import HttpRequest, HttpResponseBase
 from django.shortcuts import get_object_or_404
 from django.utils.decorators import method_decorator
@@ -22,7 +21,6 @@ class RedirectFormView(TemplateView):
 
     def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
         """Add available domains and initialised form to the template."""
-        kwargs["available_domains"] = settings.AVAILABLE_DOMAINS
         kwargs["form"] = RedirectModelForm(
             data=self.request.POST or None,
             request=self.request,
@@ -42,8 +40,10 @@ class RedirectFormView(TemplateView):
             redirect.sender_ip, _ = get_client_ip(self.request)
             redirect.save()
 
+            # TODO: This feels hack-ish...
             # Add saved object to view in order to access it in the template
             self.redirect = redirect
+            self.redirect_fakester_links = redirect.get_fakester_links(request)
 
         return super().get(request, *args, **kwargs)
 

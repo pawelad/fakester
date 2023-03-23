@@ -32,6 +32,29 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap">
   {% endblock fonts %}
 
+  {% block js %}
+  <script src="{% static 'js/bootstrap.bundle.min.js' %}" defer></script>
+  <script src="{% static 'js/clipboard.min.js' %}" defer></script>
+  <script type="module">
+    // Clipboard
+    let clipboard = new ClipboardJS('.copy-button');
+
+    clipboard.on('success', function(e) {
+      let trigger_button = e.trigger;
+      let tooltipOptions = {
+        title: 'Copied!',
+        trigger: 'manual',
+      };
+      let btn_tooltip = bootstrap.Tooltip.getOrCreateInstance(trigger_button, tooltipOptions);
+      btn_tooltip.show();
+
+      setTimeout(function () {
+        btn_tooltip.dispose();
+      }, 2000);
+    });
+  </script>
+  {% endblock js %}
+
   {% block head_extra %}{% endblock head_extra %}
 </head>
 
