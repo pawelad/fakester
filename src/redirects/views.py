@@ -37,7 +37,7 @@ class RedirectFormView(TemplateView):
         if form.is_valid():
             # Add sender IP address
             redirect = form.save(commit=False)
-            redirect.sender_ip, _ = get_client_ip(self.request)
+            redirect.author_ip, _ = get_client_ip(self.request)
             redirect.save()
 
             # TODO: This feels hack-ish...

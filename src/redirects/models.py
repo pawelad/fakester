@@ -39,8 +39,8 @@ class Redirect(BaseModel):
         editable=False,
     )
 
-    sender_ip = models.GenericIPAddressField(
-        verbose_name="sender IP",
+    author_ip = models.GenericIPAddressField(
+        verbose_name="author IP",
         null=True,
         editable=False,
     )

@@ -98,7 +98,7 @@ class TestRedirectFormView:
         redirect = Redirect.objects.get(local_path=data["local_path"])
         assert redirect.destination_url == data["destination_url"]
         assert redirect.views == 0
-        assert redirect.sender_ip == ip_address
+        assert redirect.author_ip == ip_address
 
     @pytest.mark.xfail(reason="I don't know why this test isn't working")
     @pytest.mark.django_db()
