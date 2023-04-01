@@ -170,7 +170,7 @@ redis==4.5.2
     #   fakeredis
 ruff==0.0.257
     # via -r requirements/dev.txt
-sentry-sdk==1.17.0
+sentry-sdk==1.18.0
     # via -r requirements/main.txt
 sortedcontainers==2.4.0
     # via
