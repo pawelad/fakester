@@ -26,5 +26,5 @@ jobs:
         uses: "dokku/github-action@v1.4.0"
         with:
           branch: "main"
-          git_remote_url: "${{ var.DOKKU_GIT_REMOTE_URL }}"
+          git_remote_url: "${{ vars.DOKKU_GIT_REMOTE_URL }}"
           ssh_private_key: "${{ secrets.DOKKU_SSH_PRIVATE_KEY }}"
