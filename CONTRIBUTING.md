@@ -85,7 +85,7 @@ SECRET_KEY='THIS_IS_A_VERY_SECRET_KEY'
 DEBUG='True'
 
 # Comma separated list of allowed hosts
-# Default: "localhost, 127.0.0.1, 0.0.0.0"
+# Default: None
 # Docs: https://docs.djangoproject.com/en/4.1/ref/settings/#allowed-hosts
 ALLOWED_HOSTS='*'
 

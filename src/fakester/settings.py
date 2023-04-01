@@ -41,7 +41,7 @@ if DEBUG and ENVIRONMENT != "local":
 
 ALLOWED_HOSTS = config(
     "ALLOWED_HOSTS",
-    default="localhost, 127.0.0.1, 0.0.0.0",
+    default=None,
     cast=Csv(),
 )
 

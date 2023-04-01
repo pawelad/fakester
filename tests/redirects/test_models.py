@@ -141,6 +141,7 @@ class TestRedirect:
         fakester_links: list[str],
     ) -> None:
         """Creates all fakester links based on available domains."""
+        settings.ALLOWED_HOSTS = ["localhost"]
         settings.AVAILABLE_DOMAINS = available_domains
 
         data = {
