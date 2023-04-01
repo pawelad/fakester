@@ -36,6 +36,8 @@ class RedirectModelForm(forms.ModelForm):
         helper.layout = Layout(
             PrependedText("local_path", str(url)),
             "destination_url",
+            "title",
+            "description",
             Submit("submit", "Fake it!", css_class="float-end"),
         )
         return helper
@@ -45,6 +47,8 @@ class RedirectModelForm(forms.ModelForm):
         fields = (
             "local_path",
             "destination_url",
+            "title",
+            "description",
         )
         widgets = {
             "local_path": forms.TextInput(
@@ -52,5 +56,15 @@ class RedirectModelForm(forms.ModelForm):
             ),
             "destination_url": forms.TextInput(
                 attrs={"placeholder": "https://youtu.be/I6OXjnBIW-4"}
+            ),
+            "title": forms.TextInput(attrs={"placeholder": "How is it 2023 already?"}),
+            "description": forms.Textarea(
+                attrs={
+                    "placeholder": (
+                        "We asked our readers if they know that it's 2023. "
+                        "Here's what they said."
+                    ),
+                    "rows": 3,
+                }
             ),
         }

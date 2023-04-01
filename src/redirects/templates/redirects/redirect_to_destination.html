@@ -1,14 +1,21 @@
-{% extends 'base.html' %}
+<!doctype html>
+<html lang="en">
 
-{% block css %}{% endblock css %}
-{% block fonts %}{% endblock fonts %}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-{% block head_extra %}
+  <title>{{ redirect.title }}</title>
+
+  <meta name="description" content="{{ redirect.description }}">
+
   <meta http-equiv="refresh" content="1; url={{ redirect.destination_url }}">
 
   <script>
     window.location.href = "{{ redirect.destination_url }}";
   </script>
-{% endblock head_extra %}
+</head>
 
-{% block body %}{% endblock body %}
+<body></body>
+
+</html>

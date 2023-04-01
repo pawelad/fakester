@@ -1,1 +1,1 @@
-"""Test `redirects` app."""
+"""Tests for `redirects` app."""

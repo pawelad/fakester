@@ -7,6 +7,7 @@ from django.http import HttpRequest
 
 from yarl import URL
 
+from utils.misc import deslugify
 from utils.models import BaseModel
 
 
@@ -31,6 +32,24 @@ class Redirect(BaseModel):
 
     destination_url = models.URLField(
         verbose_name="destination URL",
+    )
+
+    title = models.CharField(
+        verbose_name="title",
+        max_length=255,
+        default="",
+        blank=True,
+        help_text=(
+            "Used in link previews. If not provided, it will be automatically "
+            "generated."
+        ),
+    )
+
+    description = models.TextField(
+        verbose_name="description",
+        default="",
+        blank=True,
+        help_text="Used in link previews.",
     )
 
     views = models.PositiveIntegerField(
@@ -58,9 +77,10 @@ class Redirect(BaseModel):
 
     def clean(self) -> None:
         """Sanitize `local_path` value and check for forbidden values."""
-        # Remove leading slashes from local path
+        # Remove leading slashes from `local_path`
         self.local_path = self.local_path.lstrip("/")
 
+        # Check `local_path` for some common values we don't want to allow
         if self.local_path in {
             "favicon.ico",
             "robots.txt",
@@ -75,6 +95,10 @@ class Redirect(BaseModel):
                 raise ValidationError(
                     {"local_path": f"Path cannot start with '{path_prefix}'."}
                 )
+
+        # Generate `title` from `local_path` if it's not provided
+        if not self.title:
+            self.title = deslugify(self.local_path)
 
         return super().clean()
 
