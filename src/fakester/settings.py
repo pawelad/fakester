@@ -178,10 +178,10 @@ if SENTRY_DSN:  # pragma: no cover
             DjangoIntegration(),
             RedisIntegration(),
         ],
-        traces_sample_rate=1.0,
+        traces_sample_rate=0.5,
         send_default_pii=True,
         _experiments={
-            "profiles_sample_rate": 1.0,
+            "profiles_sample_rate": 0.5,
         },
     )
 
