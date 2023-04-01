@@ -13,15 +13,24 @@ were _a bit_ too obvious? Well, I did. A couple of times, actually.
 
 So I made this. And now you can trick your boss too. You're welcome.
 
-Last seen at https://fakester.pawelad.me
+Last seen at https://fakester.pawelad.me/
 
 ## Domains
-Domains are meant to be interchangeable, and each redirect works on all linked domains.
+Domains are meant to be interchangeable (with each redirect working on all currently
+linked domains) and temporary (renewing a domain is usually much more expensive
+than registering it).
 
-Currently, there are no other domains linked (but feel free to donate one : ).
+Currently linked domains:
+
+- https://reportech.xyz/
+- https://mortifex.shop/
+- https://notarickroll.website/
+
+If you'd like to 'donate' a domain, [let me know][github new issue]! It's as easy
+as pointing the DNS record at `fakester.pawelad.me` and enabling it on the backend.
 
 ### Historical domains
-Just for the sake of it, here are domains used in the past
+Just for the sake of it, here are domains used in the past:
 
 <details>
   <summary>Season 2</summary>
@@ -73,7 +82,7 @@ Developed and maintained by [Paweł Adamczak][pawelad].
 
 Source code is available at [GitHub][github fakester].
 
-If you'd like to contribute (or run fakester yourself), please take a look at the
+If you'd like to contribute (or run fakester yourself), please take a look at
 [CONTRIBUTING.md][contributing].
 
 Released under [Mozilla Public License 2.0][license].
