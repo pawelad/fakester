@@ -14,6 +14,12 @@ asgiref==3.6.0 \
     # via
     #   -c requirements/main.txt
     #   django
+async-timeout==4.0.2 \
+    --hash=sha256:2163e1640ddb52b7a8c80d0a67a08587e5d245cc9c553a74a847056bc2976b15 \
+    --hash=sha256:8ca1e4fcf50d07413d66d1a5e416e42cfdf5851c981d679a09851a6853383b3c
+    # via
+    #   -c requirements/main.txt
+    #   redis
 attrs==22.2.0 \
     --hash=sha256:29e95c7f6778868dbd49170f98f8818f78f3dc5e0e37c0b1f474e3561b240836 \
     --hash=sha256:c9227bfc2f01993c03f68db37d1d15c9690188323c067c641f1a35ca58185f99
@@ -257,12 +263,10 @@ pytest-mock==3.10.0 \
     --hash=sha256:f4c973eeae0282963eb293eb173ce91b091a79c1334455acfac9ddee8a1c784b \
     --hash=sha256:fbbdb085ef7c252a326fd8cdcac0aa3b1333d8811f131bdcc701002e1be7ed4f
     # via -r requirements/dev.in
-redis==4.5.2 \
-    --hash=sha256:4b12b3a1e9bfb43dc533330ec6d142329d0c27ea6bb6716a9d0389e8f2038a4e \
-    --hash=sha256:d8ae1a4f725eea6e3958411870fdf944c587b00ea12be28d3bd5575d8f26430c
-    # via
-    #   -c requirements/main.txt
-    #   fakeredis
+redis==4.5.4 \
+    --hash=sha256:2c19e6767c474f2e85167909061d525ed65bea9301c0770bb151e041b7ac89a2 \
+    --hash=sha256:73ec35da4da267d6847e47f68730fdd5f62e2ca69e3ef5885c6a78a9374c3893
+    # via fakeredis
 ruff==0.0.257 \
     --hash=sha256:3438fd38446e1a0915316f4085405c9feca20fe00a4b614995ab7034dbfaa7ff \
     --hash=sha256:3464f1ad4cea6c4b9325da13ae306bd22bf15d226e18d19c52db191b1f4355ac \

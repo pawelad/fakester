@@ -13,6 +13,11 @@ asgiref==3.6.0
     #   -r requirements/dev.txt
     #   -r requirements/main.txt
     #   django
+async-timeout==4.0.2
+    # via
+    #   -r requirements/dev.txt
+    #   -r requirements/main.txt
+    #   redis
 attrs==22.2.0
     # via
     #   -r requirements/dev.txt
@@ -163,7 +168,7 @@ pytest-mock==3.10.0
     # via -r requirements/dev.txt
 python-decouple==3.8
     # via -r requirements/main.txt
-redis==4.5.2
+redis==4.5.4
     # via
     #   -r requirements/dev.txt
     #   -r requirements/main.txt
