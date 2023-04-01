@@ -90,7 +90,7 @@ DEBUG='True'
 ALLOWED_HOSTS='*'
 
 # Database URL
-# Default: "postgres://localhost/fakester"
+# Default: "postgres://postgres@localhost/fakester"
 # Docs: https://github.com/jazzband/dj-database-url#url-schema
 DATABASE_URL='postgres://fakester:fakester@localhost:54320/fakester'
 
@@ -99,7 +99,7 @@ DATABASE_URL='postgres://fakester:fakester@localhost:54320/fakester'
 # Docs: https://docs.djangoproject.com/en/4.1/topics/cache/#redis
 REDIS_URL='redis://redis:6379'
 
-# Comma separated list of avaible domains
+# Comma separated list of linked domains. Used to generate a list of all redirect fakester links
 # Default: None
 AVAILABLE_DOMAINS='example.com,foo.bar'
 

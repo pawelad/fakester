@@ -1,8 +1,8 @@
 """fakester Django settings.
 
-We use `python-decouple` to load values from environment variables and a local `.env`
-file (in that order). Custom and third party settings should be put in their respective
-sections at the end of the file.
+It uses `python-decouple` to load values from environment variables and a local
+`.env` file (in that order). Custom and third party settings should be put in their
+respective sections at the end of the file.
 """
 from pathlib import Path
 
@@ -29,14 +29,14 @@ if not SECRET_KEY:
         SECRET_KEY = "CHANGE_ME"  # noqa
     else:
         raise ImproperlyConfigured(
-            "You need to provide 'SECRET_KEY' when not running local environment"
+            "You need to provide 'SECRET_KEY' when not running a local environment"
         )
 
 
 DEBUG = config("DEBUG", default=False, cast=bool)
 if DEBUG and ENVIRONMENT != "local":
     raise ImproperlyConfigured(
-        "You need to disable 'DEBUG' when running production environment"
+        "You need to disable 'DEBUG' when not running a local environment"
     )
 
 ALLOWED_HOSTS = config(
