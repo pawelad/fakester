@@ -145,9 +145,9 @@ django-stubs-ext==0.8.0 \
     --hash=sha256:9a9ba9e2808737949de96a0fce8b054f12d38e461011d77ebc074ffe8c43dfcb \
     --hash=sha256:a454d349d19c26d6c50c4c6dbc1e8af4a9cda4ce1dc4104e3dd4c0330510cc56
     # via django-stubs
-fakeredis==2.10.1 \
-    --hash=sha256:6f31e6213b724147f21d3f560ac2ea0b67cf4402a7ee98f5c338b7d5178151dc \
-    --hash=sha256:c27e175da47ebe30174cc22e1a99155c5c3b8583d1b7a3c69008fdbf1c7096f1
+fakeredis==2.10.2 \
+    --hash=sha256:6377c27bc557be46089381d43fd670aece46672d091a494f73ab4c96c34022b3 \
+    --hash=sha256:e2a95fbda7b11188c117d68b0f9eecc00600cb449ccf3362a15fc03cf9e2477d
     # via -r requirements/dev.in
 filelock==3.10.0 \
     --hash=sha256:3199fd0d3faea8b911be52b663dfccceb84c95949dd13179aa21436d1a79c4ce \
@@ -266,7 +266,9 @@ pytest-mock==3.10.0 \
 redis==4.5.4 \
     --hash=sha256:2c19e6767c474f2e85167909061d525ed65bea9301c0770bb151e041b7ac89a2 \
     --hash=sha256:73ec35da4da267d6847e47f68730fdd5f62e2ca69e3ef5885c6a78a9374c3893
-    # via fakeredis
+    # via
+    #   -c requirements/main.txt
+    #   fakeredis
 ruff==0.0.257 \
     --hash=sha256:3438fd38446e1a0915316f4085405c9feca20fe00a4b614995ab7034dbfaa7ff \
     --hash=sha256:3464f1ad4cea6c4b9325da13ae306bd22bf15d226e18d19c52db191b1f4355ac \
