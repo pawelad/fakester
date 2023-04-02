@@ -1,4 +1,4 @@
-# fakester
+# Contributing guide
 Welcome! If you'd like to contribute to fakester (or run it yourself), you came to
 right place. Hopefully, everything noteworthy is mentioned, but if you still have
 some questions after reading it all, don't hesitate to open up a [new discussion].
