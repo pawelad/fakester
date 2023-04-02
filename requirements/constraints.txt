@@ -85,7 +85,7 @@ django-stubs-ext==0.8.0
     #   django-stubs
 fakeredis==2.10.2
     # via -r requirements/dev.txt
-filelock==3.10.0
+filelock==3.10.7
     # via
     #   -r requirements/dev.txt
     #   virtualenv
