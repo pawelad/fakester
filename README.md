@@ -3,9 +3,11 @@
 </p>
 
 [![GitHub release](https://img.shields.io/github/release/pawelad/fakester.svg)][github release]
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/pawelad/fakester/ci.yml?label=CI)][fakester ci workflow]
+[![GitHub deployment status](https://img.shields.io/github/deployments/pawelad/fakester/production?label=deploy)][fakester deploy workflow]
 [![License](https://img.shields.io/github/license/pawelad/fakester.svg)][license]
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)][black]
-[![py.typed](https://img.shields.io/badge/py-typed-green)][pep561]
+[![py.typed](https://img.shields.io/badge/py-typed-FFD43B)][pep561]
 
 Have you ever wanted to rickroll your boss but found that links like
 https://goo.gl/ejKmN3, https://bit.ly/LEcVV7 and (_ekhm_) https://youtu.be/I6OXjnBIW-4
@@ -90,6 +92,8 @@ Released under [Mozilla Public License 2.0][license].
 
 [black]: https://black.readthedocs.io/
 [contributing]: ./CONTRIBUTING.md
+[fakester ci workflow]: https://github.com/pawelad/fakester/actions/workflows/ci.yml
+[fakester deploy workflow]: https://github.com/pawelad/fakester/actions/workflows/deploy.yml
 [github fakester]: https://github.com/pawelad/fakester
 [github new issue]: https://github.com/pawelad/fakester/issues/new/choose
 [github release]: https://github.com/pawelad/fakester/releases/latest
