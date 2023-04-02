@@ -1,0 +1,14 @@
+version: 2
+updates:
+  - package-ecosystem: "pip"
+    directory: "/requirements/"
+    schedule:
+      interval: "weekly"
+    assignees: ["pawelad"]
+    reviewers: ["pawelad"]
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    assignees: ["pawelad"]
+    reviewers: ["pawelad"]
