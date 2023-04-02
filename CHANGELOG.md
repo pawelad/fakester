@@ -6,6 +6,7 @@ The format is based on [Keep a Changelog], and this project adheres to
 
 ## [Unreleased]
 
+## [v2.0.2](https://github.com/pawelad/fakester/releases/tag/v2.0.2) - 2023-04-02
 ## Changed
 - Allow only one concurrent deploy GitHub Actions workflow.
 - Use `environment` setting in deploy GitHub Actions workflow.
