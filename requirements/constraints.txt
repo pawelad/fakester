@@ -200,7 +200,7 @@ tomli==2.0.1
     #   django-stubs
 types-dj-database-url==1.2.0.1
     # via -r requirements/dev.txt
-types-pytz==2022.7.1.2
+types-pytz==2023.3.0.0
     # via
     #   -r requirements/dev.txt
     #   django-stubs
