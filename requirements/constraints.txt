@@ -236,7 +236,7 @@ pip==23.0.1
     # via
     #   -r requirements/dev.txt
     #   pip-tools
-setuptools==67.6.0
+setuptools==67.6.1
     # via
     #   -r requirements/dev.txt
     #   -r requirements/main.txt
