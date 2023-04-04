@@ -12,6 +12,7 @@ omit = [
 ]
 
 [tool.interrogate]
+ignore-init-module = true
 ignore-nested-classes = true
 fail-under = 95
 exclude = [
@@ -57,6 +58,7 @@ select = [
 ignore = [
   "ANN101",  # Missing type annotation for `self` in method
   "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed in `**kwargs`
+  "D104",  # Missing docstring in public package
   "D106",  # Missing docstring in public nested class
   "S101",  # Use of `assert` detected
   "TRY003",  # Avoid specifying long messages outside the exception class
