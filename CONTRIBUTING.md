@@ -25,7 +25,7 @@ running locally and run:
 
 ```console
 $ # Install nox
-$ python -m pip install nox
+$ python -m pip install nox -c requirements/constraints.txt
 $ # Run nox
 $ make test
 ```
