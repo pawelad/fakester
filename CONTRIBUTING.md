@@ -1,7 +1,11 @@
-# Contributing guide
-Welcome! If you'd like to contribute to fakester (or run it yourself), you came to
-right place. Hopefully, everything noteworthy is mentioned, but if you still have
-some questions after reading it all, don't hesitate to open up a [new discussion].
+# Contributing Guide
+Welcome! If you'd like to contribute to `fakester` (or run it yourself), you came
+to right place. Hopefully, everything noteworthy is mentioned, but if you still
+have some questions after reading it all, don't hesitate to open up a 
+[new issue][github new issue].
+
+Please also note that this project is released with a [Contributor Code of Conduct].
+By participating in this project you agree to abide by its terms.
 
 ## Tools used
 **Language:** [Python 3.11.2][python]  
@@ -134,13 +138,14 @@ help                                      Show help message
 
 
 [black]: https://black.readthedocs.io/
+[contributor code of conduct]: ./.github/CODE_OF_CONDUCT.md
 [django]: https://www.djangoproject.com/
 [docker]: https://www.docker.com/
 [docker compose]: https://docs.docker.com/compose/
 [github actions]: https://github.com/features/actions
+[github new issue]: https://github.com/pawelad/fakester/issues/new/choose
 [interrogate]: https://github.com/econchick/interrogate
 [isort]: https://github.com/timothycrosley/isort
-[new discussion]: https://github.com/pawelad/fakester/discussions/new/choose
 [nox]: https://nox.readthedocs.io/
 [pip-tools]: https://github.com/jazzband/pip-tools
 [postgresql]: https://www.postgresql.org/
