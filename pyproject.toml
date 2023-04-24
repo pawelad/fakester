@@ -11,6 +11,9 @@ omit = [
   "*/wsgi.py",
 ]
 
+[tool.django-stubs]
+django_settings_module = "fakester.settings"
+
 [tool.interrogate]
 ignore-init-module = true
 ignore-nested-classes = true
@@ -27,6 +30,21 @@ profile = "black"
 src_paths = ["src"]
 known_django = "django"
 sections = "FUTURE,STDLIB,DJANGO,THIRDPARTY,FIRSTPARTY,LOCALFOLDER"
+
+[tool.mypy]
+python_version = "3.11"
+mypy_path = "src"
+plugins = ["mypy_django_plugin.main"]
+exclude = ["migrations"]
+
+[[tool.mypy.overrides]]
+module = [
+  "crispy_forms.*",
+  "decouple",
+  "django_ratelimit.decorators",
+  "ipware",
+]
+ignore_missing_imports = true
 
 [tool.pytest.ini_options]
 minversion = "6.0"
@@ -67,21 +85,3 @@ extend-exclude = ["migrations"]
 
 [tool.ruff.pydocstyle]
 convention = "google"
-
-[tool.mypy]
-python_version = "3.11"
-mypy_path = "src"
-plugins = ["mypy_django_plugin.main"]
-exclude = ["migrations"]
-
-[[tool.mypy.overrides]]
-module = [
-  "crispy_forms.*",
-  "decouple",
-  "django_ratelimit.decorators",
-  "ipware",
-]
-ignore_missing_imports = true
-
-[tool.django-stubs]
-django_settings_module = "fakester.settings"
