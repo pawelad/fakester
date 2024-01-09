@@ -3,8 +3,9 @@
 </p>
 
 [![GitHub release](https://img.shields.io/github/release/pawelad/fakester.svg)][github release]
-[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/pawelad/fakester/ci.yml?label=CI)][fakester ci workflow]
-[![GitHub deployment status](https://img.shields.io/github/deployments/pawelad/fakester/production?label=deploy)][fakester deploy workflow]
+[![GitHub CI status](https://img.shields.io/github/actions/workflow/status/pawelad/fakester/ci.yml?label=CI)][fakester ci workflow]
+[![GitHub deployment status](https://img.shields.io/github/deployments/pawelad/fakester/production?label=deploy)][fakester production deployment]
+[![GitHub docs status](https://img.shields.io/github/deployments/pawelad/fakester/github-pages?label=docs)][fakester docs deployment]
 [![License](https://img.shields.io/github/license/pawelad/fakester.svg)][license]
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)][black]
 [![py.typed](https://img.shields.io/badge/py-typed-FFD43B)][rickroll]
@@ -93,7 +94,8 @@ Released under [Mozilla Public License 2.0][license].
 [black]: https://black.readthedocs.io/
 [contributing guide]: ./CONTRIBUTING.md
 [fakester ci workflow]: https://github.com/pawelad/fakester/actions/workflows/ci.yml
-[fakester deploy workflow]: https://github.com/pawelad/fakester/actions/workflows/deploy.yml
+[fakester docs deployment]: https://github.com/pawelad/fakester/deployments/github-pages
+[fakester production deployment]: https://github.com/pawelad/fakester/deployments/production
 [github fakester]: https://github.com/pawelad/fakester
 [github new issue]: https://github.com/pawelad/fakester/issues/new/choose
 [github release]: https://github.com/pawelad/fakester/releases/latest
