@@ -41,7 +41,7 @@ jobs:
       - name: "Setup GitHub Pages"
         uses: "actions/configure-pages@v4"
 
-      - name: "Build docs with 'docs' Nox session"
+      - name: "Build docs via Nox"
         run: "nox -s docs"
 
       - name: "Upload artifact"

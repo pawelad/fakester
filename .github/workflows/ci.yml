@@ -44,7 +44,7 @@ jobs:
       - name: "Update pip and install Nox"
         run: "python -m pip install pip nox -c requirements/constraints.txt"
 
-      - name: "Run 'tests' Nox session"
+      - name: "Run tests via Nox"
         run: "nox -s tests"
 
   checks:
