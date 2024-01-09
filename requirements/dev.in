@@ -19,6 +19,11 @@ django-stubs
 mypy
 types-dj-database-url
 
-# Misc
+# Docs
+mkdocs
+mkdocs-include-markdown-plugin
+mkdocs-material
+
+# Tooling
 nox
 pip-tools

@@ -23,26 +23,42 @@ attrs==22.2.0
     #   -r requirements/dev.txt
     #   interrogate
     #   pytest
+babel==2.14.0
+    # via
+    #   -r requirements/dev.txt
+    #   mkdocs-material
 black==23.3.0
     # via -r requirements/dev.txt
+bracex==2.4
+    # via
+    #   -r requirements/dev.txt
+    #   wcmatch
 build==0.10.0
     # via
     #   -r requirements/dev.txt
     #   pip-tools
 certifi==2022.12.7
     # via
+    #   -r requirements/dev.txt
     #   -r requirements/main.txt
+    #   requests
     #   sentry-sdk
+charset-normalizer==3.3.2
+    # via
+    #   -r requirements/dev.txt
+    #   requests
 click==8.1.3
     # via
     #   -r requirements/dev.txt
     #   black
     #   interrogate
+    #   mkdocs
     #   pip-tools
 colorama==0.4.6
     # via
     #   -r requirements/dev.txt
     #   interrogate
+    #   mkdocs-material
 colorlog==6.7.0
     # via
     #   -r requirements/dev.txt
@@ -89,13 +105,19 @@ filelock==3.10.0
     # via
     #   -r requirements/dev.txt
     #   virtualenv
+ghp-import==2.1.0
+    # via
+    #   -r requirements/dev.txt
+    #   mkdocs
 gunicorn==20.1.0
     # via -r requirements/main.txt
 hiredis==2.2.2
     # via -r requirements/main.txt
 idna==3.4
     # via
+    #   -r requirements/dev.txt
     #   -r requirements/main.txt
+    #   requests
     #   yarl
 iniconfig==2.0.0
     # via
@@ -105,6 +127,39 @@ interrogate==1.5.0
     # via -r requirements/dev.txt
 isort==5.12.0
     # via -r requirements/dev.txt
+jinja2==3.1.2
+    # via
+    #   -r requirements/dev.txt
+    #   mkdocs
+    #   mkdocs-material
+markdown==3.5.1
+    # via
+    #   -r requirements/dev.txt
+    #   mkdocs
+    #   mkdocs-material
+    #   pymdown-extensions
+markupsafe==2.1.3
+    # via
+    #   -r requirements/dev.txt
+    #   jinja2
+    #   mkdocs
+mergedeep==1.3.4
+    # via
+    #   -r requirements/dev.txt
+    #   mkdocs
+mkdocs==1.5.3
+    # via
+    #   -r requirements/dev.txt
+    #   mkdocs-include-markdown-plugin
+    #   mkdocs-material
+mkdocs-include-markdown-plugin==6.0.4
+    # via -r requirements/dev.txt
+mkdocs-material==9.5.3
+    # via -r requirements/dev.txt
+mkdocs-material-extensions==1.3.1
+    # via
+    #   -r requirements/dev.txt
+    #   mkdocs-material
 model-bakery==1.10.1
     # via -r requirements/dev.txt
 multidict==6.0.4
@@ -127,18 +182,25 @@ packaging==23.0
     #   -r requirements/dev.txt
     #   black
     #   build
+    #   mkdocs
     #   nox
     #   pytest
+paginate==0.5.6
+    # via
+    #   -r requirements/dev.txt
+    #   mkdocs-material
 pathspec==0.11.1
     # via
     #   -r requirements/dev.txt
     #   black
+    #   mkdocs
 pip-tools==6.12.3
     # via -r requirements/dev.txt
 platformdirs==3.1.1
     # via
     #   -r requirements/dev.txt
     #   black
+    #   mkdocs
     #   virtualenv
 pluggy==1.0.0
     # via
@@ -150,6 +212,14 @@ py==1.11.0
     # via
     #   -r requirements/dev.txt
     #   interrogate
+pygments==2.17.2
+    # via
+    #   -r requirements/dev.txt
+    #   mkdocs-material
+pymdown-extensions==10.7
+    # via
+    #   -r requirements/dev.txt
+    #   mkdocs-material
 pyproject-hooks==1.0.0
     # via
     #   -r requirements/dev.txt
@@ -166,17 +236,43 @@ pytest-django==4.5.2
     # via -r requirements/dev.txt
 pytest-mock==3.10.0
     # via -r requirements/dev.txt
+python-dateutil==2.8.2
+    # via
+    #   -r requirements/dev.txt
+    #   ghp-import
 python-decouple==3.8
     # via -r requirements/main.txt
+pyyaml==6.0.1
+    # via
+    #   -r requirements/dev.txt
+    #   mkdocs
+    #   pymdown-extensions
+    #   pyyaml-env-tag
+pyyaml-env-tag==0.1
+    # via
+    #   -r requirements/dev.txt
+    #   mkdocs
 redis==4.5.4
     # via
     #   -r requirements/dev.txt
     #   -r requirements/main.txt
     #   fakeredis
+regex==2023.12.25
+    # via
+    #   -r requirements/dev.txt
+    #   mkdocs-material
+requests==2.31.0
+    # via
+    #   -r requirements/dev.txt
+    #   mkdocs-material
 ruff==0.0.257
     # via -r requirements/dev.txt
 sentry-sdk==1.18.0
     # via -r requirements/main.txt
+six==1.16.0
+    # via
+    #   -r requirements/dev.txt
+    #   python-dateutil
 sortedcontainers==2.4.0
     # via
     #   -r requirements/dev.txt
@@ -216,12 +312,22 @@ typing-extensions==4.5.0
     #   mypy
 urllib3==1.26.15
     # via
+    #   -r requirements/dev.txt
     #   -r requirements/main.txt
+    #   requests
     #   sentry-sdk
 virtualenv==20.21.0
     # via
     #   -r requirements/dev.txt
     #   nox
+watchdog==3.0.0
+    # via
+    #   -r requirements/dev.txt
+    #   mkdocs
+wcmatch==8.5
+    # via
+    #   -r requirements/dev.txt
+    #   mkdocs-include-markdown-plugin
 wheel==0.40.0
     # via
     #   -r requirements/dev.txt

@@ -1,5 +1,5 @@
-<p align="center">
-  <img src="./src/fakester/static/img/logo.svg" alt="fakester logo">
+<p align="center" style="padding: 20px;">
+  <img src="https://raw.githubusercontent.com/pawelad/fakester/main/src/fakester/static/img/logo.svg" alt="fakester logo">
 </p>
 
 [![GitHub release](https://img.shields.io/github/release/pawelad/fakester.svg)][github release]

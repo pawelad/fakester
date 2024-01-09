@@ -6,6 +6,9 @@ The format is based on [Keep a Changelog], and this project adheres to
 
 ## Unreleased
 
+### Added
+- Add MkDocs based docs.
+
 ## [v2.0.2](https://github.com/pawelad/fakester/releases/tag/v2.0.2) - 2023-04-02
 ### Changed
 - Allow only one concurrent deploy GitHub Actions workflow.

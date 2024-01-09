@@ -128,6 +128,8 @@ create-migration                          Create Django migration (pass "name=<M
 apply-migrations                          Apply Django migrations
 format                                    Format code
 test                                      Run the test suite
+docs-build                                Build docs
+docs-serve                                Serve docs
 docker-build                              Build Docker compose stack
 docker-run                                Run Docker compose stack
 docker-stop                               Stop Docker compose stack

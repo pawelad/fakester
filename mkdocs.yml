@@ -1,0 +1,50 @@
+site_name: "fakester"
+site_description: "Rickroll your boss while preserving the element of surprise"
+site_url: "https://fakester.pawelad.dev/"
+site_author: "Paweł Adamczak"
+repo_name: "pawelad/fakester"
+repo_url: "https://github.com/pawelad/fakester"
+
+watch:
+  - "README.md"
+  - "CHANGELOG.md"
+  - "CONTRIBUTING.md"
+  - "LICENSE"
+  - ".github/CODE_OF_CONDUCT.md"
+
+nav:
+  - Home:
+    - Overview: "index.md"
+    - Changelog: "changelog.md"
+    - License: "license.md"
+  - Development:
+    - Contributing Guide: "contributing.md"
+    - Code of Conduct: "code_of_conduct.md"
+
+theme:
+  name: "material"
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: "default"
+      primary: "light blue"
+      toggle:
+        icon: "material/lightbulb-outline"
+        name: "Switch to dark mode"
+    - media: "(prefers-color-scheme: dark)"
+      scheme: "slate"
+      primary: "light blue"
+      toggle:
+        icon: "material/lightbulb"
+        name: "Switch to light mode"
+
+plugins:
+  - "search"
+  - "include-markdown"
+
+markdown_extensions:
+  - "admonition"
+  - "pymdownx.details"
+  - "pymdownx.magiclink"
+  - "pymdownx.superfences"
+  - pymdownx.tasklist:
+      custom_checkbox: true

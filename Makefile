@@ -59,6 +59,14 @@ test: ## Run the test suite
 	docker compose up --detach db
 	nox
 
+.PHONY: docs-build
+docs-build: ## Build docs
+	mkdocs build
+
+.PHONY: docs-serve
+docs-serve: ## Serve docs
+	mkdocs serve
+
 .PHONY: docker-build
 docker-build: ## Build Docker compose stack
 	docker compose build
