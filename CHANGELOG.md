@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog], and this project adheres to
 - Add MkDocs based docs.
 
 ### Changed
+- Upgrade `actions/setup-python` to v5.
 - Upgrade `actions/checkout` to v4.
 
 ## [v2.0.2](https://github.com/pawelad/fakester/releases/tag/v2.0.2) - 2023-04-02
