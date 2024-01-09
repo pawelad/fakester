@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog], and this project adheres to
 ## Unreleased
 
 ### Added
+- Deploy docs to GitHub Pages via GitHub Actions.
 - Add MkDocs based docs.
 
 ## [v2.0.2](https://github.com/pawelad/fakester/releases/tag/v2.0.2) - 2023-04-02
