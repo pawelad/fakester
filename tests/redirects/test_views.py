@@ -8,6 +8,7 @@ from django.views.generic import TemplateView, View
 
 import pytest
 from pytest_django.asserts import assertContains, assertTemplateUsed
+from pytest_django.fixtures import SettingsWrapper
 from pytest_mock import MockerFixture
 
 from redirects.forms import RedirectModelForm
@@ -35,8 +36,14 @@ class TestRedirectFormView:
         assert resolver.func.view_class == self.view_class  # type: ignore
         assert resolver.view_name == self.view_name
 
-    def test_allowed_http_methods(self, client: Client) -> None:
+    def test_allowed_http_methods(
+        self,
+        settings: SettingsWrapper,
+        client: Client,
+    ) -> None:
         """Only allows GET and POST HTTP methods."""
+        settings.RATELIMIT_ENABLE = False
+
         assert client.get(self.url).status_code == HTTPStatus.OK
         assert client.post(self.url).status_code == HTTPStatus.OK
 
@@ -46,15 +53,19 @@ class TestRedirectFormView:
         assert client.patch(self.url).status_code == HTTPStatus.METHOD_NOT_ALLOWED
         assert client.put(self.url).status_code == HTTPStatus.METHOD_NOT_ALLOWED
 
-    def test_template_used(self, client: Client) -> None:
+    def test_template_used(self, settings: SettingsWrapper, client: Client) -> None:
         """Uses expected template."""
+        settings.RATELIMIT_ENABLE = False
+
         response = client.get(self.url)
 
         assert isinstance(response, TemplateResponse)
         assertTemplateUsed(response, "redirects/form.html")
 
-    def test_render_form(self, client: Client) -> None:
+    def test_render_form(self, settings: SettingsWrapper, client: Client) -> None:
         """Renders redirect form."""
+        settings.RATELIMIT_ENABLE = False
+
         response = client.get(self.url)
 
         assert isinstance(response, TemplateResponse)
@@ -76,11 +87,14 @@ class TestRedirectFormView:
     def test_redirect_creation(
         self,
         mocker: MockerFixture,
+        settings: SettingsWrapper,
         client: Client,
         local_path: str,
         destination_url: str,
     ) -> None:
         """Creates a new `Redirect` instance."""
+        settings.RATELIMIT_ENABLE = False
+
         ip_address = "192.168.1.1"
         mocker.patch("redirects.views.get_client_ip", return_value=(ip_address, True))
 
@@ -100,7 +114,6 @@ class TestRedirectFormView:
         assert redirect.views == 0
         assert redirect.author_ip == ip_address
 
-    @pytest.mark.xfail(reason="I don't know why this test isn't working")
     @pytest.mark.django_db()
     def test_ratelimit(self, client: Client) -> None:
         """Allows at most three POST request per minute."""
