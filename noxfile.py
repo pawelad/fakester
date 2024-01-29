@@ -1,5 +1,7 @@
 """fakester Nox sessions."""
 
+import os
+
 import nox
 
 nox.options.reuse_existing_virtualenvs = True
@@ -21,7 +23,20 @@ def tests(session: nox.Session) -> None:
     )
     # fmt: on
 
-    session.run("pytest", *dirs)
+    session.run("coverage", "run", "-m", "pytest", *dirs)
+
+    if os.environ.get("CI") != "true":
+        session.notify("coverage_report")
+
+
+@nox.session()
+def coverage_report(session: nox.Session) -> None:
+    """Report coverage. Can only be run after `tests` session."""
+    session.install("coverage[toml]")
+
+    session.run("coverage", "combine")
+    session.run("coverage", "xml")
+    session.run("coverage", "report")
 
 
 @nox.session()

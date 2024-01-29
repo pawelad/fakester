@@ -63,9 +63,7 @@ colorlog==6.8.2
     #   -r requirements/dev.txt
     #   nox
 coverage==7.4.1
-    # via
-    #   -r requirements/dev.txt
-    #   pytest-cov
+    # via -r requirements/dev.txt
 crispy-bootstrap5==2023.10
     # via -r requirements/main.txt
 distlib==0.3.8
@@ -226,11 +224,8 @@ pyproject-hooks==1.0.0
 pytest==8.0.0
     # via
     #   -r requirements/dev.txt
-    #   pytest-cov
     #   pytest-django
     #   pytest-mock
-pytest-cov==4.1.0
-    # via -r requirements/dev.txt
 pytest-django==4.7.0
     # via -r requirements/dev.txt
 pytest-mock==3.12.0
