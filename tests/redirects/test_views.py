@@ -1,4 +1,5 @@
 """Test `redirects.views` module."""
+
 from http import HTTPStatus
 
 from django.template.response import TemplateResponse

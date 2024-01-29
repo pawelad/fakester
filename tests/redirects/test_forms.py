@@ -1,4 +1,5 @@
 """Test `redirects.forms` module."""
+
 from django import forms
 from django.test.client import RequestFactory
 

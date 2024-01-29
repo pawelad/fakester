@@ -4,6 +4,7 @@ It uses `python-decouple` to load values from environment variables and a local
 `.env` file (in that order). Custom and third party settings should be put in their
 respective sections at the end of the file.
 """
+
 from pathlib import Path
 
 from django.core.exceptions import ImproperlyConfigured

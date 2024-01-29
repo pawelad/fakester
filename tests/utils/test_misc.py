@@ -1,4 +1,5 @@
 """Test `utils.misc` module."""
+
 import pytest
 
 from utils.misc import deslugify

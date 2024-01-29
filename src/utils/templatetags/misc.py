@@ -1,4 +1,5 @@
 """Misc Django template tags."""
+
 from django import template
 
 from fakester import __version__

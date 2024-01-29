@@ -1,4 +1,5 @@
 """Redirects app models."""
+
 from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.core.validators import RegexValidator

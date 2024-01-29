@@ -1,4 +1,5 @@
 """fakester Nox sessions."""
+
 import nox
 
 nox.options.reuse_existing_virtualenvs = True

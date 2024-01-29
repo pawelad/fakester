@@ -1,4 +1,5 @@
 """Django models related utils."""
+
 from django.db import models
 
 

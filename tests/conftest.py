@@ -1,4 +1,5 @@
 """Shared fakester test fixtures."""
+
 import pytest
 from fakeredis import FakeRedis, FakeStrictRedis
 from pytest_django.fixtures import SettingsWrapper
