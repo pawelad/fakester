@@ -6,6 +6,9 @@ The format is based on [Keep a Changelog], and this project adheres to
 
 ## Unreleased
 
+### Changed
+- Upgrade all project dependencies.
+
 ### Fixed
 - Fix `TestRedirectFormView::test_ratelimit` test.
 
