@@ -3,6 +3,7 @@
 from typing import Any
 
 from django import forms
+from django.http.request import split_domain_port
 
 from crispy_forms.bootstrap import PrependedText
 from crispy_forms.helper import FormHelper
@@ -28,18 +29,12 @@ class RedirectModelForm(forms.ModelForm):
         helper.label_class = "col-md-3"
         helper.field_class = "col-md-9"
 
-        # If the port is passed (i.e. 'localhost:8000'), we need to separate the port
-        host_name = self.request.get_host()
-        host_name_parts = host_name.split(":")
-        host = host_name_parts[0]
-        port = None
-        if len(host_name_parts) >= 2:
-            port = int(host_name_parts[1])
+        host, port = split_domain_port(self.request.get_host())
 
         url = URL.build(
             scheme=self.request.scheme,
             host=host,
-            port=port,
+            port=int(port) if port else None,
             path="/",
         )
 

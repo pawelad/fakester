@@ -5,6 +5,7 @@ from django.core.exceptions import ValidationError
 from django.core.validators import RegexValidator
 from django.db import models
 from django.http import HttpRequest
+from django.http.request import split_domain_port
 
 from yarl import URL
 
@@ -129,10 +130,12 @@ class Redirect(BaseModel):
         scheme = request.scheme if request and request.scheme else "http"
 
         if request:
-            # The domain currently browsed by the user should always be shown first
+            host, port = split_domain_port(request.get_host())
+
             url = URL.build(
                 scheme=scheme,
-                host=request.get_host(),
+                host=host,
+                port=int(port) if port else None,
                 path=self.absolute_path,
             )
             urls.append(str(url))
