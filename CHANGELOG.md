@@ -6,6 +6,7 @@ The format is based on [Keep a Changelog], and this project adheres to
 
 ## Unreleased
 
+## [v2.2.1](https://github.com/pawelad/fakester/releases/tag/v2.2.1) - 2024-10-14
 ### Fixed
 - Added `SECURE_PROXY_SSL_HEADER` setting, which fixed CSRF errors on production.
 
