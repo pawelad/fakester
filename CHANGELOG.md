@@ -6,6 +6,9 @@ The format is based on [Keep a Changelog], and this project adheres to
 
 ## Unreleased
 
+### Fixed
+- Added `SECURE_PROXY_SSL_HEADER` setting, which fixed CSRF errors on production.
+
 ## [v2.2.0](https://github.com/pawelad/fakester/releases/tag/v2.2.0) - 2024-10-14
 ### Changed
 - Upgrade Python to 3.12.6.

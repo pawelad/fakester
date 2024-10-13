@@ -150,6 +150,9 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 LOGIN_URL = "admin:login"
 LOGIN_REDIRECT_URL = "admin:index"
 
+# Needed for CSRF protection when running behind NGINX and Gunicorn
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+
 ##########
 # Custom #
 ##########
