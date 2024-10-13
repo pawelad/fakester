@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog], and this project adheres to
 
 ## Unreleased
 
+## [v2.1.2](https://github.com/pawelad/fakester/releases/tag/v2.1.2) - 2024-10-14
+### Fixed
+- Remove `Procfile`, as apparently that was messing with `dokku` Docker builder.
+
 ## [v2.1.1](https://github.com/pawelad/fakester/releases/tag/v2.1.1) - 2024-10-13
 ### Fixed
 - Fix `dokku` Docker builder type related issues.
