@@ -57,6 +57,16 @@ RUN --mount=type=cache,uid=${UID},gid=${GID},target=$HOME/.cache \
     python -m pip install --no-deps -r requirements/main.txt
 
 ###########
+#   Dev   #
+###########
+FROM builder as dev
+
+# Install dev dependencies
+COPY --chown=$USER:$USER requirements/dev.txt $APP_DIR/requirements/dev.txt
+RUN --mount=type=cache,uid=${UID},gid=${GID},target=$HOME/.cache \
+    python -m pip install --no-deps -r requirements/dev.txt
+
+###########
 #   App   #
 ###########
 FROM base as app
@@ -74,13 +84,3 @@ RUN python src/manage.py collectstatic --noinput
 # Run the app with `gunicorn`
 EXPOSE 8000
 ENTRYPOINT ["gunicorn", "--pythonpath=src", "--bind=0.0.0.0:8000", "--worker-tmp-dir=/dev/shm", "fakester.wsgi"]
-
-###########
-#   Dev   #
-###########
-FROM builder as dev
-
-# Install dev dependencies
-COPY --chown=$USER:$USER requirements/dev.txt $APP_DIR/requirements/dev.txt
-RUN --mount=type=cache,uid=${UID},gid=${GID},target=$HOME/.cache \
-    python -m pip install --no-deps -r requirements/dev.txt
