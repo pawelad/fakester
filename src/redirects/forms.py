@@ -28,9 +28,18 @@ class RedirectModelForm(forms.ModelForm):
         helper.label_class = "col-md-3"
         helper.field_class = "col-md-9"
 
+        # If the port is passed (i.e. 'localhost:8000'), we need to separate the port
+        host_name = self.request.get_host()
+        host_name_parts = host_name.split(":")
+        host = host_name_parts[0]
+        port = None
+        if len(host_name_parts) >= 2:
+            port = int(host_name_parts[1])
+
         url = URL.build(
             scheme=self.request.scheme,
-            host=self.request.get_host(),
+            host=host,
+            port=port,
             path="/",
         )
 

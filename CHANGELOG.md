@@ -6,6 +6,9 @@ The format is based on [Keep a Changelog], and this project adheres to
 
 ## Unreleased
 
+### Fixed
+- Fix redirect form error when the hostname contained a port.
+
 ## [v2.1.0](https://github.com/pawelad/fakester/releases/tag/v2.1.0) - 2024-10-13
 ### Changed
 - Upgrade `codecov/codecov-action` to v4.
