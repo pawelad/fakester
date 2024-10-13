@@ -4,45 +4,41 @@
 #
 #    make pip-compile
 #
-argcomplete==3.3.0
+argcomplete==3.5.1
     # via
     #   -r requirements/dev.txt
     #   nox
-asgiref==3.7.2
+asgiref==3.8.1
     # via
     #   -r requirements/dev.txt
     #   -r requirements/main.txt
     #   django
-async-timeout==4.0.3
-    # via
-    #   -r requirements/dev.txt
-    #   -r requirements/main.txt
-    #   redis
-attrs==23.2.0
+    #   django-stubs
+attrs==24.2.0
     # via
     #   -r requirements/dev.txt
     #   interrogate
-babel==2.14.0
+babel==2.16.0
     # via
     #   -r requirements/dev.txt
     #   mkdocs-material
-black==24.4.0
+black==24.10.0
     # via -r requirements/dev.txt
-bracex==2.4
+bracex==2.5.post1
     # via
     #   -r requirements/dev.txt
     #   wcmatch
-build==1.2.1
+build==1.2.2.post1
     # via
     #   -r requirements/dev.txt
     #   pip-tools
-certifi==2023.11.17
+certifi==2024.8.30
     # via
     #   -r requirements/dev.txt
     #   -r requirements/main.txt
     #   requests
     #   sentry-sdk
-charset-normalizer==3.3.2
+charset-normalizer==3.4.0
     # via
     #   -r requirements/dev.txt
     #   requests
@@ -62,17 +58,17 @@ colorlog==6.8.2
     # via
     #   -r requirements/dev.txt
     #   nox
-coverage==7.4.4
+coverage==7.6.2
     # via -r requirements/dev.txt
-crispy-bootstrap5==2023.10
+crispy-bootstrap5==2024.10
     # via -r requirements/main.txt
-distlib==0.3.8
+distlib==0.3.9
     # via
     #   -r requirements/dev.txt
     #   virtualenv
-dj-database-url==2.1.0
+dj-database-url==2.2.0
     # via -r requirements/main.txt
-django==5.0.1
+django==5.1.2
     # via
     #   -r requirements/dev.txt
     #   -r requirements/main.txt
@@ -82,23 +78,23 @@ django==5.0.1
     #   django-stubs
     #   django-stubs-ext
     #   model-bakery
-django-crispy-forms==2.1
+django-crispy-forms==2.3
     # via
     #   -r requirements/main.txt
     #   crispy-bootstrap5
-django-ipware==6.0.3
+django-ipware==7.0.1
     # via -r requirements/main.txt
 django-ratelimit==4.1.0
     # via -r requirements/main.txt
-django-stubs==4.2.7
+django-stubs==5.1.0
     # via -r requirements/dev.txt
-django-stubs-ext==4.2.7
+django-stubs-ext==5.1.0
     # via
     #   -r requirements/dev.txt
     #   django-stubs
-fakeredis==2.22.0
+fakeredis==2.25.1
     # via -r requirements/dev.txt
-filelock==3.13.4
+filelock==3.16.1
     # via
     #   -r requirements/dev.txt
     #   virtualenv
@@ -106,11 +102,11 @@ ghp-import==2.1.0
     # via
     #   -r requirements/dev.txt
     #   mkdocs
-gunicorn==21.2.0
+gunicorn==23.0.0
     # via -r requirements/main.txt
-hiredis==2.3.2
+hiredis==3.0.0
     # via -r requirements/main.txt
-idna==3.6
+idna==3.10
     # via
     #   -r requirements/dev.txt
     #   -r requirements/main.txt
@@ -124,18 +120,18 @@ interrogate==1.7.0
     # via -r requirements/dev.txt
 isort==5.13.2
     # via -r requirements/dev.txt
-jinja2==3.1.3
+jinja2==3.1.4
     # via
     #   -r requirements/dev.txt
     #   mkdocs
     #   mkdocs-material
-markdown==3.6
+markdown==3.7
     # via
     #   -r requirements/dev.txt
     #   mkdocs
     #   mkdocs-material
     #   pymdown-extensions
-markupsafe==2.1.5
+markupsafe==3.0.1
     # via
     #   -r requirements/dev.txt
     #   jinja2
@@ -144,35 +140,40 @@ mergedeep==1.3.4
     # via
     #   -r requirements/dev.txt
     #   mkdocs
-mkdocs==1.5.3
+    #   mkdocs-get-deps
+mkdocs==1.6.1
     # via
     #   -r requirements/dev.txt
     #   mkdocs-include-markdown-plugin
     #   mkdocs-material
-mkdocs-include-markdown-plugin==6.0.5
+mkdocs-get-deps==0.2.0
+    # via
+    #   -r requirements/dev.txt
+    #   mkdocs
+mkdocs-include-markdown-plugin==6.2.2
     # via -r requirements/dev.txt
-mkdocs-material==9.5.18
+mkdocs-material==9.5.40
     # via -r requirements/dev.txt
 mkdocs-material-extensions==1.3.1
     # via
     #   -r requirements/dev.txt
     #   mkdocs-material
-model-bakery==1.18.0
+model-bakery==1.20.0
     # via -r requirements/dev.txt
-multidict==6.0.4
+multidict==6.1.0
     # via
     #   -r requirements/main.txt
     #   yarl
-mypy==1.9.0
+mypy==1.11.2
     # via -r requirements/dev.txt
 mypy-extensions==1.0.0
     # via
     #   -r requirements/dev.txt
     #   black
     #   mypy
-nox==2024.4.15
+nox==2024.10.9
     # via -r requirements/dev.txt
-packaging==23.2
+packaging==24.1
     # via
     #   -r requirements/dev.txt
     #   -r requirements/main.txt
@@ -182,7 +183,7 @@ packaging==23.2
     #   mkdocs
     #   nox
     #   pytest
-paginate==0.5.6
+paginate==0.5.7
     # via
     #   -r requirements/dev.txt
     #   mkdocs-material
@@ -193,41 +194,45 @@ pathspec==0.12.1
     #   mkdocs
 pip-tools==7.4.1
     # via -r requirements/dev.txt
-platformdirs==4.2.0
+platformdirs==4.3.6
     # via
     #   -r requirements/dev.txt
     #   black
-    #   mkdocs
+    #   mkdocs-get-deps
     #   virtualenv
 pluggy==1.5.0
     # via
     #   -r requirements/dev.txt
     #   pytest
+propcache==0.2.0
+    # via
+    #   -r requirements/main.txt
+    #   yarl
 psycopg2==2.9.9
     # via -r requirements/main.txt
 py==1.11.0
     # via
     #   -r requirements/dev.txt
     #   interrogate
-pygments==2.17.2
+pygments==2.18.0
     # via
     #   -r requirements/dev.txt
     #   mkdocs-material
-pymdown-extensions==10.8
+pymdown-extensions==10.11.2
     # via
     #   -r requirements/dev.txt
     #   mkdocs-material
-pyproject-hooks==1.0.0
+pyproject-hooks==1.2.0
     # via
     #   -r requirements/dev.txt
     #   build
     #   pip-tools
-pytest==8.1.1
+pytest==8.3.3
     # via
     #   -r requirements/dev.txt
     #   pytest-django
     #   pytest-mock
-pytest-django==4.8.0
+pytest-django==4.9.0
     # via -r requirements/dev.txt
 pytest-mock==3.14.0
     # via -r requirements/dev.txt
@@ -237,36 +242,37 @@ python-dateutil==2.9.0.post0
     #   ghp-import
 python-decouple==3.8
     # via -r requirements/main.txt
-python-ipware==2.0.1
+python-ipware==3.0.0
     # via
     #   -r requirements/main.txt
     #   django-ipware
-pyyaml==6.0.1
+pyyaml==6.0.2
     # via
     #   -r requirements/dev.txt
     #   mkdocs
+    #   mkdocs-get-deps
     #   pymdown-extensions
     #   pyyaml-env-tag
 pyyaml-env-tag==0.1
     # via
     #   -r requirements/dev.txt
     #   mkdocs
-redis==5.0.1
+redis==5.1.1
     # via
     #   -r requirements/dev.txt
     #   -r requirements/main.txt
     #   fakeredis
-regex==2024.4.16
+regex==2024.9.11
     # via
     #   -r requirements/dev.txt
     #   mkdocs-material
-requests==2.31.0
+requests==2.32.3
     # via
     #   -r requirements/dev.txt
     #   mkdocs-material
-ruff==0.4.1
+ruff==0.6.9
     # via -r requirements/dev.txt
-sentry-sdk==1.39.2
+sentry-sdk==2.16.0
     # via -r requirements/main.txt
 six==1.16.0
     # via
@@ -276,7 +282,7 @@ sortedcontainers==2.4.0
     # via
     #   -r requirements/dev.txt
     #   fakeredis
-sqlparse==0.4.4
+sqlparse==0.5.1
     # via
     #   -r requirements/dev.txt
     #   -r requirements/main.txt
@@ -287,15 +293,11 @@ tabulate==0.9.0
     #   interrogate
 types-dj-database-url==1.3.0.4
     # via -r requirements/dev.txt
-types-pytz==2024.1.0.20240417
+types-pyyaml==6.0.12.20240917
     # via
     #   -r requirements/dev.txt
     #   django-stubs
-types-pyyaml==6.0.12.20240311
-    # via
-    #   -r requirements/dev.txt
-    #   django-stubs
-typing-extensions==4.9.0
+typing-extensions==4.12.2
     # via
     #   -r requirements/dev.txt
     #   -r requirements/main.txt
@@ -303,39 +305,39 @@ typing-extensions==4.9.0
     #   django-stubs
     #   django-stubs-ext
     #   mypy
-urllib3==2.1.0
+urllib3==2.2.3
     # via
     #   -r requirements/dev.txt
     #   -r requirements/main.txt
     #   requests
     #   sentry-sdk
-virtualenv==20.25.3
+virtualenv==20.26.6
     # via
     #   -r requirements/dev.txt
     #   nox
-watchdog==4.0.0
+watchdog==5.0.3
     # via
     #   -r requirements/dev.txt
     #   mkdocs
-wcmatch==8.5.1
+wcmatch==10.0
     # via
     #   -r requirements/dev.txt
     #   mkdocs-include-markdown-plugin
-wheel==0.43.0
+wheel==0.44.0
     # via
     #   -r requirements/dev.txt
     #   pip-tools
-whitenoise==6.6.0
+whitenoise==6.7.0
     # via -r requirements/main.txt
-yarl==1.9.4
+yarl==1.15.2
     # via -r requirements/main.txt
 
 # The following packages are considered to be unsafe in a requirements file:
-pip==24.0
+pip==24.2
     # via
     #   -r requirements/dev.txt
     #   pip-tools
-setuptools==69.5.1
+setuptools==75.1.0
     # via
     #   -r requirements/dev.txt
     #   pip-tools
