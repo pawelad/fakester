@@ -38,15 +38,15 @@ upgrade-all: ## Upgrade all Python packages
 
 .PHONY: run
 run: ## Run the app
-	python fakester/manage.py runserver
+	python src/manage.py runserver
 
 .PHONY: create-migration
 create-migration: ## Create Django migration (pass "name=<MIGRATION_NAME>")
-	python fakester/manage.py makemigrations -n $(name)
+	python src/manage.py makemigrations -n $(name)
 
 .PHONY: apply-migrations
 apply-migrations: ## Apply Django migrations
-	python fakester/manage.py migrate
+	python src/manage.py migrateć
 
 .PHONY: format
 format: ## Format code
