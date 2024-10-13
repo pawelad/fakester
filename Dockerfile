@@ -30,9 +30,6 @@ RUN groupadd --gid ${GID} $USER \
 USER $USER
 WORKDIR $APP_DIR
 
-# Copy the app
-COPY --chown=$USER:$USER src/ $APP_DIR/src
-
 ###########
 # Builder #
 ###########
@@ -67,6 +64,9 @@ FROM base as app
 # Copy virtualenv from builder
 COPY --from=builder $VIRTUAL_ENV $VIRTUAL_ENV
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+
+# Copy the app
+COPY --chown=$USER:$USER src/ $APP_DIR/src
 
 # Collect static assets
 RUN python src/manage.py collectstatic --noinput
