@@ -6,7 +6,9 @@ The format is based on [Keep a Changelog], and this project adheres to
 
 ## Unreleased
 
+## [v2.1.1](https://github.com/pawelad/fakester/releases/tag/v2.1.1) - 2024-10-13
 ### Fixed
+- Fix `dokku` Docker builder type related issues.
 - Fix redirect form error when the hostname contained a port.
 
 ## [v2.1.0](https://github.com/pawelad/fakester/releases/tag/v2.1.0) - 2024-10-13
