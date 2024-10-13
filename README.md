@@ -25,16 +25,22 @@ linked domains) and temporary (renewing a domain is usually much more expensive
 than registering it).
 
 Currently linked domains:
-
-- https://reportech.xyz/
-- https://mortifex.shop/
-- https://notarickroll.website/
+- https://mortifex.xyz/
+- https://notarickroll.lol/
 
 If you'd like to 'donate' a domain, [let me know][github new issue]! It's as easy
 as pointing the DNS record at `fakester.pawelad.me` and enabling it on the backend.
 
 ### Historical domains
 Just for the sake of it, here are domains used in the past:
+
+<details>
+  <summary>Season 3</summary>
+
+  - https://reportech.xyz/
+  - https://mortifex.shop/
+  - https://notarickroll.website/
+</details>
 
 <details>
   <summary>Season 2</summary>
