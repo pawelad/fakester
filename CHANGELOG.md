@@ -6,6 +6,7 @@ The format is based on [Keep a Changelog], and this project adheres to
 
 ## Unreleased
 
+## [v2.1.0](https://github.com/pawelad/fakester/releases/tag/v2.1.0) - 2024-10-13
 ### Changed
 - Ignore `DisallowedHost` exception in Sentry.
 - Upgrade all project dependencies.
