@@ -55,7 +55,7 @@ jobs:
         with:
           name: "coverage-data-${{ env.PYTHON_VERSION }}"
           path: ".coverage.*"
-          if-no-files-found: "ignore"
+          include-hidden-files: true
 
   coverage:
     name: "Coverage report"

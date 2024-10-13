@@ -12,6 +12,7 @@ The format is based on [Keep a Changelog], and this project adheres to
 - Upgrade all project dependencies.
 
 ### Fixed
+- Fix `actions/upload-artifact@v4` not including hidden files by default anymore.
 - Fix `TestRedirectFormView::test_ratelimit` test.
 
 ## [v2.0.3](https://github.com/pawelad/fakester/releases/tag/v2.0.3) - 2024-01-09
