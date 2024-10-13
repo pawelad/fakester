@@ -57,18 +57,17 @@ class RedirectModelForm(forms.ModelForm):
         )
         widgets = {
             "local_path": forms.TextInput(
-                attrs={"placeholder": "2023/01/31/how-is-it-2023-already.html"}
+                attrs={"placeholder": "2024/10/14/we-re-still-here.html"}
             ),
             "destination_url": forms.TextInput(
                 attrs={"placeholder": "https://youtu.be/I6OXjnBIW-4"}
             ),
-            "title": forms.TextInput(attrs={"placeholder": "How is it 2023 already?"}),
+            "title": forms.TextInput(
+                attrs={"placeholder": "Almost 2025 and we're still here."}
+            ),
             "description": forms.Textarea(
                 attrs={
-                    "placeholder": (
-                        "We asked our readers if they know that it's 2023. "
-                        "Here's what they said."
-                    ),
+                    "placeholder": "It still feels pretty 2016-ish though.",
                     "rows": 3,
                 }
             ),
