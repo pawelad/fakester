@@ -11,7 +11,6 @@ from django.core.exceptions import ImproperlyConfigured
 
 from decouple import Choices, Csv, config
 from dj_database_url import parse as db_url
-from sentry_sdk.integrations.redis import RedisIntegration
 
 from fakester import __version__
 
@@ -169,21 +168,15 @@ SENTRY_DSN = config("SENTRY_DSN", default=None)
 
 if SENTRY_DSN:  # pragma: no cover
     import sentry_sdk
-    from sentry_sdk.integrations.django import DjangoIntegration
 
     sentry_sdk.init(
         dsn=SENTRY_DSN,
         release=__version__,
         environment=ENVIRONMENT,
-        integrations=[
-            DjangoIntegration(),
-            RedisIntegration(),
-        ],
-        traces_sample_rate=0.5,
         send_default_pii=True,
-        _experiments={
-            "profiles_sample_rate": 0.5,
-        },
+        traces_sample_rate=0.5,
+        profiles_sample_rate=0.5,
+        ignore_errors=["DisallowedHost"],
     )
 
 # django-crispy-forms
