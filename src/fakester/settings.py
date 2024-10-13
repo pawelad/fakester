@@ -174,7 +174,7 @@ if SENTRY_DSN:  # pragma: no cover
         release=__version__,
         environment=ENVIRONMENT,
         send_default_pii=True,
-        traces_sample_rate=0.5,
+        traces_sample_rate=1,
         profiles_sample_rate=0.5,
         ignore_errors=["DisallowedHost"],
     )
