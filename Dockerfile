@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1.3
-FROM python:3.11.2-slim as base
+FROM python:3.12.6-slim as base
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1

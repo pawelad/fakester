@@ -6,6 +6,9 @@ The format is based on [Keep a Changelog], and this project adheres to
 
 ## Unreleased
 
+### Changed
+- Upgrade Python to 3.12.6.
+
 ## [v2.1.2](https://github.com/pawelad/fakester/releases/tag/v2.1.2) - 2024-10-14
 ### Fixed
 - Remove `Procfile`, as apparently that was messing with `dokku` Docker builder.

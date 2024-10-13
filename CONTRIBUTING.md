@@ -8,7 +8,7 @@ Please also note that this project is released with a [Contributor Code of Condu
 By participating in this project you agree to abide by its terms.
 
 ## Tools used
-**Language:** [Python 3.11.2][python]  
+**Language:** [Python 3.12][python]  
 **Web framework:** [Django]  
 **Database:** [PostgreSQL]  
 **Cache:** [Redis]  
