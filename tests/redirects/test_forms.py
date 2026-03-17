@@ -35,7 +35,7 @@ class TestRedirectModelForm:
         """Has a `crispy_forms.FormHelper` integration."""
         assert isinstance(redirect_form.helper, FormHelper)
 
-    @pytest.mark.django_db()
+    @pytest.mark.django_db
     def test_invalid_local_path(
         self, rf: RequestFactory, invalid_local_path: str
     ) -> None:
@@ -50,7 +50,7 @@ class TestRedirectModelForm:
         assert not form.is_valid()
         assert "local_path" in form.errors
 
-    @pytest.mark.django_db()
+    @pytest.mark.django_db
     def test_unique_local_path(self, rf: RequestFactory) -> None:
         """Fails validation for not unique `local_path` values."""
         data = {
@@ -67,7 +67,7 @@ class TestRedirectModelForm:
         assert not form.is_valid()
         assert "local_path" in form.errors
 
-    @pytest.mark.django_db()
+    @pytest.mark.django_db
     def test_invalid_destination_url(
         self, rf: RequestFactory, invalid_destination_url: str
     ) -> None:
@@ -82,7 +82,7 @@ class TestRedirectModelForm:
         assert not form.is_valid()
         assert "destination_url" in form.errors
 
-    @pytest.mark.django_db()
+    @pytest.mark.django_db
     @pytest.mark.parametrize(
         ("local_path", "destination_url"),
         [
@@ -102,7 +102,7 @@ class TestRedirectModelForm:
         form = self.form_class(data, request=request)
         assert form.is_valid()
 
-    @pytest.mark.django_db()
+    @pytest.mark.django_db
     def test_form_save(self, rf: RequestFactory) -> None:
         """Creates `Redirect` on save."""
         data = {

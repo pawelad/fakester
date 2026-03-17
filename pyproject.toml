@@ -121,7 +121,6 @@ select = [
   "UP",  # pyupgrade
 ]
 ignore = [
-  "ANN101",  # Missing type annotation for `self` in method
   "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed in `**kwargs`
   "D104",  # Missing docstring in public package
   "D106",  # Missing docstring in public nested class
