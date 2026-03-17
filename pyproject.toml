@@ -1,3 +1,46 @@
+[project]
+name = "fakester"
+version = "0.1.0"
+description = "A service to fake links"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "Django",
+    "crispy-bootstrap5",
+    "dj-database-url",
+    "django-crispy-forms",
+    "django-ipware",
+    "django-ratelimit",
+    "gunicorn",
+    "whitenoise",
+    "psycopg2",
+    "redis[hiredis]",
+    "python-decouple",
+    "sentry-sdk",
+    "yarl",
+]
+
+[dependency-groups]
+dev = [
+    "black",
+    "interrogate",
+    "isort",
+    "ruff",
+    "coverage[toml]",
+    "fakeredis",
+    "model_bakery",
+    "pytest",
+    "pytest-django",
+    "pytest-mock",
+    "django-stubs",
+    "mypy",
+    "types-dj-database-url",
+    "mkdocs",
+    "mkdocs-include-markdown-plugin",
+    "mkdocs-material",
+    "nox",
+]
+
 [tool.black]
 target-version = ["py311"]
 
