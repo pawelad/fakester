@@ -8,6 +8,7 @@ respective sections at the end of the file.
 from pathlib import Path
 
 from django.core.exceptions import ImproperlyConfigured
+from django.core.management.utils import get_random_secret_key
 
 from decouple import Choices, Csv, config
 from dj_database_url import parse as db_url
@@ -26,7 +27,7 @@ ENVIRONMENT = config(
 SECRET_KEY = config("SECRET_KEY", default=None)
 if not SECRET_KEY:
     if ENVIRONMENT == "local":
-        SECRET_KEY = "CHANGE_ME"  # noqa
+        SECRET_KEY = get_random_secret_key()
     else:
         raise ImproperlyConfigured(
             "You need to provide 'SECRET_KEY' when not running a local environment"
