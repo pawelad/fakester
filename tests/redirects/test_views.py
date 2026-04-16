@@ -107,8 +107,8 @@ class TestRedirectFormView:
         response = client.post(self.url, data)
 
         assert response.status_code == 200
-        assert hasattr(response.context["view"], "redirect")
-        assert isinstance(response.context["view"].redirect, Redirect)
+        assert "redirect" in response.context
+        assert isinstance(response.context["redirect"], Redirect)
 
         redirect = Redirect.objects.get(local_path=data["local_path"])
         assert redirect.destination_url == data["destination_url"]
