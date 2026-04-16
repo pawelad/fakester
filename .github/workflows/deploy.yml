@@ -30,7 +30,7 @@ jobs:
           fetch-depth: 0
 
       - name: "Push to dokku server"
-        uses: "dokku/github-action@v1.4.0"
+        uses: "dokku/github-action@v1.10.0"
         with:
           branch: "main"
           git_remote_url: "${{ vars.DOKKU_GIT_REMOTE_URL }}"

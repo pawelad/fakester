@@ -1,5 +1,5 @@
 [tool.black]
-target-version = ["py311"]
+target-version = ["py312"]
 
 [tool.coverage.run]
 branch = true
@@ -33,7 +33,7 @@ known_django = "django"
 sections = "FUTURE,STDLIB,DJANGO,THIRDPARTY,FIRSTPARTY,LOCALFOLDER"
 
 [tool.mypy]
-python_version = "3.11"
+python_version = "3.12"
 mypy_path = "src"
 plugins = ["mypy_django_plugin.main"]
 exclude = ["migrations"]
@@ -55,7 +55,7 @@ pythonpath = "src"
 DJANGO_SETTINGS_MODULE = "fakester.settings"
 
 [tool.ruff]
-target-version = "py311"
+target-version = "py312"
 extend-exclude = ["migrations"]
 
 [tool.ruff.lint]
