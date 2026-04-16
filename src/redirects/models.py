@@ -120,8 +120,8 @@ class Redirect(BaseModel):
 
     def increase_view_count(self) -> None:
         """Increase redirect view count by 1."""
-        self.views += 1
-        self.save()
+        self.views = models.F("views") + 1
+        self.save(update_fields=["views", "modified_at"])
 
     def get_fakester_links(self, request: HttpRequest | None = None) -> list[str]:
         """Return fakester redirect links for all available domains."""
