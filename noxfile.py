@@ -20,7 +20,6 @@ def tests(session: nox.Session) -> None:
         "uv",
         "sync",
         "--frozen",
-        env={"UV_PROJECT_ENVIRONMENT": session.virtualenv.location},
     )
 
     session.run("coverage", "run", "-m", "pytest", *dirs)
@@ -46,7 +45,6 @@ def docs(session: nox.Session) -> None:
         "uv",
         "sync",
         "--frozen",
-        env={"UV_PROJECT_ENVIRONMENT": session.virtualenv.location},
     )
 
     session.run("mkdocs", "build", "--strict")
@@ -61,7 +59,6 @@ def code_style_checks(session: nox.Session) -> None:
         "uv",
         "sync",
         "--frozen",
-        env={"UV_PROJECT_ENVIRONMENT": session.virtualenv.location},
     )
 
     session.run("black", "--check", "--diff", *dirs)
@@ -79,7 +76,6 @@ def type_checks(session: nox.Session) -> None:
         "uv",
         "sync",
         "--frozen",
-        env={"UV_PROJECT_ENVIRONMENT": session.virtualenv.location},
     )
 
     session.run("mypy", *dirs)
@@ -93,7 +89,6 @@ def django_checks(session: nox.Session) -> None:
         "sync",
         "--frozen",
         "--no-dev",
-        env={"UV_PROJECT_ENVIRONMENT": session.virtualenv.location},
     )
 
     session.run("src/manage.py", "check", external=True)
