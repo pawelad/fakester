@@ -4,12 +4,12 @@
 
     <p class="lead fw-light text-justify">
       You can now send one of the links below to someone, and it will redirect them to
-      <strong><a href="{{ view.redirect.destination_url }}" target="_blank">{{ view.redirect.destination_url }}</a></strong>
+      <strong><a href="{{ redirect.destination_url }}" target="_blank">{{ redirect.destination_url }}</a></strong>
       (don't tell them that though). How cool is that?
     </p>
 
     <p>
-      {% for url in view.redirect_fakester_links %}
+      {% for url in redirect_fakester_links %}
         <div class="input-group mb-3">
           <input id="fakesterLink{{ forloop.counter }}" class="form-control" type="text" value="{{ url }}" readonly>
           <button class="btn btn-outline-info copy-button" type="button" data-clipboard-target="#fakesterLink{{ forloop.counter }}">

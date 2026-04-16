@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  {% if not view.redirect %}
+  {% if not redirect %}
     {# Redirect wasn't saved, show the form #}
     {% include 'redirects/partials/form.html' %}
   {% else %}
