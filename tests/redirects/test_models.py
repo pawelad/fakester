@@ -58,7 +58,7 @@ class TestRedirect:
         redirect.refresh_from_db()
         assert redirect.views == 3
 
-    @pytest.mark.django_db
+    @pytest.mark.django_db()
     def test_invalid_local_path(self, invalid_local_path: str) -> None:
         """Fails validation for incorrect `local_path` values."""
         redirect = baker.make(self.model_class, local_path=invalid_local_path)
@@ -66,7 +66,7 @@ class TestRedirect:
         with pytest.raises(ValidationError, match="local_path"):
             redirect.full_clean()
 
-    @pytest.mark.django_db
+    @pytest.mark.django_db()
     def test_invalid_destination_url(self, invalid_destination_url: str) -> None:
         """Fails validation for incorrect `destination_url` values."""
         redirect = baker.make(self.model_class, destination_url=invalid_destination_url)
@@ -74,7 +74,7 @@ class TestRedirect:
         with pytest.raises(ValidationError, match="destination_url"):
             redirect.full_clean()
 
-    @pytest.mark.django_db
+    @pytest.mark.django_db()
     @pytest.mark.parametrize(
         ("local_path", "destination_url"),
         [
@@ -92,7 +92,7 @@ class TestRedirect:
 
         redirect.full_clean()
 
-    @pytest.mark.django_db
+    @pytest.mark.django_db()
     def test_model_save(self) -> None:
         """Creates `Redirect` on save."""
         data = {
@@ -107,7 +107,7 @@ class TestRedirect:
         assert redirect
         assert redirect.destination_url == data["destination_url"]
 
-    @pytest.mark.django_db
+    @pytest.mark.django_db()
     @pytest.mark.parametrize(
         ("local_path", "available_domains", "fakester_links"),
         [

@@ -77,7 +77,7 @@ class TestRedirectFormView:
 
         assertContains(response, "<form", count=1)
 
-    @pytest.mark.django_db
+    @pytest.mark.django_db()
     @pytest.mark.parametrize(
         ("local_path", "destination_url"),
         [
@@ -115,7 +115,7 @@ class TestRedirectFormView:
         assert redirect.views == 0
         assert redirect.author_ip == ip_address
 
-    @pytest.mark.django_db
+    @pytest.mark.django_db()
     def test_ratelimit(self, client: Client) -> None:
         """Allows at most three POST request per minute."""
         data = {
@@ -188,7 +188,7 @@ class TestRedirectToDestinationView:
         assert isinstance(response, TemplateResponse)
         assertTemplateUsed(response, "redirects/redirect_to_destination.html")
 
-    @pytest.mark.django_db
+    @pytest.mark.django_db()
     def test_render_redirect(self, client: Client, redirect: Redirect) -> None:
         """Renders redirect."""
         url = redirect.get_absolute_url()
@@ -213,7 +213,7 @@ class TestRedirectToDestinationView:
         response = client.get("foo.html")
         assert response.status_code == 404
 
-    @pytest.mark.django_db
+    @pytest.mark.django_db()
     def test_view_counting(self, client: Client, redirect: Redirect) -> None:
         """Increases redirect view count when viewed."""
         url = redirect.get_absolute_url()
