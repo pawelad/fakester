@@ -2,7 +2,7 @@
 
 from django.conf import settings
 from django.core.exceptions import ValidationError
-from django.core.validators import RegexValidator
+from django.core.validators import RegexValidator, URLValidator
 from django.db import models
 from django.http import HttpRequest
 from django.http.request import split_domain_port
@@ -34,6 +34,7 @@ class Redirect(BaseModel):
 
     destination_url = models.URLField(
         verbose_name="destination URL",
+        validators=[URLValidator(schemes=["http", "https"])],
     )
 
     title = models.CharField(
