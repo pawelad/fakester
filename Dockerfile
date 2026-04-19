@@ -47,14 +47,17 @@ RUN --mount=type=cache,sharing=locked,target=/var/lib/apt/lists \
 
 USER $USER
 
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /bin/uv
+
 # Set up the virtualenv
-RUN python -m venv --copies "$VIRTUAL_ENV"
+RUN uv venv "$VIRTUAL_ENV"
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+ENV UV_PROJECT_ENVIRONMENT="$VIRTUAL_ENV"
 
 # Install Python dependencies
-COPY --chown=$USER:$USER requirements/main.txt $APP_DIR/requirements/main.txt
-RUN --mount=type=cache,uid=${UID},gid=${GID},target=$HOME/.cache \
-    python -m pip install --no-deps -r requirements/main.txt
+COPY --chown=$USER:$USER pyproject.toml uv.lock ./
+RUN --mount=type=cache,uid=${UID},gid=${GID},target=$HOME/.cache/uv \
+    uv sync --frozen --no-dev --no-install-project
 
 ###########
 #   Dev   #
@@ -62,9 +65,8 @@ RUN --mount=type=cache,uid=${UID},gid=${GID},target=$HOME/.cache \
 FROM builder as dev
 
 # Install dev dependencies
-COPY --chown=$USER:$USER requirements/dev.txt $APP_DIR/requirements/dev.txt
-RUN --mount=type=cache,uid=${UID},gid=${GID},target=$HOME/.cache \
-    python -m pip install --no-deps -r requirements/dev.txt
+RUN --mount=type=cache,uid=${UID},gid=${GID},target=$HOME/.cache/uv \
+    uv sync --frozen --no-install-project
 
 ###########
 #   App   #
