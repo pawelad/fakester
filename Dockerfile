@@ -47,7 +47,7 @@ RUN --mount=type=cache,sharing=locked,target=/var/lib/apt/lists \
 
 USER $USER
 
-COPY --from=ghcr.io/astral-sh/uv:latest /uv /bin/uv
+COPY --from=ghcr.io/astral-sh/uv:0.11.7 /uv /bin/uv
 
 # Set up the virtualenv
 RUN uv venv "$VIRTUAL_ENV"
