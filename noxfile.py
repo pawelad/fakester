@@ -20,6 +20,9 @@ def tests(session: nox.Session) -> None:
         "uv",
         "sync",
         "--frozen",
+        "--no-dev",
+        "--group",
+        "tests",
     )
 
     session.run("coverage", "run", "-m", "pytest", *dirs)
@@ -45,6 +48,8 @@ def docs(session: nox.Session) -> None:
         "uv",
         "sync",
         "--frozen",
+        "--only-group",
+        "docs",
     )
 
     session.run("mkdocs", "build", "--strict")
@@ -59,6 +64,8 @@ def code_style_checks(session: nox.Session) -> None:
         "uv",
         "sync",
         "--frozen",
+        "--only-group",
+        "lint",
     )
 
     session.run("black", "--check", "--diff", *dirs)
@@ -76,6 +83,9 @@ def type_checks(session: nox.Session) -> None:
         "uv",
         "sync",
         "--frozen",
+        "--no-dev",
+        "--group",
+        "typing",
     )
 
     session.run("mypy", *dirs)

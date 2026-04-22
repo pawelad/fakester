@@ -405,6 +405,15 @@ docs = [
     { name = "mkdocs-include-markdown-plugin" },
     { name = "mkdocs-material" },
 ]
+lint = [
+    { name = "black" },
+    { name = "interrogate" },
+    { name = "isort" },
+    { name = "ruff" },
+]
+nox = [
+    { name = "nox" },
+]
 tests = [
     { name = "coverage", extra = ["toml"] },
     { name = "fakeredis" },
@@ -412,6 +421,11 @@ tests = [
     { name = "pytest" },
     { name = "pytest-django" },
     { name = "pytest-mock" },
+]
+typing = [
+    { name = "django-stubs" },
+    { name = "mypy" },
+    { name = "types-dj-database-url" },
 ]
 
 [package.metadata]
@@ -456,6 +470,13 @@ docs = [
     { name = "mkdocs-include-markdown-plugin" },
     { name = "mkdocs-material" },
 ]
+lint = [
+    { name = "black" },
+    { name = "interrogate" },
+    { name = "isort" },
+    { name = "ruff" },
+]
+nox = [{ name = "nox" }]
 tests = [
     { name = "coverage", extras = ["toml"] },
     { name = "fakeredis" },
@@ -463,6 +484,11 @@ tests = [
     { name = "pytest" },
     { name = "pytest-django" },
     { name = "pytest-mock" },
+]
+typing = [
+    { name = "django-stubs" },
+    { name = "mypy" },
+    { name = "types-dj-database-url" },
 ]
 
 [[package]]

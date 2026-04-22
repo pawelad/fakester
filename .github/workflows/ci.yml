@@ -15,8 +15,7 @@ concurrency:
 
 env:
   FORCE_COLOR: "1"
-  PIP_DISABLE_PIP_VERSION_CHECK: "1"
-  PYTHON_VERSION: "3.11"
+  PYTHON_VERSION: "3.12"
 
 jobs:
   tests:
@@ -47,7 +46,7 @@ jobs:
           python-version: "${{ env.PYTHON_VERSION }}"
 
       - name: "Run tests (via Nox)"
-        run: "uvx --with nox[uv] nox -s tests"
+        run: "uv run --frozen --only-group nox -- nox -s tests"
 
       - name: "Upload coverage data"
         uses: "actions/upload-artifact@v4"
@@ -83,7 +82,7 @@ jobs:
           merge-multiple: "true"
 
       - name: "Combine coverage (via Nox)"
-        run: "uvx --with nox[uv] nox -s coverage_report"
+        run: "uv run --frozen --only-group nox -- nox -s coverage_report"
 
       - name: "Upload coverage reports to Codecov"
         uses: "codecov/codecov-action@v4"
@@ -122,4 +121,4 @@ jobs:
           python-version: "${{ env.PYTHON_VERSION }}"
 
       - name: "Run '${{ matrix.nox_session }}' Nox session"
-        run: "uvx --with nox[uv] nox -s ${{ matrix.nox_session }}"
+        run: "uv run --frozen --only-group nox -- nox -s ${{ matrix.nox_session }}"
