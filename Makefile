@@ -10,6 +10,18 @@ install: ## Install app dependencies
 install-dev: ## Install app dependencies (including dev)
 	uv sync
 
+.PHONY: lock
+lock: ## Lock dependencies
+	uv lock
+
+.PHONY: upgrade-package
+upgrade-package: ## Upgrade Python package (pass "package=<PACKAGE_NAME>")
+	uv lock --upgrade-package $(package)
+
+.PHONY: upgrade-all
+upgrade-all: ## Upgrade all Python packages
+	uv lock --upgrade
+
 .PHONY: run
 run: ## Run the app
 	uv run python src/manage.py runserver
