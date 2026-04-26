@@ -76,7 +76,7 @@ Available settings:
 ENVIRONMENT='production'
 
 # Django's secret key. Should be kept private and needs to be set on a non-local enviroment.
-# Default: "CHANGE_ME"
+# Default: A randomly generated secret key (only in "local" environment)
 # Docs: https://docs.djangoproject.com/en/4.1/ref/settings/#secret-key
 SECRET_KEY='THIS_IS_A_VERY_SECRET_KEY'
 
