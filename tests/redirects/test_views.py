@@ -116,6 +116,29 @@ class TestRedirectFormView:
         assert redirect.author_ip == ip_address
 
     @pytest.mark.django_db()
+    def test_redirect_creation_invalid_form(
+        self,
+        settings: SettingsWrapper,
+        client: Client,
+    ) -> None:
+        """Does not create a new `Redirect` instance when form is invalid."""
+        settings.RATELIMIT_ENABLE = False
+
+        data = {
+            "local_path": "foo/bar.html",
+            "destination_url": "invalid-url",
+        }
+
+        response = client.post(self.url, data)
+
+        assert response.status_code == 200
+        assert "form" in response.context
+        assert not response.context["form"].is_valid()
+        assert "destination_url" in response.context["form"].errors
+
+        assert not Redirect.objects.filter(local_path=data["local_path"]).exists()
+
+    @pytest.mark.django_db()
     def test_ratelimit(self, client: Client) -> None:
         """Allows at most three POST request per minute."""
         data = {
