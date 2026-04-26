@@ -30,6 +30,19 @@ class TestRedirect:
         assert redirect.local_path in redirect_str
         assert redirect.destination_url in redirect_str
 
+    @pytest.mark.parametrize(
+        ("local_path", "expected_absolute_path"),
+        [
+            ("foo/bar", "/foo/bar"),
+            ("/foo/bar", "/foo/bar"),
+        ],
+    )
+    def test_absolute_path(self, local_path: str, expected_absolute_path: str) -> None:
+        """`absolute_path` property returns `local_path` with a leading slash."""
+        redirect = self.model_class(local_path=local_path)
+
+        assert redirect.absolute_path == expected_absolute_path
+
     def test_clean(self) -> None:
         """Leading slashes from `local_path` field are removed."""
         data = {
