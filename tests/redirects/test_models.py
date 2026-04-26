@@ -42,6 +42,40 @@ class TestRedirect:
         assert redirect.local_path == "this_is/////a//local_path"
         assert redirect.destination_url == "https://example.com/"
 
+    @pytest.mark.parametrize(
+        "forbidden_path",
+        [
+            "favicon.ico",
+            "/favicon.ico",
+            "robots.txt",
+            "/robots.txt",
+            "humans.txt",
+            "/humans.txt",
+            "ads.txt",
+            "/ads.txt",
+            "sellers.json",
+            "/sellers.json",
+        ],
+    )
+    def test_clean_forbidden_paths(self, forbidden_path: str) -> None:
+        """Fails validation for forbidden static file paths."""
+        redirect = self.model_class(local_path=forbidden_path)
+
+        with pytest.raises(ValidationError, match="Path is not allowed."):
+            redirect.clean()
+
+    @pytest.mark.parametrize(
+        "forbidden_prefix",
+        ["_/", "/_/", ".well-known/", "/.well-known/"],
+    )
+    def test_clean_forbidden_prefixes(self, forbidden_prefix: str) -> None:
+        """Fails validation for forbidden path prefixes."""
+        local_path = f"{forbidden_prefix}foo/bar.html"
+        redirect = self.model_class(local_path=local_path)
+
+        with pytest.raises(ValidationError, match="Path cannot start with"):
+            redirect.clean()
+
     def test_increase_view_count(self, redirect: Redirect) -> None:
         """Redirect view count is increased."""
         assert redirect.views == 0

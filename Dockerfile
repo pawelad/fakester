@@ -12,15 +12,6 @@ ENV HOME="/home/$USER"
 ENV APP_DIR="$HOME/app"
 ENV VIRTUAL_ENV="$HOME/venv"
 
-# Install runtime dependencies
-RUN rm -f /etc/apt/apt.conf.d/docker-clean; echo 'Binary::apt::APT::Keep-Downloaded-Packages "true";' > /etc/apt/apt.conf.d/keep-cache
-RUN --mount=type=cache,sharing=locked,target=/var/lib/apt/lists \
-    --mount=type=cache,sharing=locked,target=/var/cache/apt \
-    apt-get update \
-    && apt-get --no-install-recommends install -y \
-      # psycopg2
-      libpq-dev
-
 # Create a non root user
 RUN groupadd --gid ${GID} $USER \
     && useradd --system --create-home --no-log-init \
@@ -35,26 +26,17 @@ WORKDIR $APP_DIR
 ###########
 FROM base as builder
 
-# Install build dependencies
-USER root
-
-RUN --mount=type=cache,sharing=locked,target=/var/lib/apt/lists \
-    --mount=type=cache,sharing=locked,target=/var/cache/apt \
-    apt-get update \
-    && apt-get --no-install-recommends install -y \
-      # psycopg2
-      python3-dev gcc build-essential
-
-USER $USER
+COPY --from=ghcr.io/astral-sh/uv:0.11.7 /uv /bin/uv
 
 # Set up the virtualenv
-RUN python -m venv --copies "$VIRTUAL_ENV"
+RUN uv venv "$VIRTUAL_ENV"
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+ENV UV_PROJECT_ENVIRONMENT="$VIRTUAL_ENV"
 
 # Install Python dependencies
-COPY --chown=$USER:$USER requirements/main.txt $APP_DIR/requirements/main.txt
-RUN --mount=type=cache,uid=${UID},gid=${GID},target=$HOME/.cache \
-    python -m pip install --no-deps -r requirements/main.txt
+COPY --chown=$USER:$USER pyproject.toml uv.lock ./
+RUN --mount=type=cache,uid=${UID},gid=${GID},target=$HOME/.cache/uv \
+    uv sync --frozen --no-dev --no-install-project
 
 ###########
 #   Dev   #
@@ -62,9 +44,8 @@ RUN --mount=type=cache,uid=${UID},gid=${GID},target=$HOME/.cache \
 FROM builder as dev
 
 # Install dev dependencies
-COPY --chown=$USER:$USER requirements/dev.txt $APP_DIR/requirements/dev.txt
-RUN --mount=type=cache,uid=${UID},gid=${GID},target=$HOME/.cache \
-    python -m pip install --no-deps -r requirements/dev.txt
+RUN --mount=type=cache,uid=${UID},gid=${GID},target=$HOME/.cache/uv \
+    uv sync --frozen --no-install-project
 
 ###########
 #   App   #

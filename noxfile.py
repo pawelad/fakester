@@ -4,6 +4,7 @@ import os
 
 import nox
 
+nox.options.default_venv_backend = "uv"
 nox.options.reuse_existing_virtualenvs = True
 nox.options.error_on_external_run = True
 
@@ -15,13 +16,15 @@ def tests(session: nox.Session) -> None:
     """Run tests."""
     dirs = session.posargs or ["tests/"]
 
-    # fmt: off
-    session.install(
-        "--no-deps",
-        "-r", "requirements/main.txt",
-        "-r", "requirements/dev.txt",
+    session.run_install(
+        "uv",
+        "sync",
+        "--frozen",
+        "--no-dev",
+        "--group",
+        "tests",
+        env={"UV_PROJECT_ENVIRONMENT": session.virtualenv.location},
     )
-    # fmt: on
 
     session.run("coverage", "run", "-m", "pytest", *dirs)
 
@@ -42,27 +45,31 @@ def coverage_report(session: nox.Session) -> None:
 @nox.session()
 def docs(session: nox.Session) -> None:
     """Build docs."""
-    # fmt: off
-    session.install(
-        "--no-deps",
-        "-r", "requirements/dev.txt",
+    session.run_install(
+        "uv",
+        "sync",
+        "--frozen",
+        "--only-group",
+        "docs",
+        env={"UV_PROJECT_ENVIRONMENT": session.virtualenv.location},
     )
-    # fmt: on
 
     session.run("mkdocs", "build", "--strict")
 
 
-@nox.session()
+@nox.session(tags=["check"])
 def code_style_checks(session: nox.Session) -> None:
     """Check code style."""
     dirs = session.posargs or DEFAULT_PATHS
 
-    # fmt: off
-    session.install(
-        "black", "isort", "ruff", "interrogate",
-        "-c", "requirements/constraints.txt",
+    session.run_install(
+        "uv",
+        "sync",
+        "--frozen",
+        "--only-group",
+        "lint",
+        env={"UV_PROJECT_ENVIRONMENT": session.virtualenv.location},
     )
-    # fmt: on
 
     session.run("black", "--check", "--diff", *dirs)
     session.run("isort", "--check", "--diff", *dirs)
@@ -70,31 +77,38 @@ def code_style_checks(session: nox.Session) -> None:
     session.run("interrogate", *dirs)
 
 
-@nox.session()
+@nox.session(tags=["check"])
 def type_checks(session: nox.Session) -> None:
     """Run type checks."""
     dirs = session.posargs or DEFAULT_PATHS
 
-    # fmt: off
-    session.install(
-        "--no-deps",
-        "-r", "requirements/main.txt",
-        "-r", "requirements/dev.txt",
+    session.run_install(
+        "uv",
+        "sync",
+        "--frozen",
+        "--no-dev",
+        "--group",
+        "typing",
+        "--group",
+        "tests",
+        "--group",
+        "nox",
+        env={"UV_PROJECT_ENVIRONMENT": session.virtualenv.location},
     )
-    # fmt: on
 
     session.run("mypy", *dirs)
 
 
-@nox.session()
+@nox.session(tags=["check"])
 def django_checks(session: nox.Session) -> None:
     """Run Django checks."""
-    # fmt: off
-    session.install(
-        "--no-deps",
-        "-r", "requirements/main.txt",
+    session.run_install(
+        "uv",
+        "sync",
+        "--frozen",
+        "--no-dev",
+        env={"UV_PROJECT_ENVIRONMENT": session.virtualenv.location},
     )
-    # fmt: on
 
     session.run("src/manage.py", "check", external=True)
     session.run("src/manage.py", "makemigrations", "--check", external=True)
