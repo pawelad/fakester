@@ -23,6 +23,7 @@ def tests(session: nox.Session) -> None:
         "--no-dev",
         "--group",
         "tests",
+        env={"UV_PROJECT_ENVIRONMENT": session.virtualenv.location},
     )
 
     session.run("coverage", "run", "-m", "pytest", *dirs)
@@ -50,12 +51,13 @@ def docs(session: nox.Session) -> None:
         "--frozen",
         "--only-group",
         "docs",
+        env={"UV_PROJECT_ENVIRONMENT": session.virtualenv.location},
     )
 
     session.run("mkdocs", "build", "--strict")
 
 
-@nox.session()
+@nox.session(tags=["check"])
 def code_style_checks(session: nox.Session) -> None:
     """Check code style."""
     dirs = session.posargs or DEFAULT_PATHS
@@ -66,6 +68,7 @@ def code_style_checks(session: nox.Session) -> None:
         "--frozen",
         "--only-group",
         "lint",
+        env={"UV_PROJECT_ENVIRONMENT": session.virtualenv.location},
     )
 
     session.run("black", "--check", "--diff", *dirs)
@@ -74,7 +77,7 @@ def code_style_checks(session: nox.Session) -> None:
     session.run("interrogate", *dirs)
 
 
-@nox.session()
+@nox.session(tags=["check"])
 def type_checks(session: nox.Session) -> None:
     """Run type checks."""
     dirs = session.posargs or DEFAULT_PATHS
@@ -86,12 +89,13 @@ def type_checks(session: nox.Session) -> None:
         "--no-dev",
         "--group",
         "typing",
+        env={"UV_PROJECT_ENVIRONMENT": session.virtualenv.location},
     )
 
     session.run("mypy", *dirs)
 
 
-@nox.session()
+@nox.session(tags=["check"])
 def django_checks(session: nox.Session) -> None:
     """Run Django checks."""
     session.run_install(
@@ -99,6 +103,7 @@ def django_checks(session: nox.Session) -> None:
         "sync",
         "--frozen",
         "--no-dev",
+        env={"UV_PROJECT_ENVIRONMENT": session.virtualenv.location},
     )
 
     session.run("src/manage.py", "check", external=True)
