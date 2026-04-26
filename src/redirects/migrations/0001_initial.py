@@ -45,7 +45,17 @@ class Migration(migrations.Migration):
                         verbose_name="local path",
                     ),
                 ),
-                ("destination_url", models.URLField(verbose_name="destination URL")),
+                (
+                    "destination_url",
+                    models.URLField(
+                        validators=[
+                            django.core.validators.URLValidator(
+                                schemes=["http", "https"]
+                            ),
+                        ],
+                        verbose_name="destination URL",
+                    ),
+                ),
                 (
                     "title",
                     models.CharField(

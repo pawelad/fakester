@@ -12,7 +12,7 @@
   <meta http-equiv="refresh" content="1; url={{ redirect.destination_url }}">
 
   <script>
-    window.location.href = "{{ redirect.destination_url }}";
+    window.location.href = "{{ redirect.destination_url|escapejs }}";
   </script>
 </head>
 
