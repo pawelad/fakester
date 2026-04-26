@@ -9,13 +9,15 @@ on:
   workflow_call:
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 concurrency:
   group: "${{ github.workflow }}-${{ github.ref }}"
   cancel-in-progress: true
 
 env:
   FORCE_COLOR: "1"
-  PIP_DISABLE_PIP_VERSION_CHECK: "1"
   PYTHON_VERSION: "3.12"
 
 jobs:
@@ -34,21 +36,20 @@ jobs:
       - name: "Checkout code"
         uses: "actions/checkout@v4"
 
+      - name: "Install uv"
+        uses: "astral-sh/setup-uv@v8.1.0"
+        with:
+          version: "0.11.7"
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
+
       - name: "Setup Python ${{ env.PYTHON_VERSION }}"
         uses: "actions/setup-python@v5"
         with:
           python-version: "${{ env.PYTHON_VERSION }}"
-          cache: "pip"
-          cache-dependency-path: "requirements/*.txt"
-
-      - name: "Install pip and wheel"
-        run: "python -m pip install --upgrade pip wheel -c requirements/constraints.txt"
-
-      - name: "Install Nox"
-        run: "python -m pip install nox -c requirements/constraints.txt"
 
       - name: "Run tests (via Nox)"
-        run: "nox -s tests"
+        run: "uv run --frozen --only-group nox -- nox -s tests"
 
       - name: "Upload coverage data"
         uses: "actions/upload-artifact@v4"
@@ -66,18 +67,17 @@ jobs:
       - name: "Checkout code"
         uses: "actions/checkout@v4"
 
+      - name: "Install uv"
+        uses: "astral-sh/setup-uv@v8.1.0"
+        with:
+          version: "0.11.7"
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
+
       - name: "Setup Python ${{ env.PYTHON_VERSION }}"
         uses: "actions/setup-python@v5"
         with:
           python-version: "${{ env.PYTHON_VERSION }}"
-          cache: "pip"
-          cache-dependency-path: "requirements/*.txt"
-
-      - name: "Install pip and wheel"
-        run: "python -m pip install --upgrade pip wheel -c requirements/constraints.txt"
-
-      - name: "Install Nox"
-        run: "python -m pip install nox -c requirements/constraints.txt"
 
       - uses: "actions/download-artifact@v4"
         with:
@@ -85,7 +85,7 @@ jobs:
           merge-multiple: "true"
 
       - name: "Combine coverage (via Nox)"
-        run: "nox -s coverage_report"
+        run: "uv run --frozen --only-group nox -- nox -s coverage_report"
 
       - name: "Upload coverage reports to Codecov"
         uses: "codecov/codecov-action@v5"
@@ -95,34 +95,55 @@ jobs:
           CODECOV_TOKEN: "${{ secrets.CODECOV_TOKEN }}"
 
 
-  checks:
-    name: "${{ matrix.name }}"
+  generate-checks:
+    name: "Generate checks matrix"
     runs-on: "ubuntu-latest"
-    strategy:
-      matrix:
-        include:
-          - name: "Code style checks"
-            nox_session: "code_style_checks"
-          - name: "Type checks"
-            nox_session: "type_checks"
-          - name: "Django checks"
-            nox_session: "django_checks"
+    outputs:
+      session: ${{ steps.set-matrix.outputs.session }}
     steps:
       - name: "Checkout code"
         uses: "actions/checkout@v4"
+
+      - name: "Install uv"
+        uses: "astral-sh/setup-uv@v8.1.0"
+        with:
+          version: "0.11.7"
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
 
       - name: "Setup Python ${{ env.PYTHON_VERSION }}"
         uses: "actions/setup-python@v5"
         with:
           python-version: "${{ env.PYTHON_VERSION }}"
-          cache: "pip"
-          cache-dependency-path: "requirements/*.txt"
 
-      - name: "Install pip and wheel"
-        run: "python -m pip install --upgrade pip wheel -c requirements/constraints.txt"
+      - name: "Set matrix"
+        id: "set-matrix"
+        shell: "bash"
+        run: echo "session=$(uv run --frozen --only-group nox -- nox --json -l -t check | jq -c '[.[].session]')" >> "$GITHUB_OUTPUT"
 
-      - name: "Install Nox"
-        run: "python -m pip install nox -c requirements/constraints.txt"
+  checks:
+    name: "${{ matrix.session }}"
+    runs-on: "ubuntu-latest"
+    needs: "generate-checks"
+    strategy:
+      fail-fast: false
+      matrix:
+        session: ${{ fromJson(needs.generate-checks.outputs.session) }}
+    steps:
+      - name: "Checkout code"
+        uses: "actions/checkout@v4"
 
-      - name: "Run '${{ matrix.nox_session }}' Nox session"
-        run: "nox -s ${{ matrix.nox_session }}"
+      - name: "Install uv"
+        uses: "astral-sh/setup-uv@v8.1.0"
+        with:
+          version: "0.11.7"
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
+
+      - name: "Setup Python ${{ env.PYTHON_VERSION }}"
+        uses: "actions/setup-python@v5"
+        with:
+          python-version: "${{ env.PYTHON_VERSION }}"
+
+      - name: "Run '${{ matrix.session }}' Nox session"
+        run: "uv run --frozen --only-group nox -- nox -s ${{ matrix.session }}"

@@ -1,3 +1,64 @@
+[project]
+name = "fakester"
+dynamic = ["version", "description"]
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "django",
+    "crispy-bootstrap5",
+    "dj-database-url",
+    "django-crispy-forms",
+    "django-ipware",
+    "django-ratelimit",
+    "gunicorn",
+    "whitenoise",
+    "psycopg2",
+    "redis[hiredis]",
+    "python-decouple",
+    "sentry-sdk",
+    "yarl",
+]
+
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[dependency-groups]
+docs = [
+    "mkdocs",
+    "mkdocs-include-markdown-plugin",
+    "mkdocs-material",
+]
+lint = [
+    "black",
+    "interrogate",
+    "isort",
+    "ruff",
+]
+tests = [
+    "coverage[toml]",
+    "fakeredis",
+    "model-bakery",
+    "pytest",
+    "pytest-django",
+    "pytest-mock",
+]
+typing = [
+    "django-stubs",
+    "mypy",
+    "types-dj-database-url",
+]
+nox = [
+    "nox",
+]
+dev = [
+    { include-group = "nox" },
+    { include-group = "docs" },
+    { include-group = "lint" },
+    { include-group = "tests" },
+    { include-group = "typing" },
+]
+
 [tool.black]
 target-version = ["py312"]
 
@@ -91,3 +152,6 @@ convention = "google"
 
 [tool.ruff.lint.flake8-pytest-style]
 fixture-parentheses = true
+
+[tool.uv]
+package = false

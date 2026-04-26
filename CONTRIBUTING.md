@@ -16,7 +16,7 @@ By participating in this project you agree to abide by its terms.
 **Error tracking:** [Sentry]  
 **Testing:** [pytest], [nox]  
 **Code style:** [black], [isort], [ruff], [interrogate]  
-**Other:** [pip-tools], [Docker], [Docker Compose], Makefile  
+**Other:** [uv], [Docker], [Docker Compose], Makefile  
 
 ## Code style
 All code is formatted with the amazing `black`, `isort` and `ruff` tools via
@@ -28,9 +28,6 @@ To run the test suite yourself, all you need to do is remember to have the datab
 running locally and run:
 
 ```console
-$ # Install nox
-$ python -m pip install nox -c requirements/constraints.txt
-$ # Run nox
 $ make test
 ```
 
@@ -50,9 +47,8 @@ Alternatively, you can also run fakester without [Docker], but you need to have
 [PostgreSQL] and [Redis] installed and running locally:
 
 ```console
-$ # Create a Python virtualenv
-$ python3 -m venv venv
-$ source venv/bin/activate
+$ # Install uv (https://docs.astral.sh/uv/getting-started/installation/)
+$ curl -LsSf https://astral.sh/uv/install.sh | sh
 $ # Install dependencies
 $ make install-dev
 $ # Run the app
@@ -120,7 +116,7 @@ Available `make` commands:
 $ make help
 install                                   Install app dependencies
 install-dev                               Install app dependencies (including dev)
-pip-compile                               Compile requirements files
+lock                                      Lock dependencies
 upgrade-package                           Upgrade Python package (pass "package=<PACKAGE_NAME>")
 upgrade-all                               Upgrade all Python packages
 run                                       Run the app
@@ -149,10 +145,10 @@ help                                      Show help message
 [interrogate]: https://github.com/econchick/interrogate
 [isort]: https://github.com/timothycrosley/isort
 [nox]: https://nox.readthedocs.io/
-[pip-tools]: https://github.com/jazzband/pip-tools
 [postgresql]: https://www.postgresql.org/
 [pytest]: https://pytest.org/
 [python]: https://www.python.org/
 [redis]: https://redis.io/
 [ruff]: https://github.com/charliermarsh/ruff
 [sentry]: https://sentry.io/
+[uv]: https://docs.astral.sh/uv/
