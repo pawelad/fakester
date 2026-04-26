@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog], and this project adheres to
 ## Unreleased
 
 ### Added
+- Add `AGENTS.md` with expanded toolchain details, nox session reference, and a comprehensive pre-flight checklist.
 - Build and push Docker image to GHCR ([#8](https://github.com/pawelad/fakester/pull/8)).
 - Add tests for `absolute_path` property on redirects ([#18](https://github.com/pawelad/fakester/pull/18)).
 - Add comprehensive tests for forbidden paths in `Redirect.clean` ([#17](https://github.com/pawelad/fakester/pull/17)).
