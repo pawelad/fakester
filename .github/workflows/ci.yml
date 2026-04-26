@@ -92,18 +92,11 @@ jobs:
           CODECOV_TOKEN: "${{ secrets.CODECOV_TOKEN }}"
 
 
-  checks:
-    name: "${{ matrix.name }}"
+  generate-checks:
+    name: "Generate checks matrix"
     runs-on: "ubuntu-latest"
-    strategy:
-      matrix:
-        include:
-          - name: "Code style checks"
-            nox_session: "code_style_checks"
-          - name: "Type checks"
-            nox_session: "type_checks"
-          - name: "Django checks"
-            nox_session: "django_checks"
+    outputs:
+      session: ${{ steps.set-matrix.outputs.session }}
     steps:
       - name: "Checkout code"
         uses: "actions/checkout@v4"
@@ -120,5 +113,34 @@ jobs:
         with:
           python-version: "${{ env.PYTHON_VERSION }}"
 
-      - name: "Run '${{ matrix.nox_session }}' Nox session"
-        run: "uv run --frozen --only-group nox -- nox -s ${{ matrix.nox_session }}"
+      - name: "Set matrix"
+        id: "set-matrix"
+        shell: "bash"
+        run: echo "session=$(uv run --frozen --only-group nox -- nox --json -l -t check | jq -c '[.[].session]')" >> "$GITHUB_OUTPUT"
+
+  checks:
+    name: "${{ matrix.session }}"
+    runs-on: "ubuntu-latest"
+    needs: "generate-checks"
+    strategy:
+      fail-fast: false
+      matrix:
+        session: ${{ fromJson(needs.generate-checks.outputs.session) }}
+    steps:
+      - name: "Checkout code"
+        uses: "actions/checkout@v4"
+
+      - name: "Install uv"
+        uses: "astral-sh/setup-uv@v8.1.0"
+        with:
+          version: "0.11.7"
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
+
+      - name: "Setup Python ${{ env.PYTHON_VERSION }}"
+        uses: "actions/setup-python@v5"
+        with:
+          python-version: "${{ env.PYTHON_VERSION }}"
+
+      - name: "Run '${{ matrix.session }}' Nox session"
+        run: "uv run --frozen --only-group nox -- nox -s ${{ matrix.session }}"
