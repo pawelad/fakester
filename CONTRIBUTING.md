@@ -31,6 +31,16 @@ running locally and run:
 $ make test
 ```
 
+`make test` orchestrates Docker and runs the following nox sessions:
+
+| Session             | What it does                                                                  |
+|---------------------|-------------------------------------------------------------------------------|
+| `tests`             | Runs `pytest` with `coverage` (group: `tests`)                                |
+| `coverage_report`   | Combines and reports coverage (auto-triggered locally after `tests`)          |
+| `code_style_checks` | `black --check`, `isort --check`, `ruff check`, `interrogate` (group: `lint`) |
+| `type_checks`       | `mypy` (groups: `typing`, `tests`, `nox`)                                     |
+| `django_checks`     | `manage.py check` + `manage.py makemigrations --check`                        |
+
 ## Running locally
 The easiest way run fakester locally is to install [Docker] and run:
 
@@ -61,6 +71,12 @@ introduced since you last used it), you need to apply the database migrations:
 
 ```console
 $ make apply-migrations
+```
+
+If you changed a Django model, create a new migration before applying it:
+
+```console
+$ make create-migration name=<descriptive_name>
 ```
 
 ### Configuration
@@ -107,6 +123,24 @@ AVAILABLE_DOMAINS='example.com,foo.bar'
 # Default: None
 # Docs: https://docs.sentry.io/platforms/python/#configure
 SENTRY_DSN='https://*****@*****.ingest.sentry.io/*****'
+```
+
+## Dependencies
+Dependencies are managed with [uv]. Runtime dependencies go under `[project].dependencies`
+in `pyproject.toml`. Everything else (testing, linting, typing, docs) belongs in the
+appropriate `[dependency-groups]` group (`tests`, `lint`, `typing`, `docs`, `nox`).
+
+After adding or changing a dependency, regenerate the lockfile:
+
+```console
+$ make lock
+```
+
+To upgrade a single package or all packages:
+
+```console
+$ make upgrade-package package=<PACKAGE_NAME>
+$ make upgrade-all
 ```
 
 ## Makefile

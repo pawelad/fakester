@@ -13,6 +13,7 @@ The format is based on [Keep a Changelog], and this project adheres to
 - Add tests for `get_version` template tag ([#12](https://github.com/pawelad/fakester/pull/12)).
 
 ### Changed
+- Expand `CONTRIBUTING.md` with nox session details, migration creation instructions, and a Dependencies section.
 - Migrate dependency management to `uv` ([#9](https://github.com/pawelad/fakester/pull/9)).
 - Migrate PostgreSQL adapter from `psycopg2` to `psycopg` (psycopg3).
 - Add `tmp/` to `.gitignore`.
