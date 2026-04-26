@@ -10,7 +10,7 @@ import pytest
 from redirects.models import Redirect
 
 
-@pytest.mark.django_db
+@pytest.mark.django_db()
 def test_xss_escaped_in_redirect_template(client: Client) -> None:
     """The payload should be escaped for JS."""
     # This payload tries to break out of the JS string and execute alert
