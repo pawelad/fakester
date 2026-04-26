@@ -1,10 +1,12 @@
 """Security tests for redirects app."""
 
-from django.test import Client
-from django.urls import reverse
 from django.core.exceptions import ValidationError
 from django.core.validators import URLValidator
+from django.test import Client
+from django.urls import reverse
+
 import pytest
+
 from redirects.models import Redirect
 
 
