@@ -89,6 +89,10 @@ def type_checks(session: nox.Session) -> None:
         "--no-dev",
         "--group",
         "typing",
+        "--group",
+        "tests",
+        "--group",
+        "nox",
         env={"UV_PROJECT_ENVIRONMENT": session.virtualenv.location},
     )
 
