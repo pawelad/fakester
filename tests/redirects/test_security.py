@@ -29,7 +29,7 @@ def test_xss_escaped_in_redirect_template(client: Client) -> None:
     # " becomes \u0022 or similar
     assert 'alert("XSS")' not in content
     # Django's escapejs usually escapes " as \u0022
-    assert "\\u0022; alert(\\u0022XSS\\u0022); //" in content
+    assert "\\u0022\\u003B alert(\\u0022XSS\\u0022)\\u003B //" in content
 
 
 @pytest.mark.parametrize(
