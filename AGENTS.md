@@ -10,8 +10,8 @@ Always consult these files first for context, standards, and setup instructions:
 |---|---|
 | [`README.md`](README.md) | Project overview, high-level architecture, linked domains |
 | [`CONTRIBUTING.md`](CONTRIBUTING.md) | Coding standards, local setup, configuration reference |
-| [`CHANGELOG.md`](CHANGELOG.md) | Change history — you must keep the `## Unreleased` section current |
-| [`Makefile`](Makefile) | Source of truth for all dev automation — always prefer `make` over raw commands |
+| [`CHANGELOG.md`](CHANGELOG.md) | Change history - you must keep the `## Unreleased` section current |
+| [`Makefile`](Makefile) | Source of truth for all dev automation - always prefer `make` over raw commands |
 | [`pyproject.toml`](pyproject.toml) | Dependency groups, tool config (black, isort, ruff, mypy, pytest, interrogate) |
 | [`noxfile.py`](noxfile.py) | Nox sessions run by CI: `tests`, `code_style_checks`, `type_checks`, `django_checks` |
 
@@ -35,6 +35,24 @@ Always consult these files first for context, standards, and setup instructions:
 | `type_checks` | `mypy` (groups: `typing`, `tests`, `nox`) |
 | `django_checks` | `manage.py check` + `manage.py makemigrations --check` |
 
+## Commit & PR Conventions
+
+All commit messages and PR titles **must** follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification:
+
+```
+<type>[optional scope]: <description>
+```
+
+Common types: `feat`, `fix`, `docs`, `refactor`, `test`, `chore`, `ci`.
+
+Examples:
+- `feat(redirects): add rate limiting per IP`
+- `fix(security): escape URL in redirect template`
+- `docs(agents): add conventional commits guideline`
+- `chore(deps): migrate to psycopg3`
+
+Breaking changes must append `!` after the type/scope, e.g. `feat!: drop Python 3.11 support`.
+
 ## The "Do Not" List
 
 - **Do not hallucinate files or states.** Verify paths exist before reading or writing.
@@ -44,7 +62,8 @@ Always consult these files first for context, standards, and setup instructions:
 - **Do not skip tests.** New functionality without tests will be rejected.
 - **Do not commit without formatting.** `make format` must pass cleanly.
 - **Do not create migrations manually.** Use `make create-migration name=<name>`.
-- **Do not forget the changelog.** Every notable change belongs in `## Unreleased` in `CHANGELOG.md`.
+- **Do not forget the changelog for notable changes.** Features, fixes, and other user-visible changes belong in `## Unreleased` in `CHANGELOG.md`. Minor internal or doc-only tweaks do not require an entry.
+- **Do not use emojis anywhere.** This includes responses, code, commit messages, and PR titles. Keep all communication clean and professional.
 
 ## Pre-flight Checklist
 
@@ -56,7 +75,7 @@ Before concluding any task, verify each item:
 - [ ] If I modified a model, did I create and include the migration?
 - [ ] Are `interrogate` docstring requirements still satisfied?
 - [ ] Does `mypy` type-check cleanly?
-- [ ] Did I update `CHANGELOG.md` under `## Unreleased`?
+- [ ] If this is a notable change (feature, fix, behaviour change), did I update `CHANGELOG.md` under `## Unreleased`?
 - [ ] Does `README.md` or `CONTRIBUTING.md` need updating for behavioral changes?
 
 [keep a changelog]: https://keepachangelog.com/en/1.1.0/

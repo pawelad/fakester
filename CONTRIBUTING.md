@@ -22,6 +22,11 @@ By participating in this project you agree to abide by its terms.
 All code is formatted with the amazing `black`, `isort` and `ruff` tools via
 `make format` helper command.
 
+## Commit messages
+All commit messages and PR titles must follow the [Conventional Commits][] specification
+(`<type>[optional scope]: <description>`). Common types: `feat`, `fix`, `docs`,
+`refactor`, `test`, `chore`, `ci`. Breaking changes append `!` after the type/scope.
+
 ## Tests
 Tests are written with help of [pytest] and run via [nox] (alongside other checks).
 To run the test suite yourself, all you need to do is remember to have the database
@@ -191,6 +196,7 @@ help                                      Show help message
 
 [black]: https://black.readthedocs.io/
 [contributor code of conduct]: ./.github/CODE_OF_CONDUCT.md
+[conventional commits]: https://www.conventionalcommits.org/en/v1.0.0/
 [django]: https://www.djangoproject.com/
 [docker]: https://www.docker.com/
 [docker compose]: https://docs.docker.com/compose/
