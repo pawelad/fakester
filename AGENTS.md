@@ -64,6 +64,7 @@ Breaking changes must append `!` after the type/scope, e.g. `feat!: drop Python 
 - **Do not create migrations manually.** Use `make create-migration name=<name>`.
 - **Do not forget the changelog for notable changes.** Features, fixes, and other user-visible changes belong in `## Unreleased` in `CHANGELOG.md`. Minor internal or doc-only tweaks do not require an entry.
 - **Do not use emojis anywhere.** This includes responses, code, commit messages, and PR titles. Keep all communication clean and professional.
+- **Do not use em dashes (`—`).** Instead, use a regular dash (`-`).
 
 ## Pre-flight Checklist
 
