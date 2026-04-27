@@ -53,6 +53,13 @@ $ make docker-run
 
 If everything went well, fakester should be available at http://localhost:8000/
 
+To stop the Docker stack or run a shell inside the dev container:
+
+```console
+$ make docker-stop
+$ make docker-shell
+```
+
 Alternatively, you can also run fakester without [Docker], but you need to have
 [PostgreSQL] and [Redis] installed and running locally:
 
@@ -143,6 +150,19 @@ $ make upgrade-package package=<PACKAGE_NAME>
 $ make upgrade-all
 ```
 
+## Documentation
+Documentation is built using [MkDocs]. To serve it locally and watch for changes:
+
+```console
+$ make docs-serve
+```
+
+To build the documentation to a static site:
+
+```console
+$ make docs-build
+```
+
 ## Makefile
 Available `make` commands:
 
@@ -178,6 +198,7 @@ help                                      Show help message
 [github new issue]: https://github.com/pawelad/fakester/issues/new/choose
 [interrogate]: https://github.com/econchick/interrogate
 [isort]: https://github.com/timothycrosley/isort
+[mkdocs]: https://www.mkdocs.org/
 [nox]: https://nox.readthedocs.io/
 [postgresql]: https://www.postgresql.org/
 [pytest]: https://pytest.org/
