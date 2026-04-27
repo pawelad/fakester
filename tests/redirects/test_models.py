@@ -93,17 +93,10 @@ class TestRedirect:
         """Redirect view count is increased."""
         assert redirect.views == 0
 
-        redirect.increase_view_count()
-        redirect.refresh_from_db()
-        assert redirect.views == 1
-
-        redirect.increase_view_count()
-        redirect.refresh_from_db()
-        assert redirect.views == 2
-
-        redirect.increase_view_count()
-        redirect.refresh_from_db()
-        assert redirect.views == 3
+        for i in range(1, 4):
+            redirect.increase_view_count()
+            redirect.refresh_from_db()
+            assert redirect.views == i
 
     @pytest.mark.django_db()
     def test_invalid_local_path(self, invalid_local_path: str) -> None:
