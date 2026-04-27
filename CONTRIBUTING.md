@@ -22,6 +22,11 @@ By participating in this project you agree to abide by its terms.
 All code is formatted with the amazing `black`, `isort` and `ruff` tools via
 `make format` helper command.
 
+## Commit messages
+All commit messages and PR titles must follow the [Conventional Commits][] specification
+(`<type>[optional scope]: <description>`). Common types: `feat`, `fix`, `docs`,
+`refactor`, `test`, `chore`, `ci`. Breaking changes append `!` after the type/scope.
+
 ## Tests
 Tests are written with help of [pytest] and run via [nox] (alongside other checks).
 To run the test suite yourself, all you need to do is remember to have the database
@@ -30,6 +35,16 @@ running locally and run:
 ```console
 $ make test
 ```
+
+`make test` orchestrates Docker and runs the following nox sessions:
+
+| Session             | What it does                                                                  |
+|---------------------|-------------------------------------------------------------------------------|
+| `tests`             | Runs `pytest` with `coverage` (group: `tests`)                                |
+| `coverage_report`   | Combines and reports coverage (auto-triggered locally after `tests`)          |
+| `code_style_checks` | `black --check`, `isort --check`, `ruff check`, `interrogate` (group: `lint`) |
+| `type_checks`       | `mypy` (groups: `typing`, `tests`, `nox`)                                     |
+| `django_checks`     | `manage.py check` + `manage.py makemigrations --check`                        |
 
 ## Running locally
 The easiest way run fakester locally is to install [Docker] and run:
@@ -42,6 +57,13 @@ $ make docker-run
 ```
 
 If everything went well, fakester should be available at http://localhost:8000/
+
+To stop the Docker stack or run a shell inside the dev container:
+
+```console
+$ make docker-stop
+$ make docker-shell
+```
 
 Alternatively, you can also run fakester without [Docker], but you need to have
 [PostgreSQL] and [Redis] installed and running locally:
@@ -61,6 +83,12 @@ introduced since you last used it), you need to apply the database migrations:
 
 ```console
 $ make apply-migrations
+```
+
+If you changed a Django model, create a new migration before applying it:
+
+```console
+$ make create-migration name=<descriptive_name>
 ```
 
 ### Configuration
@@ -109,6 +137,37 @@ AVAILABLE_DOMAINS='example.com,foo.bar'
 SENTRY_DSN='https://*****@*****.ingest.sentry.io/*****'
 ```
 
+## Dependencies
+Dependencies are managed with [uv]. Runtime dependencies go under `[project].dependencies`
+in `pyproject.toml`. Everything else (testing, linting, typing, docs) belongs in the
+appropriate `[dependency-groups]` group (`tests`, `lint`, `typing`, `docs`, `nox`).
+
+After adding or changing a dependency, regenerate the lockfile:
+
+```console
+$ make lock
+```
+
+To upgrade a single package or all packages:
+
+```console
+$ make upgrade-package package=<PACKAGE_NAME>
+$ make upgrade-all
+```
+
+## Documentation
+Documentation is built using [MkDocs]. To serve it locally and watch for changes:
+
+```console
+$ make docs-serve
+```
+
+To build the documentation to a static site:
+
+```console
+$ make docs-build
+```
+
 ## Makefile
 Available `make` commands:
 
@@ -137,6 +196,7 @@ help                                      Show help message
 
 [black]: https://black.readthedocs.io/
 [contributor code of conduct]: ./.github/CODE_OF_CONDUCT.md
+[conventional commits]: https://www.conventionalcommits.org/en/v1.0.0/
 [django]: https://www.djangoproject.com/
 [docker]: https://www.docker.com/
 [docker compose]: https://docs.docker.com/compose/
@@ -144,6 +204,7 @@ help                                      Show help message
 [github new issue]: https://github.com/pawelad/fakester/issues/new/choose
 [interrogate]: https://github.com/econchick/interrogate
 [isort]: https://github.com/timothycrosley/isort
+[mkdocs]: https://www.mkdocs.org/
 [nox]: https://nox.readthedocs.io/
 [postgresql]: https://www.postgresql.org/
 [pytest]: https://pytest.org/

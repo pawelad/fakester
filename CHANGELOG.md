@@ -8,6 +8,27 @@ The format is based on [Keep a Changelog], and this project adheres to
 ### Changed
 - Refactor `Redirect.get_fakester_links` to use a more efficient deduplication method, which significantly improves performance when dealing with many available domains.
 
+### Added
+- Add `AGENTS.md` with expanded toolchain details, nox session reference, and a comprehensive pre-flight checklist.
+- Build and push Docker image to GHCR ([#8](https://github.com/pawelad/fakester/pull/8)).
+- Add tests for `absolute_path` property on redirects ([#18](https://github.com/pawelad/fakester/pull/18)).
+- Add comprehensive tests for forbidden paths in `Redirect.clean` ([#17](https://github.com/pawelad/fakester/pull/17)).
+- Add tests for `get_version` template tag ([#12](https://github.com/pawelad/fakester/pull/12)).
+
+### Changed
+- Adopt [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) for commit messages and PR titles.
+- Expand `CONTRIBUTING.md` with nox session details, migration creation instructions, and a Dependencies section.
+- Migrate dependency management to `uv` ([#9](https://github.com/pawelad/fakester/pull/9)).
+- Migrate PostgreSQL adapter from `psycopg2` to `psycopg` (psycopg3).
+- Add `tmp/` to `.gitignore`.
+- Update GitHub CI actions and Python version to 3.12 ([#10](https://github.com/pawelad/fakester/pull/10)).
+- Use `F()` expressions to increment view count, improving concurrency ([#11](https://github.com/pawelad/fakester/pull/11)).
+- Pass redirect data to template context instead of view instance ([#14](https://github.com/pawelad/fakester/pull/14)).
+
+### Fixed
+- Fix XSS vulnerability in redirect template via `window.location.href` (Security) ([#15](https://github.com/pawelad/fakester/pull/15)).
+- Replace hardcoded `SECRET_KEY` with a randomly generated one (Security) ([#13](https://github.com/pawelad/fakester/pull/13)).
+
 ## [v2.2.1](https://github.com/pawelad/fakester/releases/tag/v2.2.1) - 2024-10-14
 ### Fixed
 - Added `SECURE_PROXY_SSL_HEADER` setting, which fixed CSRF errors on production.
