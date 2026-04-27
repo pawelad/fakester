@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog], and this project adheres to
 [Semantic Versioning].
 
 ## Unreleased
+### Changed
+- Refactor `Redirect.get_fakester_links` to use a more efficient deduplication method, which significantly improves performance when dealing with many available domains.
 
 ## [v2.2.1](https://github.com/pawelad/fakester/releases/tag/v2.2.1) - 2024-10-14
 ### Fixed
