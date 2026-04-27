@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog], and this project adheres to
 - Add tests for `get_version` template tag ([#12](https://github.com/pawelad/fakester/pull/12)).
 
 ### Changed
+- Refactor `Redirect.get_fakester_links` to use a more efficient deduplication method, which significantly improves performance when dealing with many available domains.
 - Adopt [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) for commit messages and PR titles.
 - Expand `CONTRIBUTING.md` with nox session details, migration creation instructions, and a Dependencies section.
 - Migrate dependency management to `uv` ([#9](https://github.com/pawelad/fakester/pull/9)).

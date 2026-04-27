@@ -126,7 +126,7 @@ class Redirect(BaseModel):
 
     def get_fakester_links(self, request: HttpRequest | None = None) -> list[str]:
         """Return fakester redirect links for all available domains."""
-        urls = []
+        urls: dict[str, None] = {}
 
         scheme = request.scheme if request and request.scheme else "http"
 
@@ -139,14 +139,11 @@ class Redirect(BaseModel):
                 port=int(port) if port else None,
                 path=self.absolute_path,
             )
-            urls.append(str(url))
+            urls[str(url)] = None
 
         if settings.AVAILABLE_DOMAINS:
             for domain in settings.AVAILABLE_DOMAINS:
                 url = URL.build(scheme=scheme, host=domain, path=self.absolute_path)
+                urls[str(url)] = None
 
-                # Avoid duplicating the currently browsed domain
-                if str(url) not in urls:
-                    urls.append(str(url))
-
-        return urls
+        return list(urls.keys())
