@@ -27,6 +27,16 @@ All commit messages and PR titles must follow the [Conventional Commits][] speci
 (`<type>[optional scope]: <description>`). Common types: `feat`, `fix`, `docs`,
 `refactor`, `test`, `chore`, `ci`. Breaking changes append `!` after the type/scope.
 
+## Releases and Deployment
+This project uses [release-please] for automated changelog generation and version bumping.
+
+1. **Commit and Merge**: Just merge your PRs into `main`. The commit messages must strictly follow the Conventional Commits specification.
+2. **Release PR**: A Github Action automatically opens or updates a "Release PR" named `chore: release vX.Y.Z`. This PR contains the updated `CHANGELOG.md` and version bumps.
+3. **Deploy**: When you are ready to cut a new release, simply merge the Release PR. This will:
+    - Tag the release in Git.
+    - Build and push a new Docker image to the GitHub Container Registry.
+    - Trigger a deployment webhook to Dokploy.
+
 ## Tests
 Tests are written with help of [pytest] and run via [nox] (alongside other checks).
 To run the test suite yourself, all you need to do is remember to have the database
@@ -214,3 +224,4 @@ help                                      Show help message
 [sentry]: https://sentry.io/
 [uv]: https://docs.astral.sh/uv/
 [yamllint]: https://yamllint.readthedocs.io/
+[release-please]: https://github.com/googleapis/release-please

@@ -1,0 +1,10 @@
+{
+  "packages": {
+    ".": {
+      "release-type": "python",
+      "include-component-in-tag": false,
+      "changelog-path": "CHANGELOG.md",
+      "version-file": "src/fakester/__init__.py"
+    }
+  }
+}
