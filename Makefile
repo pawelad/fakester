@@ -36,6 +36,7 @@ apply-migrations: ## Apply Django migrations
 
 .PHONY: format
 format: ## Format code
+	uv run yamllint .
 	uv run black src/ tests/ noxfile.py
 	uv run isort src/ tests/ noxfile.py
 	uv run ruff check --fix src/ tests/ noxfile.py

@@ -15,11 +15,11 @@ By participating in this project you agree to abide by its terms.
 **CI:** [GitHub Actions]  
 **Error tracking:** [Sentry]  
 **Testing:** [pytest], [nox]  
-**Code style:** [black], [isort], [ruff], [interrogate]  
+**Code style:** [black], [isort], [ruff], [interrogate], [yamllint]  
 **Other:** [uv], [Docker], [Docker Compose], Makefile  
 
 ## Code style
-All code is formatted with the amazing `black`, `isort` and `ruff` tools via
+All code is formatted and linted with the amazing `yamllint`, `black`, `isort` and `ruff` tools via
 `make format` helper command.
 
 ## Commit messages
@@ -213,3 +213,4 @@ help                                      Show help message
 [ruff]: https://github.com/charliermarsh/ruff
 [sentry]: https://sentry.io/
 [uv]: https://docs.astral.sh/uv/
+[yamllint]: https://yamllint.readthedocs.io/

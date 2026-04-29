@@ -34,6 +34,7 @@ lint = [
     "interrogate",
     "isort",
     "ruff",
+    "yamllint",
 ]
 tests = [
     "coverage[toml]",

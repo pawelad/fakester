@@ -1,0 +1,14 @@
+extends: relaxed
+
+ignore: |
+  .venv/
+  .nox/
+  staticfiles/
+  site/
+
+rules:
+  truthy:
+    allowed-values: ["true", "false", "on"]
+  document-start: disable
+  line-length: disable
+  empty-lines: disable

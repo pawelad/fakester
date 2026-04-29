@@ -75,6 +75,7 @@ def code_style_checks(session: nox.Session) -> None:
     session.run("isort", "--check", "--diff", *dirs)
     session.run("ruff", "check", "--diff", *dirs)
     session.run("interrogate", *dirs)
+    session.run("yamllint", ".")
 
 
 @nox.session(tags=["check"])

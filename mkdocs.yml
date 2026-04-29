@@ -14,12 +14,12 @@ watch:
 
 nav:
   - Home:
-    - Overview: "index.md"
-    - Changelog: "changelog.md"
-    - License: "license.md"
+      - Overview: "index.md"
+      - Changelog: "changelog.md"
+      - License: "license.md"
   - Development:
-    - Contributing Guide: "contributing.md"
-    - Code of Conduct: "code_of_conduct.md"
+      - Contributing Guide: "contributing.md"
+      - Code of Conduct: "code_of_conduct.md"
 
 theme:
   name: "material"
