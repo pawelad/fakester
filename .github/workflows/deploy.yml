@@ -5,7 +5,7 @@ on:
   workflow_run:
     workflows: ["Publish Docker Image"]
     types:
-      - completed
+      - "completed"
   workflow_dispatch:
 
 permissions:
@@ -19,7 +19,7 @@ jobs:
   tests:
     name: "Run tests and checks"
     uses: "./.github/workflows/ci.yml"
-    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    if: "${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}"
 
   deploy:
     name: "Trigger Dokploy Webhook"

@@ -1,3 +1,4 @@
+---
 x-common-variables: &common-variables
   DATABASE_URL: "postgres://postgres@db/fakester"
   REDIS_URL: "redis://redis:6379"

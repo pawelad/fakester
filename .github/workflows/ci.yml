@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: "read"
 
 concurrency:
   group: "${{ github.workflow }}-${{ github.ref }}"
@@ -99,7 +99,7 @@ jobs:
     name: "Generate checks matrix"
     runs-on: "ubuntu-latest"
     outputs:
-      session: ${{ steps.set-matrix.outputs.session }}
+      session: "${{ steps.set-matrix.outputs.session }}"
     steps:
       - name: "Checkout code"
         uses: "actions/checkout@v4"
@@ -119,7 +119,9 @@ jobs:
       - name: "Set matrix"
         id: "set-matrix"
         shell: "bash"
-        run: echo "session=$(uv run --frozen --only-group nox -- nox --json -l -t check | jq -c '[.[].session]')" >> "$GITHUB_OUTPUT"
+        run: |
+          echo "session=$(uv run --frozen --only-group nox -- nox --json -l -t check | jq -c '[.[].session]')" \
+            >> "$GITHUB_OUTPUT"
 
   checks:
     name: "${{ matrix.session }}"
@@ -128,7 +130,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        session: ${{ fromJson(needs.generate-checks.outputs.session) }}
+        session: "${{ fromJson(needs.generate-checks.outputs.session) }}"
     steps:
       - name: "Checkout code"
         uses: "actions/checkout@v4"

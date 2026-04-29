@@ -1,4 +1,5 @@
-extends: relaxed
+---
+extends: "default"
 
 ignore: |
   .venv/
@@ -7,8 +8,14 @@ ignore: |
   site/
 
 rules:
+  line-length:
+    max: 120
+
+  quoted-strings:
+    required: true
+    quote-type: "double"
+    check-keys: false
+
   truthy:
-    allowed-values: ["true", "false", "on"]
-  document-start: disable
-  line-length: disable
-  empty-lines: disable
+    level: "error"
+    check-keys: false
