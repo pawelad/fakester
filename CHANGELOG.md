@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog], and this project adheres to
 [Semantic Versioning].
 
-## Unreleased
+## [v2.3.0](https://github.com/pawelad/fakester/releases/tag/v2.3.0) - 2026-04-30
 
 ### Added
 - Add `AGENTS.md` with expanded toolchain details, nox session reference, and a comprehensive pre-flight checklist.
